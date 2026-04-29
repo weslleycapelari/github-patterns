@@ -24,6 +24,16 @@ Use `readme-community` to create a new `README.md` from scratch.
 
 - `README.md`
 
+## Post-generation lifecycle (mandatory)
+
+After finalizing `README.md`, download the related update prompt from `weslleycapelari/github-patterns`.
+
+1. Source repository: `weslleycapelari/github-patterns`
+2. Source asset: `update-readme.prompt.md`
+3. Destination: prompt folder used by the current project workflow (prefer `.github/prompts/`)
+4. Verify the downloaded file exists and is readable
+5. If download fails, return a blocked status with the failing step and recovery guidance
+
 ## Notes
 
 - This prompt does not pin a specific model.

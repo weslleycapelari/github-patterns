@@ -257,23 +257,31 @@ This is a recommendation block only. Do not auto-edit those files unless explici
 
 After successfully generating kickoff files, execute this lifecycle sequence:
 
-1. **Bootstrap next phase assets from GitHub patterns repository**
+1. **Inspect repository documentation state**
+	- Check whether `README.md` exists in repository root
+	- Check whether `CONTRIBUTING.md` exists in repository root
+
+2. **Bootstrap community assets from GitHub patterns repository**
 	- Source repository: `weslleycapelari/github-patterns`
 	- Target location: `.github/agents` and `.github/prompts`
-	- Minimum expected assets for phase 2:
-	  - README community agent
-	  - `/generate-readme` prompt
-	  - `/update-readme` prompt
+	- Always download required agents:
+	  - `readme-community.agent.md`
+	  - `contributing-community.agent.md`
+	- Select prompts dynamically by file existence:
+	  - if `README.md` exists: download `update-readme.prompt.md`
+	  - if `README.md` does not exist: download `generate-readme.prompt.md`
+	  - if `CONTRIBUTING.md` exists: download `update-contributing.prompt.md`
+	  - if `CONTRIBUTING.md` does not exist: download `generate-contributing.prompt.md`
 
-2. **Verify bootstrap result**
-	- Confirm downloaded files exist in `.github/agents` and `.github/prompts`
+3. **Verify bootstrap result**
+	- Confirm selected prompts and required agents exist in `.github/agents` and `.github/prompts`
 	- If the repository is private/unavailable, report the error clearly and request authentication/source override
 
-3. **Self-cleanup after bootstrap success**
+4. **Self-cleanup after bootstrap success**
 	- Delete `.github/agents/start-project.agent.md`
 	- Delete `.github/prompts/start-project.prompt.md`
 
-4. **If bootstrap fails**
+5. **If bootstrap fails**
 	- Do **not** delete start-project assets
 	- Return a blocked status with recovery instructions
 

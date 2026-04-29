@@ -19,6 +19,10 @@ Use the `start-project` agent for this workflow.
 	- global behavior conventions belong to `copilot-instructions`
 	- project-specific identity/preferences belong to `.project/*`
 - Generate kickoff files and return a concise handoff
+- After kickoff, check whether `README.md` and `CONTRIBUTING.md` already exist
+- Bootstrap community assets from `weslleycapelari/github-patterns` using conditional selection:
+	- if `README.md` exists, download `update-readme.prompt.md`; otherwise download `generate-readme.prompt.md`
+	- if `CONTRIBUTING.md` exists, download `update-contributing.prompt.md`; otherwise download `generate-contributing.prompt.md`
 
 ## Required collection fields
 
