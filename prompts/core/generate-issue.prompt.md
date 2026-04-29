@@ -37,4 +37,4 @@ Refer to the templates in `issue-ops` agent for the standard structure of each i
 
 ## Next command (mandatory — include at end of final message)
 
-At the end of your final message, tell the user to run `/update-issue` after opening the issue in GitHub to refine details with real implementation feedback.
+At the end of your final message, tell the user that issue templates are now complete and recommend running `/generate-codeowners` to set up team ownership rules next.

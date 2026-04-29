@@ -30,7 +30,4 @@ Refer to the templates in `issue-ops` agent for the standard structure of each i
 
 ## Next command (mandatory — include at end of final message)
 
-At the end of your final message:
-
-- If this issue still has open subissues, tell the user to run `/update-issue` again after status changes.
-- If this issue is complete, tell the user to run `/generate-issue` for the next backlog item.
+At the end of your final message, tell the user that issue management is now complete and recommend running `/generate-codeowners` to set up team ownership rules next.
