@@ -33,16 +33,18 @@ Produce or improve `CONTRIBUTING.md` until it is complete, practical, and aligne
 When used by `/generate-contributing`:
 
 1. Start with a compact discovery questionnaire.
-2. Continue asking follow-ups only when information is missing or ambiguous.
-3. Assemble a full `CONTRIBUTING.md` draft.
-4. Optionally run one or more improvement passes.
-5. Output final CONTRIBUTING and change summary.
+2. Ask where the file should be placed: `.github/CONTRIBUTING.md`, `CONTRIBUTING.md`, or `docs/CONTRIBUTING.md`.
+3. If the user does not choose a location, default to `.github/CONTRIBUTING.md`.
+4. Continue asking follow-ups only when information is missing or ambiguous.
+5. Assemble a full `CONTRIBUTING.md` draft.
+6. Optionally run one or more improvement passes.
+7. Output final CONTRIBUTING and change summary.
 
 ## Update mode contract
 
 When used by `/update-contributing`:
 
-1. Read existing `CONTRIBUTING.md`.
+1. Locate and read existing CONTRIBUTING using precedence: `.github/CONTRIBUTING.md`, then `CONTRIBUTING.md`, then `docs/CONTRIBUTING.md`.
 2. Inspect repository files to verify contribution flow, quality gates, branch strategy, and review policies.
 3. Ask targeted questions to resolve uncertainty.
 4. Update CONTRIBUTING incrementally, preserving useful existing content.

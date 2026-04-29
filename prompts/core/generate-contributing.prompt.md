@@ -24,6 +24,14 @@ Use `contributing-community` to create a new `CONTRIBUTING.md` from scratch.
 
 - `CONTRIBUTING.md`
 
+## File location strategy (mandatory)
+
+GitHub supports `CONTRIBUTING` in `.github/`, repository root, or `docs/`.
+
+1. Ask the user where to place the file: `.github/CONTRIBUTING.md`, `CONTRIBUTING.md`, or `docs/CONTRIBUTING.md`
+2. If the user does not choose, default to `.github/CONTRIBUTING.md`
+3. If multiple CONTRIBUTING files exist, note that GitHub surfaces them by precedence: `.github/`, then root, then `docs/`
+
 ## Post-generation lifecycle (mandatory)
 
 After finalizing `CONTRIBUTING.md`, download the related update prompt from `weslleycapelari/github-patterns`.
@@ -38,3 +46,12 @@ After finalizing `CONTRIBUTING.md`, download the related update prompt from `wes
 
 - This prompt does not pin a specific model.
 - This prompt is dedicated to `contributing-community`.
+
+## Next command (mandatory — include at end of final message)
+
+At the end of your final message, check whether `CODE_OF_CONDUCT.md` already exists in any supported location (`.github/CODE_OF_CONDUCT.md`, `CODE_OF_CONDUCT.md`, `docs/CODE_OF_CONDUCT.md`).
+
+- If it exists: tell the user to run `/update-code-of-conduct`
+- If it does not exist: tell the user to run `/generate-code-of-conduct`
+
+Format the suggestion as a clear next step, not an inline note.

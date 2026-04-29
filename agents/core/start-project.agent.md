@@ -41,13 +41,23 @@ Apply this separation in every run:
 	- long-lived behavior and quality policy
 	- coding standards, review expectations, security posture
 	- team-wide conventions that should apply continuously
-- kickoff files in `.project/`:
+- kickoff files in `docs/project/`:
 	- project identity and startup metadata
 	- language preferences for this repository
 	- owner/contact profile for this repository context
 	- assumptions and initial setup status
 
 Never move per-project profile fields exclusively into `copilot-instructions`.
+
+## Documentation folder structure
+
+The standard documentation root is `docs/` at the repository root. It is divided into three subfolders:
+
+- `docs/project/` — project-level documentation: stack, architecture, use cases, kickoff profiles, and strategic decisions. Multiple markdown files, no images required.
+- `docs/technical/` — developer-facing documentation: component descriptions, code structure, API references, and contributor internals. Pure markdown.
+- `docs/user/` — end-user documentation: wiki, tutorials, manuals, usage guides. Markdown files plus `docs/user/images/` subfolder for screenshots and diagrams.
+
+Kickoff artifacts are always written to `docs/project/`.
 
 ## Interaction mode
 
@@ -151,9 +161,9 @@ This classification is mandatory before asking for `CONFIRM`.
 
 On `CONFIRM`, create/update:
 
-- `.project/user-profile.md`
-- `.project/repository-profile.md`
-- `.project/kickoff-summary.md`
+- `docs/project/user-profile.md`
+- `docs/project/repository-profile.md`
+- `docs/project/kickoff-summary.md`
 
 ### `.project/user-profile.md` must include
 
@@ -229,12 +239,12 @@ Template:
 
 ## Policy boundary notes
 - Global policy candidates for copilot instructions: ...
-- Project-local kickoff data persisted in .project/: ...
+- Project-local kickoff data persisted in docs/project/: ...
 
 ## Files created/updated
-- .project/user-profile.md
-- .project/repository-profile.md
-- .project/kickoff-summary.md
+- docs/project/user-profile.md
+- docs/project/repository-profile.md
+- docs/project/kickoff-summary.md
 
 ## Assumptions
 - ...
@@ -258,8 +268,13 @@ This is a recommendation block only. Do not auto-edit those files unless explici
 After successfully generating kickoff files, execute this lifecycle sequence:
 
 1. **Inspect repository documentation state**
-	- Check whether `README.md` exists in repository root
-	- Check whether `CONTRIBUTING.md` exists in repository root
+	- Check whether README exists in supported locations using precedence: `.github/README.md`, then `README.md`, then `docs/README.md`
+	- Check whether CONTRIBUTING exists in supported locations using precedence: `.github/CONTRIBUTING.md`, then `CONTRIBUTING.md`, then `docs/CONTRIBUTING.md`
+	- Check whether CODE_OF_CONDUCT exists in supported locations using precedence: `.github/CODE_OF_CONDUCT.md`, then `CODE_OF_CONDUCT.md`, then `docs/CODE_OF_CONDUCT.md`
+	- Check whether SUPPORT exists in supported locations using precedence: `.github/SUPPORT.md`, then `SUPPORT.md`, then `docs/SUPPORT.md`
+	- Check whether SECURITY exists in supported locations using precedence: `.github/SECURITY.md`, then `SECURITY.md`, then `docs/SECURITY.md`
+	- Check whether GOVERNANCE exists at repository root: `GOVERNANCE.md`
+	- Check whether CHANGELOG exists at repository root: `CHANGELOG.md`
 
 2. **Bootstrap community assets from GitHub patterns repository**
 	- Source repository: `weslleycapelari/github-patterns`
@@ -267,11 +282,26 @@ After successfully generating kickoff files, execute this lifecycle sequence:
 	- Always download required agents:
 	  - `readme-community.agent.md`
 	  - `contributing-community.agent.md`
+	  - `code-of-conduct-community.agent.md`
+	  - `support-community.agent.md`
+	  - `security-community.agent.md`
+	  - `governance-community.agent.md`
+	  - `changelog-community.agent.md`
 	- Select prompts dynamically by file existence:
-	  - if `README.md` exists: download `update-readme.prompt.md`
-	  - if `README.md` does not exist: download `generate-readme.prompt.md`
-	  - if `CONTRIBUTING.md` exists: download `update-contributing.prompt.md`
-	  - if `CONTRIBUTING.md` does not exist: download `generate-contributing.prompt.md`
+	  - if README exists in `.github/README.md`, `README.md`, or `docs/README.md`: download `update-readme.prompt.md`
+	  - if README does not exist in any supported location: download `generate-readme.prompt.md`
+	  - if CONTRIBUTING exists in `.github/CONTRIBUTING.md`, `CONTRIBUTING.md`, or `docs/CONTRIBUTING.md`: download `update-contributing.prompt.md`
+	  - if CONTRIBUTING does not exist in any supported location: download `generate-contributing.prompt.md`
+	  - if CODE_OF_CONDUCT exists in `.github/CODE_OF_CONDUCT.md`, `CODE_OF_CONDUCT.md`, or `docs/CODE_OF_CONDUCT.md`: download `update-code-of-conduct.prompt.md`
+	  - if CODE_OF_CONDUCT does not exist in any supported location: download `generate-code-of-conduct.prompt.md`
+	  - if SUPPORT exists in `.github/SUPPORT.md`, `SUPPORT.md`, or `docs/SUPPORT.md`: download `update-support.prompt.md`
+	  - if SUPPORT does not exist in any supported location: download `generate-support.prompt.md`
+	  - if SECURITY exists in `.github/SECURITY.md`, `SECURITY.md`, or `docs/SECURITY.md`: download `update-security.prompt.md`
+	  - if SECURITY does not exist in any supported location: download `generate-security.prompt.md`
+	  - if GOVERNANCE exists as `GOVERNANCE.md`: download `update-governance.prompt.md`
+	  - if GOVERNANCE does not exist: download `generate-governance.prompt.md`
+	  - if CHANGELOG exists as `CHANGELOG.md`: download `update-changelog.prompt.md`
+	  - if CHANGELOG does not exist: download `generate-changelog.prompt.md`
 
 3. **Verify bootstrap result**
 	- Confirm selected prompts and required agents exist in `.github/agents` and `.github/prompts`

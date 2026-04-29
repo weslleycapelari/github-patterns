@@ -24,6 +24,14 @@ Use `readme-community` to create a new `README.md` from scratch.
 
 - `README.md`
 
+## File location strategy (mandatory)
+
+GitHub supports `README` in `.github/`, repository root, or `docs/`.
+
+1. Ask the user where to place the file: `.github/README.md`, `README.md`, or `docs/README.md`
+2. If the user does not choose, default to `.github/README.md`
+3. If multiple README files exist, note that GitHub surfaces them by precedence: `.github/`, then root, then `docs/`
+
 ## Post-generation lifecycle (mandatory)
 
 After finalizing `README.md`, download the related update prompt from `weslleycapelari/github-patterns`.
@@ -38,3 +46,12 @@ After finalizing `README.md`, download the related update prompt from `weslleyca
 
 - This prompt does not pin a specific model.
 - This prompt is dedicated to `readme-community`.
+
+## Next command (mandatory — include at end of final message)
+
+At the end of your final message, check whether `CONTRIBUTING.md` already exists in any supported location (`.github/CONTRIBUTING.md`, `CONTRIBUTING.md`, `docs/CONTRIBUTING.md`).
+
+- If it exists: tell the user to run `/update-contributing`
+- If it does not exist: tell the user to run `/generate-contributing`
+
+Format the suggestion as a clear next step, not an inline note.

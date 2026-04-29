@@ -33,16 +33,18 @@ Produce or improve `README.md` until it is complete, practical, and aligned with
 When used by `/generate-readme`:
 
 1. Start with a compact discovery questionnaire.
-2. Continue asking follow-ups only when information is missing or ambiguous.
-3. Assemble a full `README.md` draft.
-4. Optionally run one or more improvement passes.
-5. Output final README and change summary.
+2. Ask where the file should be placed: `.github/README.md`, `README.md`, or `docs/README.md`.
+3. If the user does not choose a location, default to `.github/README.md`.
+4. Continue asking follow-ups only when information is missing or ambiguous.
+5. Assemble a full `README.md` draft.
+6. Optionally run one or more improvement passes.
+7. Output final README and change summary.
 
 ## Update mode contract
 
 When used by `/update-readme`:
 
-1. Read existing `README.md`.
+1. Locate and read existing README using precedence: `.github/README.md`, then `README.md`, then `docs/README.md`.
 2. Inspect repository files to verify setup instructions, scripts, stack, and architecture claims.
 3. Ask targeted questions to resolve uncertainty.
 4. Update README incrementally, preserving useful existing content.
