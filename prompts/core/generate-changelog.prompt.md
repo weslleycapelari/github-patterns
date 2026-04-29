@@ -57,12 +57,9 @@ After finalizing `CHANGELOG.md`, download the related update prompt from `weslle
 
 ## Next command (mandatory — include at end of final message)
 
-At the end of your final message, tell the user that all core community files are now complete. Summarize the full set:
-`README`, `CONTRIBUTING`, `CODE_OF_CONDUCT`, `SECURITY`, `SUPPORT`, `GOVERNANCE`, `CHANGELOG`.
+At the end of your final message, tell the user that community files are complete and recommend the next phase:
 
-Suggest the next logical action based on the project state:
-- If any file was placed in root or `docs/` instead of `.github/`, mention that moving it to `.github/` gives highest GitHub precedence
-- Suggest validating the GitHub Community Profile checklist
-- Suggest running `/start-project` if a kickoff profile does not yet exist in `docs/project/`
+- Run `/generate-issue-templates` to initialize structured issue management.
+- Mention that this enables qualitative importance, quantitative epic progress, and duplicate linkage.
 
-Format the summary as a clear final handoff block, not an inline note.
+Format the suggestion as a clear next-step block, not an inline note.
