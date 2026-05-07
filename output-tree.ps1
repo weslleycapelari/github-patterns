@@ -144,7 +144,7 @@ function Export-FilesToMarkdown {
       $script:MarkdownOutput += "## $relativePath`n`n"
       $script:MarkdownOutput += "``````" + $language + "`n"
       $script:MarkdownOutput += $content
-      $script:MarkdownOutput += "`n``````n`n"
+      $script:MarkdownOutput += "`n```````n`n"
     } 
     catch {
       $script:MarkdownOutput += "`n"
