@@ -1,0 +1,104 @@
+{
+  "$schema": "./docs/schemas/registry.schema.json",
+  "version": "1.1.0",
+  "lastUpdated": "2026-05-06T00:00:00Z",
+  "maintainer": "weslleycapelari",
+  "endpoint_base": "https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/",
+  "core": {
+    "github_100_percent": {
+      "phases": {
+        "A": {
+          "name": "Collaboration Base",
+          "assets": [
+            "contributing-baseline"
+          ]
+        },
+        "B": {
+          "name": "Merge Governance",
+          "assets": [
+            "repo-architect"
+          ]
+        },
+        "C": {
+          "name": "CI/CD & Quality",
+          "assets": [
+            "repo-architect"
+          ]
+        },
+        "D": {
+          "name": "Advanced Security",
+          "assets": [
+            "repo-architect"
+          ]
+        },
+        "E": {
+          "name": "Intelligence & MCP",
+          "assets": [
+            "copilot-instructions-base",
+            "repo-architect"
+          ]
+        }
+      }
+    }
+  },
+  "stacks": {
+    "nodejs": {
+      "display_name": "Node.js & TypeScript",
+      "recommended_assets": [
+        "repo-architect",
+        "agent-factory",
+        "copilot-instructions-base",
+        "contributing-baseline"
+      ]
+    },
+    "python": {
+      "display_name": "Python & Django/FastAPI",
+      "recommended_assets": [
+        "repo-architect",
+        "agent-factory",
+        "copilot-instructions-base",
+        "contributing-baseline"
+      ]
+    }
+  },
+  "assets": {
+    "agents": {
+      "agent-factory": {
+        "id": "agent-factory",
+        "path": "agents/agent-factory.agent.md",
+        "description": "Meta-agent for creating new specialist agents (.agent.md) following high-performance standards.",
+        "version": "1.0.0",
+        "tags": [
+          "meta",
+          "setup"
+        ]
+      },
+      "repo-architect": {
+        "id": "repo-architect",
+        "path": "agents/setup-orchestrator.agent.md",
+        "description": "Marketplace setup orchestrator. Configures governance, agents, and rules based on the stack and the GitHub 100% guide.",
+        "version": "1.0.0",
+        "tags": [
+          "setup",
+          "governance",
+          "onboarding"
+        ]
+      }
+    },
+    "instructions": {
+      "copilot-instructions-base": {
+        "id": "copilot-instructions-base",
+        "path": "library/instructions/core.md",
+        "target": ".github/copilot-instructions.md",
+        "description": "Core engineering principles: Immutability, DRY, KISS, TDD, and Conventional Commits."
+      },
+      "contributing-baseline": {
+        "id": "contributing-baseline",
+        "path": "library/github-baseline/CONTRIBUTING.md",
+        "target": "CONTRIBUTING.md",
+        "description": "Baseline CONTRIBUTING.md for Copilot-managed repositories with AI agent workflow guidelines."
+      }
+    },
+    "mcp_servers": {}
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/registry.schema.json",
+  "title": "Marketplace Registry Schema",
+  "description": "Schema for validating the marketplace registry.json structure.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "lastUpdated",
+    "maintainer",
+    "endpoint_base",
+    "core",
+    "stacks",
+    "assets"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional JSON Schema pointer used by tooling.",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "description": "Registry format version in semantic versioning.",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "ISO 8601 timestamp of the latest registry update.",
+      "format": "date-time"
+    },
+    "maintainer": {
+      "type": "string",
+      "description": "Registry maintainer identifier.",
+      "minLength": 1
+    },
+    "endpoint_base": {
+      "type": "string",
+      "description": "Base URL used to resolve relative asset paths.",
+      "format": "uri",
+      "pattern": "/$"
+    },
+    "core": {
+      "type": "object",
+      "description": "Core governance blueprints mapped by framework or methodology.",
+      "additionalProperties": {
+        "$ref": "#/$defs/coreBlueprint"
+      },
+      "minProperties": 1
+    },
+    "stacks": {
+      "type": "object",
+      "description": "Technology stacks and their recommended asset IDs.",
+      "additionalProperties": {
+        "$ref": "#/$defs/stackDefinition"
+      },
+      "minProperties": 1
+    },
+    "assets": {
+      "$ref": "#/$defs/assetsCatalog"
+    }
+  },
+  "$defs": {
+    "phaseDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "assets"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assets": {
+          "type": "array",
+          "description": "List of asset IDs required by this phase.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "coreBlueprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phases"
+      ],
+      "properties": {
+        "phases": {
+          "type": "object",
+          "description": "Governance phases keyed by phase code.",
+          "additionalProperties": {
+            "$ref": "#/$defs/phaseDefinition"
+          },
+          "required": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        }
+      }
+    },
+    "stackDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "display_name",
+        "recommended_assets"
+      ],
+      "properties": {
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recommended_assets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "agentAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "description",
+        "version",
+        "tags"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "description": "Repository-relative path to the asset file.",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "instructionAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "target",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "description": "Recommended destination path in the consumer repository.",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "mcpServerAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "path",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "config",
+            "tool"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "assetsCatalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agents",
+        "instructions",
+        "mcp_servers"
+      ],
+      "properties": {
+        "agents": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/agentAsset"
+          }
+        },
+        "instructions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/instructionAsset"
+          }
+        },
+        "mcp_servers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/mcpServerAsset"
+          }
+        }
+      }
+    }
+  }
+}
