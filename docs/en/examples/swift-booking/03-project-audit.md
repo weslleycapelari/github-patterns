@@ -11,6 +11,7 @@ In reservation systems, small concurrency flaws can cause severe outcomes: doubl
 ## Prompt
 
 ```text
+Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: use `@project-auditor` plus marketplace security/performance standards.
 Call @project-auditor.
 Scan the app/database/ folder and verify that reservation transactions follow
 the Security and Performance standards from the marketplace.

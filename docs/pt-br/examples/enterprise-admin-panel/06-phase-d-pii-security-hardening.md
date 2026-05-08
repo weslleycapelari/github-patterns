@@ -18,6 +18,7 @@ Um painel corporativo frequentemente mostra dados que não deveriam aparecer int
 ## Prompt
 
 ```text
+Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: aplicar explicitamente referência de segurança da Phase D.
 Copilot, apply a Phase D security hardening plan for this enterprise admin panel.
 Focus on PII protection, role-based UI boundaries, safe logging, masking/redaction, and secure handling of sensitive fields in React screens.
 Keep the plan actionable for a React 18 + TypeScript dashboard and aligned with governance-first repository standards.

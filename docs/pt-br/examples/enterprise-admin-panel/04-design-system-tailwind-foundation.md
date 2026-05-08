@@ -18,6 +18,7 @@ Depois do primeiro componente rico, o risco passa a ser a proliferação de esti
 ## Prompt
 
 ```text
+Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt").
 Copilot, establish the initial Tailwind-based design system foundation for this enterprise admin panel.
 Create a practical token and component strategy for layout, cards, tables, filters, badges, and status states.
 Keep the system accessible, easy to scale, and aligned with WCAG 2.2 expectations.

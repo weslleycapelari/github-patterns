@@ -27,6 +27,7 @@ Antes de executar este passo, confirme:
 ## Prompt
 
 ```text
+Contrato de ativos: SB-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: usar explicitamente `prompts/start-phase-b.prompt.md`.
 Use the governance prompt at:
 https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/prompts/start-phase-b.prompt.md
 Help me configure the Ruleset for the 'main' branch.

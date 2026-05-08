@@ -18,6 +18,7 @@ Este é o ponto mais sensível do domínio. Sem uma estratégia explícita de co
 ## Prompt
 
 ```text
+Contrato de ativos: SB-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: reforçar estratégia explícita para concorrência, idempotência e invariantes.
 You are hardening the "Swift-Booking" project, whose reservation API already exists.
 
 OBJECTIVE

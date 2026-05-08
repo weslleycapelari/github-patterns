@@ -18,6 +18,7 @@ This is the most sensitive point in the domain. Without an explicit concurrency 
 ## Prompt
 
 ```text
+Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: reinforce explicit strategy for concurrency, idempotency, and domain invariants.
 You are hardening the "Swift-Booking" project, whose reservation API already exists.
 
 OBJECTIVE

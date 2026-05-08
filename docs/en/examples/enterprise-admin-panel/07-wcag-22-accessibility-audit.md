@@ -18,6 +18,7 @@ After creating `A11y-Guardian` and consolidating part of the visual foundation, 
 ## Prompt
 
 ```text
+Asset contract: EAP-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: run the audit from the A11y-Guardian perspective.
 Copilot, run an accessibility-oriented review plan for this enterprise admin panel with WCAG 2.2 in mind.
 Use the A11y-Guardian perspective to inspect keyboard navigation, focus management, semantics, contrast, chart accessibility, form feedback, and reusable component patterns.
 Return findings by severity, with evidence, likely impact, and a prioritized remediation backlog.

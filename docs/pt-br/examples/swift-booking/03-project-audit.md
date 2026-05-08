@@ -11,6 +11,7 @@ Em sistemas de reserva, pequenos desvios de concorrência podem gerar problemas 
 ## Prompt
 
 ```text
+Contrato de ativos: SB-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: usar `@project-auditor` e os standards de segurança/performance do marketplace.
 Call @project-auditor.
 Scan the app/database/ folder and verify that reservation transactions follow
 the Security and Performance standards from the marketplace.

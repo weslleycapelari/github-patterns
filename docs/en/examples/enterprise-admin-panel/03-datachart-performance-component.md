@@ -18,6 +18,7 @@ Corporate dashboards degrade quickly when visual components accumulate fetching,
 ## Prompt
 
 ```text
+Asset contract: EAP-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: explicitly apply the performance standard.
 Copilot, create the DataChart component.
 Consult docs/standards/performance.md to ensure the component causes
 no unnecessary re-renders.

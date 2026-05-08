@@ -18,6 +18,7 @@ O cenário exige WCAG 2.2. Em dashboards corporativos, problemas de foco, navega
 ## Prompt
 
 ```text
+Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: usar explicitamente `@agent-factory` e standard de colaboração.
 Use @agent-factory to create a new agent called 'A11y-Guardian'.
 It must specialize in accessibility review for React components,
 following docs/standards/ai-collaboration.md.

@@ -18,6 +18,7 @@ After the first rich component, the next risk is a flood of ad hoc styles, spaci
 ## Prompt
 
 ```text
+Asset contract: EAP-CORE (see this directory's README.md, section "Prompt Asset Contract").
 Copilot, establish the initial Tailwind-based design system foundation for this enterprise admin panel.
 Create a practical token and component strategy for layout, cards, tables, filters, badges, and status states.
 Keep the system accessible, easy to scale, and aligned with WCAG 2.2 expectations.

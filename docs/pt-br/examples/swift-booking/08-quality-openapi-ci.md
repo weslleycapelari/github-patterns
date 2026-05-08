@@ -18,6 +18,7 @@ Depois de modelagem, disponibilidade, workflow e concorrência, este passo trans
 ## Prompt
 
 ```text
+Contrato de ativos: SB-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: alinhar quality gates aos checks usados na governança de branch.
 Project: Swift-Booking
 Current state: domain, availability, reservation flow, and concurrency hardening are already structured.
 

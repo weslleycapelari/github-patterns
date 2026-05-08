@@ -20,6 +20,7 @@ Before running this step, it helps to define:
 ## Prompt
 
 ```text
+Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract").
 You are working on the project "Swift-Booking", a hotel reservation system in Python 3.11 with FastAPI.
 
 CONTEXT AND CONSTRAINTS

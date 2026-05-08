@@ -18,6 +18,7 @@ A corporate admin panel often displays data that should not appear fully in ever
 ## Prompt
 
 ```text
+Asset contract: EAP-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: explicitly apply the Phase D security reference.
 Copilot, apply a Phase D security hardening plan for this enterprise admin panel.
 Focus on PII protection, role-based UI boundaries, safe logging, masking/redaction, and secure handling of sensitive fields in React screens.
 Keep the plan actionable for a React 18 + TypeScript dashboard and aligned with governance-first repository standards.

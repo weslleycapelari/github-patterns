@@ -18,6 +18,7 @@ Depois de expor disponibilidade, o sistema precisa transformar intenção de res
 ## Prompt
 
 ```text
+Contrato de ativos: SB-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt").
 You are in the "Swift-Booking" project after the availability step.
 
 OBJECTIVE

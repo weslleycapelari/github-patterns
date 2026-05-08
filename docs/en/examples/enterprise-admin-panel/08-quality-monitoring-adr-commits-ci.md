@@ -18,6 +18,7 @@ After onboarding, components, design system, security, and audit work, the bigge
 ## Prompt
 
 ```text
+Asset contract: EAP-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: align quality gates with main-branch governance checks.
 Copilot, close this enterprise admin panel example with an operational quality plan.
 Define practical CI gates, conventional commit enforcement, front-end performance monitoring, and the ADR/documentation follow-up needed to keep the project maintainable.
 Keep the proposal realistic for a React 18 + TypeScript repository and aligned with governance-first practices.

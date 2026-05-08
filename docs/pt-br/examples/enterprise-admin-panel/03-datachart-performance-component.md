@@ -18,6 +18,7 @@ Dashboards corporativos degradam rápido quando componentes visuais acumulam fet
 ## Prompt
 
 ```text
+Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: aplicar explicitamente standard de performance.
 Copilot, create the DataChart component.
 Consult docs/standards/performance.md to ensure the component causes
 no unnecessary re-renders.

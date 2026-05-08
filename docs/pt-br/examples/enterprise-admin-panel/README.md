@@ -29,6 +29,25 @@ O `Enterprise Admin Panel` representa um front-end corporativo com exigências d
 - Reutilize o mesmo contexto de projeto ao longo da sequência.
 - Use os critérios de aceite de cada arquivo para confirmar a conclusão.
 
+## Contrato de Ativos de Prompt (EAP-CORE)
+
+Todos os prompts das etapas `01–08` devem usar explicitamente este contrato de referência do repositório `github-patterns`.
+
+Ativos canônicos obrigatórios:
+
+- `registry.json`
+- `agents/setup-orchestrator.agent.md` (Repo Architect)
+- `agents/agent-factory.agent.md` (Agent Factory)
+- `library/standards/documentation-adr.md`
+- `library/standards/ai-collaboration-governance.md`
+- `library/standards/performance-scalability.md`
+- `library/standards/security-hardening.md`
+
+Regra de uso nas etapas:
+
+- cada prompt deve declarar `Contrato de ativos: EAP-CORE`;
+- quando houver necessidade específica da etapa, adicionar apenas o *delta* (sem repetir toda a lista acima).
+
 ## Entradas esperadas para a sequência
 
 Antes de iniciar, vale ter em mãos:

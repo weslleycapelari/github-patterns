@@ -29,6 +29,24 @@ This directory separates, into dedicated files, the prompts used to start and ev
 - Reuse the same project context throughout the sequence.
 - Use each file's acceptance criteria to confirm completion.
 
+## Prompt Asset Contract (SB-CORE)
+
+All step prompts (`01–08`) must explicitly use this reference contract from the `github-patterns` repository.
+
+Mandatory canonical assets:
+
+- `registry.json`
+- `agents/setup-orchestrator.agent.md` (Repo Architect)
+- `agents/project-auditor.agent.md` (Project Auditor)
+- `prompts/start-phase-b.prompt.md` (Phase B governance)
+- `library/standards/security-hardening.md`
+- `library/standards/performance-scalability.md`
+
+Step usage rule:
+
+- each prompt must declare `Asset contract: SB-CORE`;
+- when a step has specific needs, add only the step *delta* (without repeating the full list above).
+
 ## Expected inputs for the full sequence
 
 Before starting, it helps to have:

@@ -18,6 +18,7 @@ Depois de criar o agente `A11y-Guardian` e consolidar parte da base visual, é h
 ## Prompt
 
 ```text
+Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: usar perspectiva do agente A11y-Guardian.
 Copilot, run an accessibility-oriented review plan for this enterprise admin panel with WCAG 2.2 in mind.
 Use the A11y-Guardian perspective to inspect keyboard navigation, focus management, semantics, contrast, chart accessibility, form feedback, and reusable component patterns.
 Return findings by severity, with evidence, likely impact, and a prioritized remediation backlog.

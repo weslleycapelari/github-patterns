@@ -20,6 +20,7 @@ Antes de executar, é útil já ter definido:
 ## Prompt
 
 ```text
+Contrato de ativos: SB-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt").
 You are working on the project "Swift-Booking", a hotel reservation system in Python 3.11 with FastAPI.
 
 CONTEXT AND CONSTRAINTS

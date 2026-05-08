@@ -18,6 +18,7 @@ After domain modeling, availability, workflow, and concurrency hardening, this s
 ## Prompt
 
 ```text
+Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: align quality gates with branch-governance checks.
 Project: Swift-Booking
 Current state: domain, availability, reservation flow, and concurrency hardening are already structured.
 

@@ -18,6 +18,7 @@ Depois de onboarding, componente, design system, segurança e auditoria, o maior
 ## Prompt
 
 ```text
+Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: alinhar quality gates com governança da branch principal.
 Copilot, close this enterprise admin panel example with an operational quality plan.
 Define practical CI gates, conventional commit enforcement, front-end performance monitoring, and the ADR/documentation follow-up needed to keep the project maintainable.
 Keep the proposal realistic for a React 18 + TypeScript repository and aligned with governance-first practices.

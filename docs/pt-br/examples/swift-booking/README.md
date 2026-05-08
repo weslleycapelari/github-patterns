@@ -29,6 +29,24 @@ O `Swift-Booking` representa um sistema de reservas com requisitos típicos de c
 - Reutilize o mesmo contexto de projeto ao longo da sequência.
 - Use os critérios de aceite de cada arquivo para confirmar a conclusão.
 
+## Contrato de Ativos de Prompt (SB-CORE)
+
+Todos os prompts das etapas `01–08` devem usar explicitamente este contrato de referência do repositório `github-patterns`.
+
+Ativos canônicos obrigatórios:
+
+- `registry.json`
+- `agents/setup-orchestrator.agent.md` (Repo Architect)
+- `agents/project-auditor.agent.md` (Project Auditor)
+- `prompts/start-phase-b.prompt.md` (governança da Phase B)
+- `library/standards/security-hardening.md`
+- `library/standards/performance-scalability.md`
+
+Regra de uso nas etapas:
+
+- cada prompt deve declarar `Contrato de ativos: SB-CORE`;
+- quando houver necessidade específica da etapa, adicionar apenas o *delta* (sem repetir toda a lista acima).
+
 ## Entradas esperadas para a sequência
 
 Antes de iniciar, vale ter em mãos:

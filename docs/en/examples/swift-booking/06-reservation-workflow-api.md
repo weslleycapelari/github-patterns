@@ -18,6 +18,7 @@ After exposing availability, the system must turn booking intent into a consiste
 ## Prompt
 
 ```text
+Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract").
 You are in the "Swift-Booking" project after the availability step.
 
 OBJECTIVE

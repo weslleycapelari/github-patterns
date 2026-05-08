@@ -20,6 +20,7 @@ O cenário descreve um painel corporativo com compliance, monitoramento e múlti
 ## Prompt
 
 ```text
+Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: usar `Repo Architect` e registrar ADR inicial.
 Act as Repo Architect.
 Configure this Dashboard project.
 Beyond the baseline, inject agent-factory into .github/agents/.

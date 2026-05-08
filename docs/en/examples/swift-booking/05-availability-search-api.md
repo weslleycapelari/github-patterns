@@ -18,6 +18,7 @@ With domain and persistence in place, this step opens the project to UI and inte
 ## Prompt
 
 ```text
+Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract").
 You are evolving the project "Swift-Booking" already structured with FastAPI, SQLAlchemy, and Alembic.
 
 OBJECTIVE

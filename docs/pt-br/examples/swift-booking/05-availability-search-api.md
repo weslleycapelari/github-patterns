@@ -18,6 +18,7 @@ Com o domínio e persistência prontos, este passo abre a porta para consumo por
 ## Prompt
 
 ```text
+Contrato de ativos: SB-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt").
 You are evolving the project "Swift-Booking" already structured with FastAPI, SQLAlchemy, and Alembic.
 
 OBJECTIVE

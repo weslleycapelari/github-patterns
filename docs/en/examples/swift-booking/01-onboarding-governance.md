@@ -27,6 +27,7 @@ To get a better proposal, be clear about:
 ## Prompt
 
 ```text
+Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract").
 Act as Repo Architect.
 Install the ecosystem for a Python/FastAPI project called 'Swift-Booking'.
 Ensure phases A, B, and C are configured first, including ci-pipeline-base

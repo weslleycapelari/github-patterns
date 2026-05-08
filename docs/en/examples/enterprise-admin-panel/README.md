@@ -29,6 +29,25 @@ This directory separates, into dedicated files, the prompts used to start and ev
 - Reuse the same project context throughout the sequence.
 - Use each file's acceptance criteria to confirm completion.
 
+## Prompt Asset Contract (EAP-CORE)
+
+All step prompts (`01–08`) must explicitly use this reference contract from the `github-patterns` repository.
+
+Mandatory canonical assets:
+
+- `registry.json`
+- `agents/setup-orchestrator.agent.md` (Repo Architect)
+- `agents/agent-factory.agent.md` (Agent Factory)
+- `library/standards/documentation-adr.md`
+- `library/standards/ai-collaboration-governance.md`
+- `library/standards/performance-scalability.md`
+- `library/standards/security-hardening.md`
+
+Step usage rule:
+
+- each prompt must declare `Asset contract: EAP-CORE`;
+- when a step has specific needs, add only the step *delta* (without repeating the full list above).
+
 ## Expected inputs for the full sequence
 
 Before starting, it helps to have:

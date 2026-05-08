@@ -18,6 +18,7 @@ Depois do ADR e do primeiro componente, o próximo risco é cada tela usar React
 ## Prompt
 
 ```text
+Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: manter consistência com o ADR React Query vs Redux.
 Copilot, harden the React Query data layer for this enterprise admin panel.
 Define a practical pattern for typed query hooks, cache keys, staleTime, retries, invalidation, and error handling.
 Keep it consistent with the ADR that chose React Query over Redux and with a dashboard UX that must remain predictable.

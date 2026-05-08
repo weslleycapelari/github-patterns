@@ -27,6 +27,7 @@ Before executing this step, confirm:
 ## Prompt
 
 ```text
+Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: explicitly use `prompts/start-phase-b.prompt.md`.
 Use the governance prompt at:
 https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/prompts/start-phase-b.prompt.md
 Help me configure the Ruleset for the 'main' branch.
