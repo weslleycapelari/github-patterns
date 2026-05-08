@@ -1,7 +1,7 @@
 {
   "$schema": "./docs/schemas/registry.schema.json",
-  "version": "1.6.0",
-  "lastUpdated": "2026-05-08T18:00:00Z",
+  "version": "1.7.0",
+  "lastUpdated": "2026-05-08T20:00:00Z",
   "maintainer": "weslleycapelari",
   "endpoint_base": "https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/",
   "metadata": {
@@ -326,6 +326,13 @@
         "path": "library/github-baseline/workflows/ci-pipeline.yml",
         "target": ".github/workflows/ci.yml",
         "description": "Language-aware CI baseline with Super Linter and conditional Node/Python test execution.",
+        "version": "1.0.0"
+      },
+      "marketplace-integrity": {
+        "id": "marketplace-integrity",
+        "path": ".github/workflows/marketplace-integrity.yml",
+        "target": ".github/workflows/marketplace-integrity.yml",
+        "description": "Internal workflow that validates registry.json against its JSON Schema and verifies that all asset paths referenced in the registry exist in the repository. Not intended for distribution to consumer repos.",
         "version": "1.0.0"
       }
     },

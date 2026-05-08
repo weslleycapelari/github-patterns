@@ -1,0 +1,58 @@
+name: Marketplace Integrity
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: integrity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-registry:
+    name: Registry Schema & Path Integrity
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        # F7: pin to SHA for supply-chain integrity (v4.2.2)
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Python 3.11
+        # F7: pin to SHA for supply-chain integrity (v5.3.0)
+        uses: actions/setup-python@v5.3.0
+
+        with:
+          python-version: "3.11"
+
+      - name: Install jsonschema
+        # F6: pin minor version range to prevent silent API breakage
+        run: pip install 'jsonschema>=4.17,<5'
+
+      - name: Validate registry against schema
+        run: |
+          python3 - <<'PYEOF'
+          import json
+          import sys
+          import jsonschema
+
+          with open("registry.json") as f:
+              registry = json.load(f)
+          with open("docs/schemas/registry.schema.json") as f:
+              schema = json.load(f)
+
+          try:
+              jsonschema.validate(instance=registry, schema=schema)
+              print("registry.json is valid against registry.schema.json")
+          except jsonschema.ValidationError as e:
+              print(f"Validation failed: {e.message}")
+              print(f"Path: {list(e.absolute_path)}")
+              sys.exit(1)
+          PYEOF
+
+      - name: Validate registry paths exist
+        run: bash .github/scripts/validate-registry-paths.sh
