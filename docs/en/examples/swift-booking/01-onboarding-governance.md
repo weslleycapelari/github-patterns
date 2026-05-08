@@ -29,6 +29,9 @@ To get a better proposal, be clear about:
 ```text
 Asset contract: SB-CORE (see this directory's README.md, section "Prompt Asset Contract").
 Act as Repo Architect.
+Use:
+- https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/registry.json
+- https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/agents/setup-orchestrator.agent.md
 Install the ecosystem for a Python/FastAPI project called 'Swift-Booking'.
 Ensure phases A, B, and C are configured first, including ci-pipeline-base
 to validate code on every commit.

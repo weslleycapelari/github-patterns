@@ -22,6 +22,9 @@ The scenario describes a corporate admin panel with compliance, monitoring, and 
 ```text
 Asset contract: EAP-CORE (see this directory's README.md, section "Prompt Asset Contract"). Step delta: use `Repo Architect` and produce the initial ADR.
 Act as Repo Architect.
+Use:
+- https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/registry.json
+- https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/agents/setup-orchestrator.agent.md
 Configure this Dashboard project.
 Beyond the baseline, inject agent-factory into .github/agents/.
 Create an ADR using the pattern from docs/standards/documentation.md

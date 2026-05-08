@@ -22,6 +22,9 @@ O cenário descreve um painel corporativo com compliance, monitoramento e múlti
 ```text
 Contrato de ativos: EAP-CORE (ver README.md deste diretório, seção "Contrato de Ativos de Prompt"). Delta desta etapa: usar `Repo Architect` e registrar ADR inicial.
 Act as Repo Architect.
+Use:
+- https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/registry.json
+- https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/agents/setup-orchestrator.agent.md
 Configure this Dashboard project.
 Beyond the baseline, inject agent-factory into .github/agents/.
 Create an ADR using the pattern from docs/standards/documentation.md
