@@ -206,6 +206,36 @@
         "version": "1.0.0"
       }
     },
+    "standards": {
+      "code-design": {
+        "path": "library/standards/code-design-logic.md",
+        "target": "docs/standards/code-design.md"
+      },
+      "architecture": {
+        "path": "library/standards/architecture-patterns.md",
+        "target": "docs/standards/architecture.md"
+      },
+      "testing": {
+        "path": "library/standards/testing-excellence.md",
+        "target": "docs/standards/testing.md"
+      },
+      "security": {
+        "path": "library/standards/security-hardening.md",
+        "target": "docs/standards/security.md"
+      },
+      "documentation": {
+        "path": "library/standards/documentation-adr.md",
+        "target": "docs/standards/documentation.md"
+      },
+      "performance": {
+        "path": "library/standards/performance-scalability.md",
+        "target": "docs/standards/performance.md"
+      },
+      "collaboration": {
+        "path": "library/standards/ai-collaboration-governance.md",
+        "target": "docs/standards/collaboration.md"
+      }
+    },
     "mcp_servers": {}
   }
 }

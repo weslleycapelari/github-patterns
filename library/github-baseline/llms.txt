@@ -1,0 +1,209 @@
+# GitHub Patterns Marketplace - Repository Intelligence Index
+
+This file is the LLM-facing overview of the GitHub Patterns Marketplace repository. Use it as a fast entry point for governance rules, installable assets, agent roles, and the canonical metadata contract.
+
+## Purpose
+
+This repository provides production-grade governance assets for repository setup and evolution. It exists to:
+
+- standardize repository operations through reusable assets
+- bootstrap teams through the GitHub 100% governance phases
+- support AI-assisted repository management with specialized Copilot agents
+- keep automation machine-readable through a registry and schema contract
+
+## Canonical Sources of Truth
+
+Always start from these files before making automation decisions:
+
+- `registry.json`: canonical machine-readable catalog of phases, stacks, and assets
+- `docs/schemas/registry.schema.json`: validation schema for `registry.json`
+- `README.md`: human-readable repository overview and quick-start guidance
+- `docs/en/registry.md`: authoritative usage guide for consumers of `registry.json`
+
+Automation should resolve asset paths from `registry.json` and avoid hardcoded assumptions.
+
+## Governance Model
+
+The repository organizes governance as the GitHub 100% model with five phases:
+
+### Phase A - Collaboration Base
+
+- establishes contribution and issue-management foundations
+- registry assets: `contributing-baseline`, `issue-ops-architect`
+
+### Phase B - Merge Governance
+
+- establishes repository-level governance orchestration
+- registry assets: `repo-architect`
+
+### Phase C - CI/CD and Quality
+
+- adds workflow automation, linting, and conditional test execution
+- registry assets: `ci-pipeline-base`
+
+### Phase D - Advanced Security
+
+- extends the governance model toward stronger security controls
+- registry assets: `repo-architect`
+
+### Phase E - Intelligence and MCP
+
+- enables Copilot instructions and agent-driven repository operations
+- registry assets: `copilot-instructions-base`, `repo-architect`, `agent-factory`
+
+## Registry-Tracked Agents
+
+These agents are defined in `registry.json` under `assets.agents`.
+
+### Repo Architect
+
+- asset id: `repo-architect`
+- file: `agents/setup-orchestrator.agent.md`
+- purpose: phase-based repository setup orchestration using registry metadata
+- typical use: onboarding a repository and generating install plans or scripts
+
+### Agent Factory
+
+- asset id: `agent-factory`
+- file: `agents/agent-factory.agent.md`
+- purpose: generate new specialist `.agent.md` definitions with a consistent quality bar
+- typical use: expanding the marketplace with new role-specific agents
+
+### Issue Ops Architect
+
+- asset id: `issue-ops-architect`
+- file: `agents/issue-ops.agent.md`
+- purpose: map team operating model to the correct GitHub Issue strategy
+- typical use: install issue template sets for Scrum, Kanban, Open Source, Enterprise, and similar workflows
+
+## Local Repository Agents
+
+These agents exist in the repository but are not currently registered in `registry.json`.
+
+### Project Auditor
+
+- file: `agents/project-auditor.agent.md`
+- purpose: audit repository conformance against marketplace engineering standards and produce gap-analysis findings
+- note: treat it as a local repository capability unless and until it is added to the registry catalog
+
+## Standards Library
+
+The local source of truth for engineering doctrine is `library/standards/`.
+
+### Code Design
+
+- file: `library/standards/code-design-logic.md`
+- focus: immutability, clarity, KISS, early returns, and lower cognitive load
+
+### Architecture
+
+- file: `library/standards/architecture-patterns.md`
+- focus: separation of concerns, SOLID, dependency boundaries, and predictable flow
+
+### Testing
+
+- file: `library/standards/testing-excellence.md`
+- focus: TDD, AAA structure, boundary testing, and reliable coverage expectations
+
+### Security
+
+- file: `library/standards/security-hardening.md`
+- focus: zero trust, OWASP-aligned practices, secrets prevention, and secure defaults
+
+### Documentation
+
+- file: `library/standards/documentation-adr.md`
+- focus: architecture decision records, operational clarity, and durable documentation
+
+### Performance
+
+- file: `library/standards/performance-scalability.md`
+- focus: measurement, scalability, observability, and performance-aware design
+
+### AI Collaboration
+
+- file: `library/standards/ai-collaboration-governance.md`
+- focus: agent handoff discipline, human approval gates, and AI collaboration rules
+
+When this marketplace is installed into a consumer repository, `registry.json` maps these source files to their expected destination paths under `docs/standards/`.
+
+## Baseline Assets
+
+### Copilot Instructions Baseline
+
+- source: `library/instructions/core.md`
+- target in consumer repository: `.github/copilot-instructions.md`
+- purpose: establish the core engineering instruction set for Copilot-guided work
+
+### CONTRIBUTING Baseline
+
+- source: `library/github-baseline/CONTRIBUTING.md`
+- target in consumer repository: `CONTRIBUTING.md`
+- purpose: standard contribution workflow and AI-collaboration expectations
+
+### CI Pipeline Baseline
+
+- source: `library/github-baseline/workflows/ci-pipeline.yml`
+- target in consumer repository: `.github/workflows/ci.yml`
+- purpose: language-aware CI with linting and conditional test execution
+
+## Issue Strategy Catalog
+
+Issue strategies live under `library/github-baseline/issue-templates/` and are selected through the Issue Ops Architect.
+
+- `minimalist`: low-friction templates for solo projects and rapid MVP loops
+- `open-source`: community-friendly triage with clearer duplicate prevention
+- `agile-scrum`: stories, tasks, epics, and sprint-oriented structure
+- `kanban-devops`: continuous-flow templates including incident and RFC handling
+- `enterprise-safe`: compliance, auditability, and security-remediation workflows
+- `shape-up`: appetite-based planning with pitch, scope, cooldown, and rabbit-hole support
+
+Each strategy folder contains a `config.yml` plus its strategy-specific templates.
+
+## Stack Recommendations
+
+The current registry includes stack recommendations for:
+
+- `nodejs`: Node.js and TypeScript repositories
+- `python`: Python, Django, and FastAPI repositories
+
+For each stack, recommended assets are listed in `registry.json` under `stacks.<stack>.recommended_assets`.
+
+## How LLMs Should Use This Repository
+
+When helping a user consume or extend this marketplace:
+
+1. Read `registry.json` first.
+2. Validate assumptions against `docs/schemas/registry.schema.json` and `docs/en/registry.md`.
+3. Resolve asset paths from registry metadata, not from memory.
+4. Distinguish between registry-tracked assets and local-only repository files.
+5. Use `README.md` for human-facing onboarding language.
+6. Use `library/standards/` as the source of doctrine when auditing quality or generating instructions.
+
+## Validation Guidance
+
+Before publishing changes to this repository, verify that:
+
+- every registry path points to an existing file
+- schema validation succeeds for `registry.json`
+- new agents and docs are internally consistent with the registry and README
+- issue-template folders contain the files declared in the registry
+
+## Directory Landmarks
+
+- `agents/`: Copilot agent definitions
+- `library/instructions/`: reusable Copilot instruction sources
+- `library/github-baseline/`: contribution, issue-template, workflow, and LLM-facing baseline assets
+- `library/standards/`: engineering doctrine source files
+- `docs/en/` and `docs/pt-br/`: end-user documentation
+- `docs/schemas/`: machine-readable schema definitions
+
+## Quick Orientation
+
+If you only need the shortest navigation path:
+
+- start with `README.md` for overview
+- read `registry.json` for machine-readable truth
+- inspect `agents/` for role-specific behavior
+- inspect `library/standards/` for engineering rules
+- inspect `library/github-baseline/` for installable baseline assets

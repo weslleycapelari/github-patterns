@@ -312,6 +312,26 @@
         }
       }
     },
+    "standardAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "target"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path to the standard documentation file.",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "description": "Recommended destination path for the standard in the consumer repository.",
+          "minLength": 1
+        }
+      }
+    },
     "assetsCatalog": {
       "type": "object",
       "additionalProperties": false,
@@ -351,6 +371,12 @@
           "type": "object",
           "additionalProperties": {
             "$ref": "#/$defs/issueStrategyAsset"
+          }
+        },
+        "standards": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/standardAsset"
           }
         }
       }
