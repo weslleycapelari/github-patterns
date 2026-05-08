@@ -1,14 +1,40 @@
 {
   "$schema": "./docs/schemas/registry.schema.json",
-  "version": "1.2.0",
-  "lastUpdated": "2026-05-07T00:00:00Z",
+  "version": "1.6.0",
+  "lastUpdated": "2026-05-08T18:00:00Z",
   "maintainer": "weslleycapelari",
   "endpoint_base": "https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/",
+  "metadata": {
+    "name": "GitHub Patterns Marketplace",
+    "description": "Production-grade catalog of governance assets, Copilot agents, issue strategy templates, and CI baselines.",
+    "repository_url": "https://github.com/weslleycapelari/github-patterns",
+    "default_branch": "main",
+    "documentation": {
+      "default_locale": "en",
+      "supported_locales": [
+        "en",
+        "pt-br"
+      ]
+    }
+  },
+  "governance": {
+    "default_blueprint": "github_100_percent",
+    "phase_order": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ]
+  },
   "core": {
     "github_100_percent": {
+      "display_name": "GitHub 100% Governance",
+      "description": "Five-phase repository governance model from collaboration baseline to intelligence operations.",
       "phases": {
         "A": {
           "name": "Collaboration Base",
+          "objective": "Establish contribution rules and issue operations foundation.",
           "assets": [
             "contributing-baseline",
             "issue-ops-architect"
@@ -16,28 +42,46 @@
         },
         "B": {
           "name": "Merge Governance",
+          "objective": "Apply repository governance orchestration and merge discipline.",
           "assets": [
             "repo-architect"
+          ],
+          "prerequisites": [
+            "A"
           ]
         },
         "C": {
           "name": "CI/CD & Quality",
+          "objective": "Introduce workflow automation, linting, and conditional test execution.",
           "assets": [
             "ci-pipeline-base"
+          ],
+          "prerequisites": [
+            "B"
           ]
         },
         "D": {
           "name": "Advanced Security",
+          "objective": "Strengthen security controls and policy-driven hardening.",
           "assets": [
             "repo-architect"
+          ],
+          "prerequisites": [
+            "C"
           ]
         },
         "E": {
           "name": "Intelligence & MCP",
+          "objective": "Enable Copilot instructions, specialized agents, and LLM-facing intelligence.",
           "assets": [
             "copilot-instructions-base",
             "repo-architect",
-            "agent-factory"
+            "agent-factory",
+            "project-auditor",
+            "llms-index"
+          ],
+          "prerequisites": [
+            "D"
           ]
         }
       }
@@ -46,24 +90,79 @@
   "stacks": {
     "nodejs": {
       "display_name": "Node.js & TypeScript",
+      "description": "Recommended assets for Node.js and TypeScript repositories.",
+      "primary_languages": [
+        "javascript",
+        "typescript"
+      ],
+      "recommended_phase": "E",
       "recommended_assets": [
         "repo-architect",
         "agent-factory",
         "issue-ops-architect",
+        "project-auditor",
         "copilot-instructions-base",
         "contributing-baseline",
-        "ci-pipeline-base"
+        "ci-pipeline-base",
+        "llms-index"
       ]
     },
     "python": {
       "display_name": "Python & Django/FastAPI",
+      "description": "Recommended assets for Python service and API repositories.",
+      "primary_languages": [
+        "python"
+      ],
+      "recommended_phase": "E",
       "recommended_assets": [
         "repo-architect",
         "agent-factory",
         "issue-ops-architect",
+        "project-auditor",
         "copilot-instructions-base",
         "contributing-baseline",
-        "ci-pipeline-base"
+        "ci-pipeline-base",
+        "llms-index"
+      ]
+    },
+    "laravel": {
+      "display_name": "Laravel & PHP",
+      "description": "Recommended assets for Laravel repositories focused on architecture, security, and testability.",
+      "primary_languages": [
+        "php"
+      ],
+      "recommended_phase": "E",
+      "recommended_assets": [
+        "repo-architect",
+        "agent-factory",
+        "issue-ops-architect",
+        "project-auditor",
+        "laravel-expert",
+        "php-standards-laravel",
+        "copilot-instructions-base",
+        "contributing-baseline",
+        "ci-pipeline-base",
+        "llms-index"
+      ]
+    },
+    "vuejs": {
+      "display_name": "Vue.js & TypeScript",
+      "description": "Recommended assets for Vue 3 front-end repositories with strong architecture and state governance.",
+      "primary_languages": [
+        "typescript",
+        "javascript"
+      ],
+      "recommended_phase": "E",
+      "recommended_assets": [
+        "repo-architect",
+        "agent-factory",
+        "issue-ops-architect",
+        "project-auditor",
+        "vue-architect",
+        "copilot-instructions-base",
+        "contributing-baseline",
+        "ci-pipeline-base",
+        "llms-index"
       ]
     }
   },
@@ -100,6 +199,95 @@
           "issues",
           "setup"
         ]
+      },
+      "project-auditor": {
+        "id": "project-auditor",
+        "path": "agents/project-auditor.agent.md",
+        "description": "Gap analysis specialist against engineering standards.",
+        "version": "1.0.0",
+        "tags": [
+          "audit",
+          "compliance"
+        ]
+      },
+      "laravel-expert": {
+        "id": "laravel-expert",
+        "path": "library/stacks/laravel/laravel-expert.agent.md",
+        "description": "Laravel specialist for architecture, data access, security boundaries, and phased remediation guidance.",
+        "version": "1.0.0",
+        "tags": [
+          "laravel",
+          "php",
+          "architecture",
+          "audit"
+        ]
+      },
+      "vue-architect": {
+        "id": "vue-architect",
+        "path": "library/stacks/vuejs/vue-architect.agent.md",
+        "description": "Vue specialist for component architecture, state strategy, and performance-focused remediation planning.",
+        "version": "1.0.0",
+        "tags": [
+          "vue",
+          "frontend",
+          "architecture",
+          "performance"
+        ]
+      },
+      "asset-factory": {
+        "id": "asset-factory",
+        "path": ".github/agents/asset-factory.agent.md",
+        "description": "Repository-internal factory agent for creating and improving assets with subagent workflows.",
+        "version": "1.1.0",
+        "tags": [
+          "governance",
+          "automation",
+          "internal"
+        ]
+      },
+      "asset-review-board": {
+        "id": "asset-review-board",
+        "path": ".github/agents/asset-review-board.agent.md",
+        "description": "Repository-internal multi-lens review board agent for artifact quality gates.",
+        "version": "1.1.0",
+        "tags": [
+          "review",
+          "quality",
+          "internal"
+        ]
+      },
+      "registry-schema-governor": {
+        "id": "registry-schema-governor",
+        "path": ".github/agents/registry-schema-governor.agent.md",
+        "description": "Repository-internal governor for registry and schema coherence and compatibility.",
+        "version": "1.1.0",
+        "tags": [
+          "registry",
+          "schema",
+          "internal"
+        ]
+      },
+      "documentation-steward": {
+        "id": "documentation-steward",
+        "path": ".github/agents/documentation-steward.agent.md",
+        "description": "Repository-internal documentation steward for en and pt-br consistency.",
+        "version": "1.1.0",
+        "tags": [
+          "documentation",
+          "localization",
+          "internal"
+        ]
+      },
+      "prompt-studio": {
+        "id": "prompt-studio",
+        "path": ".github/agents/prompt-studio.agent.md",
+        "description": "Repository-internal prompt engineering agent with measurable output contracts.",
+        "version": "1.1.0",
+        "tags": [
+          "prompt",
+          "governance",
+          "internal"
+        ]
       }
     },
     "instructions": {
@@ -107,21 +295,38 @@
         "id": "copilot-instructions-base",
         "path": "library/instructions/core.md",
         "target": ".github/copilot-instructions.md",
-        "description": "Core engineering principles: Immutability, DRY, KISS, TDD, and Conventional Commits."
+        "description": "Core engineering principles: Immutability, DRY, KISS, TDD, and Conventional Commits.",
+        "version": "1.0.0"
       },
       "contributing-baseline": {
         "id": "contributing-baseline",
         "path": "library/github-baseline/CONTRIBUTING.md",
         "target": "CONTRIBUTING.md",
-        "description": "Baseline CONTRIBUTING.md for Copilot-managed repositories with AI agent workflow guidelines."
+        "description": "Baseline CONTRIBUTING.md for Copilot-managed repositories with AI agent workflow guidelines.",
+        "version": "1.0.0"
+      },
+      "php-standards-laravel": {
+        "id": "php-standards-laravel",
+        "path": "library/stacks/laravel/php-standards.instructions.md",
+        "target": "docs/standards/php-laravel.md",
+        "description": "Focused PHP and Laravel instruction set for typing, validation, security, and testing discipline.",
+        "version": "1.0.0"
+      },
+      "copilot-operating-model": {
+        "id": "copilot-operating-model",
+        "path": ".github/copilot-instructions.md",
+        "target": ".github/copilot-instructions.md",
+        "description": "Repository-internal AI operating model with mandatory subagent development workflow.",
+        "version": "1.0.0"
       }
     },
     "workflows": {
       "ci-pipeline-base": {
         "id": "ci-pipeline-base",
         "path": "library/github-baseline/workflows/ci-pipeline.yml",
+        "target": ".github/workflows/ci.yml",
         "description": "Language-aware CI baseline with Super Linter and conditional Node/Python test execution.",
-        "target": ".github/workflows/ci.yml"
+        "version": "1.0.0"
       }
     },
     "issue_strategies": {
@@ -208,32 +413,127 @@
     },
     "standards": {
       "code-design": {
+        "id": "code-design",
         "path": "library/standards/code-design-logic.md",
-        "target": "docs/standards/code-design.md"
+        "target": "docs/standards/code-design.md",
+        "title": "Code Design & Logic",
+        "description": "Principles for immutability, clarity, KISS, and maintainability.",
+        "version": "1.0.0"
       },
       "architecture": {
+        "id": "architecture",
         "path": "library/standards/architecture-patterns.md",
-        "target": "docs/standards/architecture.md"
+        "target": "docs/standards/architecture.md",
+        "title": "Architecture Patterns",
+        "description": "System design guidance for layering, separation of concerns, and scalability.",
+        "version": "1.0.0"
       },
       "testing": {
+        "id": "testing",
         "path": "library/standards/testing-excellence.md",
-        "target": "docs/standards/testing.md"
+        "target": "docs/standards/testing.md",
+        "title": "Testing Excellence",
+        "description": "Testing standards including AAA, TDD discipline, and boundary coverage.",
+        "version": "1.0.0"
       },
       "security": {
+        "id": "security",
         "path": "library/standards/security-hardening.md",
-        "target": "docs/standards/security.md"
+        "target": "docs/standards/security.md",
+        "title": "Security Hardening",
+        "description": "Guidelines for secure coding, secrets prevention, and trust boundaries.",
+        "version": "1.0.0"
       },
       "documentation": {
+        "id": "documentation",
         "path": "library/standards/documentation-adr.md",
-        "target": "docs/standards/documentation.md"
+        "target": "docs/standards/documentation.md",
+        "title": "Documentation & ADR",
+        "description": "Documentation quality, architecture decision records, and knowledge durability.",
+        "version": "1.0.0"
       },
       "performance": {
+        "id": "performance",
         "path": "library/standards/performance-scalability.md",
-        "target": "docs/standards/performance.md"
+        "target": "docs/standards/performance.md",
+        "title": "Performance & Scalability",
+        "description": "Performance measurement, optimization discipline, and scalable architecture practices.",
+        "version": "1.0.0"
       },
       "collaboration": {
+        "id": "collaboration",
         "path": "library/standards/ai-collaboration-governance.md",
-        "target": "docs/standards/collaboration.md"
+        "target": "docs/standards/collaboration.md",
+        "title": "AI Collaboration Governance",
+        "description": "Rules for multi-agent collaboration, handoff quality, and human oversight.",
+        "version": "1.0.0"
+      },
+      "agent-error-contract": {
+        "id": "agent-error-contract",
+        "path": ".github/standards/agent-error-contract.md",
+        "target": ".github/standards/agent-error-contract.md",
+        "title": "Agent Error Contract",
+        "description": "Standard error envelope and escalation policy for repository AI agents.",
+        "version": "1.0.0"
+      },
+      "agent-observability": {
+        "id": "agent-observability",
+        "path": ".github/standards/agent-observability.md",
+        "target": ".github/standards/agent-observability.md",
+        "title": "Agent Observability",
+        "description": "Decision logging and evidence requirements for AI agent workflows.",
+        "version": "1.0.0"
+      }
+    },
+    "intelligence": {
+      "llms-index": {
+        "id": "llms-index",
+        "path": "library/github-baseline/llms.txt",
+        "target": "llms.txt",
+        "description": "LLM-facing index for repository navigation and context.",
+        "version": "1.0.0"
+      },
+      "prompt-create-or-improve-agent": {
+        "id": "prompt-create-or-improve-agent",
+        "path": ".github/prompts/create-or-improve-agent.prompt.md",
+        "target": ".github/prompts/create-or-improve-agent.prompt.md",
+        "description": "Operational prompt for creating or improving agent artifacts.",
+        "version": "1.0.0"
+      },
+      "prompt-review-and-harden-agent": {
+        "id": "prompt-review-and-harden-agent",
+        "path": ".github/prompts/review-and-harden-agent.prompt.md",
+        "target": ".github/prompts/review-and-harden-agent.prompt.md",
+        "description": "Operational prompt for agent hardening and severity-based review.",
+        "version": "1.0.0"
+      },
+      "prompt-update-registry-and-schema": {
+        "id": "prompt-update-registry-and-schema",
+        "path": ".github/prompts/update-registry-and-schema.prompt.md",
+        "target": ".github/prompts/update-registry-and-schema.prompt.md",
+        "description": "Operational prompt for coherent registry and schema updates.",
+        "version": "1.0.0"
+      },
+      "prompt-create-or-improve-documentation": {
+        "id": "prompt-create-or-improve-documentation",
+        "path": ".github/prompts/create-or-improve-documentation.prompt.md",
+        "target": ".github/prompts/create-or-improve-documentation.prompt.md",
+        "description": "Operational prompt for documentation updates with source-of-truth checks.",
+        "version": "1.0.0"
+      },
+      "prompt-create-stack-bundle": {
+        "id": "prompt-create-stack-bundle",
+        "path": ".github/prompts/create-stack-bundle.prompt.md",
+        "target": ".github/prompts/create-stack-bundle.prompt.md",
+        "description": "Operational prompt for stack bundle creation and registry integration.",
+        "version": "1.0.0"
+      },
+      "prompt-full-ai-iteration-workflow": {
+        "id": "prompt-full-ai-iteration-workflow",
+        "path": ".github/prompts/full-ai-iteration-workflow.prompt.md",
+        "target": ".github/prompts/full-ai-iteration-workflow.prompt.md",
+        "description": "Operational prompt for complete AI iteration cycles with nested subagents.",
+        "version": "1.0.0"
       }
     },
     "mcp_servers": {}

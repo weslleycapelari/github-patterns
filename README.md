@@ -15,9 +15,10 @@ This repository is designed to bootstrap and evolve projects according to the Gi
 7. Registry and Schema
 8. Repository Structure
 9. Validation and Quality Checks
-10. Extending the Marketplace
-11. Contributing
-12. Roadmap
+10. AI Operating Model
+11. Extending the Marketplace
+12. Contributing
+13. Roadmap
 
 ## Overview
 
@@ -161,6 +162,23 @@ Recommended checks before release:
 2. Verify YAML syntax for all issue templates and workflows.
 3. Confirm each registry path maps to an existing file.
 4. Ensure all agents and user-facing docs are internally consistent.
+
+## AI Operating Model
+
+This repository uses a mandatory AI-first workflow for non-trivial changes.
+
+- Core instructions: `.github/copilot-instructions.md`
+- Specialized governance agents: `.github/agents/`
+- Operational prompts: `.github/prompts/`
+- Error and observability standards: `.github/standards/`
+
+Required cycle:
+
+1. Develop with a specialist subagent.
+2. Review with an independent subagent.
+3. Improve and re-validate.
+
+No substantial artifact change should skip the review phase.
 
 ## Extending the Marketplace
 
