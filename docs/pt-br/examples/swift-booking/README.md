@@ -13,14 +13,14 @@ O `Swift-Booking` representa um sistema de reservas com requisitos típicos de c
 
 ## Ordem recomendada
 
-1. `01-onboarding-governance.md`
-2. `02-phase-b-branch-protection.md`
-3. `03-project-audit.md`
-4. `04-domain-model-alembic.md`
-5. `05-availability-search-api.md`
-6. `06-reservation-workflow-api.md`
-7. `07-concurrency-hardening.md`
-8. `08-quality-openapi-ci.md`
+1. [01-onboarding-governance.md](01-onboarding-governance.md)
+2. [02-phase-b-branch-protection.md](02-phase-b-branch-protection.md)
+3. [03-project-audit.md](03-project-audit.md)
+4. [04-domain-model-alembic.md](04-domain-model-alembic.md)
+5. [05-availability-search-api.md](05-availability-search-api.md)
+6. [06-reservation-workflow-api.md](06-reservation-workflow-api.md)
+7. [07-concurrency-hardening.md](07-concurrency-hardening.md)
+8. [08-quality-openapi-ci.md](08-quality-openapi-ci.md)
 
 ## Como usar
 

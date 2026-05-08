@@ -13,14 +13,14 @@ This directory separates, into dedicated files, the prompts used to start and ev
 
 ## Recommended order
 
-1. `01-onboarding-governance-adr.md`
-2. `02-agent-factory-a11y-guardian.md`
-3. `03-datachart-performance-component.md`
-4. `04-design-system-tailwind-foundation.md`
-5. `05-react-query-data-layer-hardening.md`
-6. `06-phase-d-pii-security-hardening.md`
-7. `07-wcag-22-accessibility-audit.md`
-8. `08-quality-monitoring-adr-commits-ci.md`
+1. [01-onboarding-governance-adr.md](01-onboarding-governance-adr.md)
+2. [02-agent-factory-a11y-guardian.md](02-agent-factory-a11y-guardian.md)
+3. [03-datachart-performance-component.md](03-datachart-performance-component.md)
+4. [04-design-system-tailwind-foundation.md](04-design-system-tailwind-foundation.md)
+5. [05-react-query-data-layer-hardening.md](05-react-query-data-layer-hardening.md)
+6. [06-phase-d-pii-security-hardening.md](06-phase-d-pii-security-hardening.md)
+7. [07-wcag-22-accessibility-audit.md](07-wcag-22-accessibility-audit.md)
+8. [08-quality-monitoring-adr-commits-ci.md](08-quality-monitoring-adr-commits-ci.md)
 
 ## How to use
 
