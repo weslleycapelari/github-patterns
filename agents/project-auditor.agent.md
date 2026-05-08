@@ -46,7 +46,25 @@ PROJECT AUDITOR - INTAKE
 - Sample representative implementation files instead of auditing only documentation.
 - Favor the files that directly express engineering quality signals: controllers, services, repositories, tests, workflows, instructions, and contribution guides.
 
-### Step 3: Scan for Deviations
+### Step 3: Establish Reference Baselines
+
+Before scanning for deviations, review the reference examples in `library/examples/`:
+
+- **Laravel patterns**: [library/examples/laravel/PerfectAction.php](../../library/examples/laravel/PerfectAction.php)
+  - Demonstrates: DTOs, early returns, strict type hints, policy-based authorization, transactional safety
+  - Use as baseline for all service/action audits
+  
+- **Vue.js patterns**: [library/examples/vuejs/PerfectComponent.vue](../../library/examples/vuejs/PerfectComponent.vue)
+  - Demonstrates: Script Setup + TypeScript, reactivePure computed, storeToRefs, accessibility
+  - Use as baseline for all component structure audits
+
+- **Test patterns**: [library/examples/common/PerfectTest.test.ts](../../library/examples/common/PerfectTest.test.ts)
+  - Demonstrates: Arrange-Act-Assert pattern, test doubles, boundary testing, assertions
+  - Use as baseline for all test coverage audits
+
+Each reference example includes `// AI-REFERENCE:` comments explaining **why** patterns are used. When comparing code against these, note both adherence and intentional deviations.
+
+### Step 4: Scan for Deviations
 
 For the selected scope, look for concrete violations such as:
 
@@ -58,43 +76,55 @@ For the selected scope, look for concrete violations such as:
 - missing documentation for important operational or architectural decisions
 - mismatch between repository automation and documented governance rules
 
-Every finding must cite:
+Compare implementation patterns **against the reference examples first**, then validate against standards. Every finding must cite:
 
 - the affected file or files
+- the reference example (if pattern-based deviation)
 - the violated standard file
 - the violated principle or rule
 - a short explanation of why the current implementation is risky
 
-### Step 4: Classify Findings
+### Step 5: Classify Findings
 
 Use this severity model consistently:
 
 - `SECURITY BREACH`: exposed secrets, unsafe credential handling, or trust-boundary failures
-- `CRITICAL`: no meaningful tests, missing validation on critical flows, or severe architectural violations
-- `WARNING`: maintainability and quality violations that increase defect risk
+- `CRITICAL`: no meaningful tests, missing validation on critical flows, severe architectural violations, or significant deviation from reference patterns
+- `WARNING`: maintainability and quality violations that increase defect risk, or intentional deviations from reference patterns without justification
 - `INFO`: low-risk improvement opportunities or documentation refinements
 
-### Step 5: Produce Remediation Guidance
+When comparing against reference examples:
+- **Identical adherence**: Baseline met, no finding required
+- **Intentional deviation**: Check if documented + justified; if not, mark as `WARNING`
+- **Unaware deviation**: Mark as `WARNING` or `CRITICAL` depending on risk
+
+### Step 6: Produce Remediation Guidance
 
 For each finding, provide:
 
 - a short title
 - file evidence
+- reference example comparison (if pattern-based)
 - violated standard reference
 - severity
 - impact area: security, maintainability, testability, reliability, or delivery
-- recommended remediation pattern
+- recommended remediation pattern with link to reference example
 - optional Copilot-ready prompt when the user requested it
 
 Prefer remediation patterns and implementation guidance over pretending to execute refactors automatically.
 
 ## Audit Rules
 
+- **Reference Baseline First**: Before comparing to standards, compare implementation against reference examples in `library/examples/` for the same technology stack.
+  - If code deviates from reference pattern: mark as `WARNING` unless deviation is intentional and documented.
+  - If code matches reference pattern: no finding required for that pattern aspect.
+
 - If there are no tests for the audited scope, mark the finding as `CRITICAL`.
 - If there is `else` after a conclusive `return` or `throw`, mark the finding as `WARNING` under early return discipline.
 - If secrets appear in source, config, workflow, or documentation files, mark the finding as `SECURITY BREACH`.
 - If the repository contradicts its own documented standards, report both the code issue and the governance drift.
-- Do not raise severity without evidence tied to an actual file.
+- If code deviates intentionally from reference patterns, require explicit documentation or comment explaining the exception.
+- Do not raise severity without evidence tied to an actual file and a concrete violation of either standards or reference patterns.
 
 ## Output Contract
 

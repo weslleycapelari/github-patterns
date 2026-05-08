@@ -11,15 +11,15 @@ set -euo pipefail
 
 # F8: bash version guard (mapfile requires bash 4+)
 if [ "${BASH_VERSINFO[0]}" -lt 4 ]; then
-  echo "ERROR: bash 4+ required (found ${BASH_VERSION})." >&2
-  exit 1
+    echo "ERROR: bash 4+ required (found ${BASH_VERSION})." >&2
+    exit 1
 fi
 
 REGISTRY="registry.json"
 
 if [ ! -f "$REGISTRY" ]; then
-  echo "ERROR: $REGISTRY not found. Run this script from the repository root." >&2
-  exit 1
+    echo "ERROR: $REGISTRY not found. Run this script from the repository root." >&2
+    exit 1
 fi
 
 # F1: capture Python output to a temp file so failures are detectable.
@@ -62,26 +62,26 @@ mapfile -t PATHS <"$TMPFILE"
 
 # F2: guard against empty PATHS to prevent silent false pass.
 if [ "${#PATHS[@]}" -eq 0 ]; then
-  echo "ERROR: No paths extracted from registry. The registry structure may have changed. Aborting to avoid silent pass." >&2
-  exit 1
+    echo "ERROR: No paths extracted from registry. The registry structure may have changed. Aborting to avoid silent pass." >&2
+    exit 1
 fi
 
 errors=0
 
 for path in "${PATHS[@]}"; do
-  if [ -e "$path" ]; then
-    echo "OK:      $path"
-  else
-    echo "MISSING: $path"
-    errors=$((errors + 1))
-  fi
+    if [ -e "$path" ]; then
+        echo "OK:      $path"
+    else
+        echo "MISSING: $path"
+        errors=$((errors + 1))
+    fi
 done
 
 echo ""
 
 if [ "$errors" -gt 0 ]; then
-  echo "ERROR: $errors path(s) not found in the repository." >&2
-  exit 1
+    echo "ERROR: $errors path(s) not found in the repository." >&2
+    exit 1
 fi
 
 echo "All ${#PATHS[@]} registered path(s) verified successfully."
