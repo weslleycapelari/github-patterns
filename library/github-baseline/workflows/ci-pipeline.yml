@@ -1,10 +1,14 @@
-name: 🛡️ Quality Gate (CI)
+name: Quality Gate (CI)
 
 on:
   pull_request:
     branches: [main, master]
   push:
     branches: [main, master]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate-and-test:
@@ -13,24 +17,49 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+      checks: write
 
     steps:
-      - name: 📥 Checkout Code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Este linter inteligente analisa dezenas de linguagens automaticamente
-      # Ele falha o PR se encontrar código sujo ou fora de padrão
-      - name: 🕵️ Super Linter
+      - name: Run Super Linter
         uses: github/super-linter@v5
         env:
+          # Validate changed files by default for faster PR feedback.
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Exemplo: Desativar validação de markdown se não for o foco do dev
-          VALIDATE_MARKDOWN: false
+          VALIDATE_MARKDOWN: true
 
-      # (Placeholder) Os desenvolvedores devem adicionar seus testes aqui
-      - name: 🧪 Run Tests (Placeholder)
+      - name: Setup Node.js (if Node project)
+        if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Run Node.js tests
+        if: hashFiles('package.json') != ''
         run: |
-          echo "Substitua este passo pelo comando de teste da sua linguagem (ex: npm test, pytest, go test)"
-          echo "Para o guia completo, consulte a Fase C do GitHub 100%"
+          npm ci
+          npm test --if-present
+
+      - name: Setup Python (if Python project)
+        if: hashFiles('pyproject.toml') != '' || hashFiles('requirements.txt') != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Run Python tests
+        if: hashFiles('pyproject.toml') != '' || hashFiles('requirements.txt') != ''
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pytest
+          pytest -q
+
+      - name: No test framework detected
+        if: hashFiles('package.json') == '' && hashFiles('pyproject.toml') == '' && hashFiles('requirements.txt') == ''
+        run: echo "No Node.js or Python test configuration found. Add your stack-specific tests in this workflow."

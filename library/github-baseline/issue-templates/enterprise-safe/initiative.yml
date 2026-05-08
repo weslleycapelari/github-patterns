@@ -1,33 +1,39 @@
-name: 🏛️ Business Initiative / Epic
-description: High-level business requirement for PI Planning and Portfolio tracking.
+name: Business Initiative
+description: Define a cross-team initiative with measurable business outcomes.
 title: "[INITIATIVE] "
-labels: ["initiative", "needs-t-shirt-sizing"]
+labels: ["initiative", "portfolio", "needs-sizing"]
+assignees: []
 body:
   - type: input
     id: sponsor
     attributes:
-      label: Executive Sponsor / Product Owner
-      placeholder: "e.g., Jane Doe (VP of Payments)"
+      label: Sponsor or Product Owner
     validations:
       required: true
   - type: textarea
-    id: business_hypothesis
+    id: hypothesis
     attributes:
       label: Business Hypothesis
-      description: What is the measurable business value? (Lean Business Case)
+      description: Expected business outcome and why it is credible.
     validations:
       required: true
   - type: textarea
-    id: cross_team_dependencies
+    id: success_metrics
+    attributes:
+      label: Success Metrics
+      placeholder: "Metric, baseline, target, review date"
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
     attributes:
       label: Cross-Team Dependencies
-      description: Which other squads/tribes need to be involved?
     validations:
       required: true
   - type: input
     id: target_pi
     attributes:
-      label: Target Program Increment (PI)
-      placeholder: "e.g., PI-2026-Q3"
+      label: Target Program Increment
+      placeholder: "PI-2026-Q3"
     validations:
       required: false

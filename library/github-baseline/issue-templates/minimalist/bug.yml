@@ -1,35 +1,49 @@
-name: 🐛 Bug Report
-description: Something is broken or not working as expected.
+name: Bug Report
+description: Report a bug with enough context for fast triage and AI-assisted debugging.
 title: "[BUG] "
-labels: ["bug"]
+labels: ["bug", "needs-triage"]
+assignees: []
 body:
   - type: textarea
-    id: description
+    id: summary
     attributes:
-      label: Description
-      description: What is the bug? Give a clear and concise description.
+      label: Summary
+      description: What is broken and why does it matter?
+      placeholder: A concise description of the problem and impacted flow.
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
-      label: Steps to Reproduce & Expected Behavior
-      description: How can I reproduce this? What should have happened instead?
+      label: Steps to Reproduce
+      description: Include exact steps, input data, and environment details.
       placeholder: |
-        1. Go to '...'
-        2. Click on '...'
-        3. See error
-
-        Expected: It should...
+        1. Go to ...
+        2. Run ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected_vs_actual
+    attributes:
+      label: Expected vs Actual Behavior
+      placeholder: |
+        Expected:
+        Actual:
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs, Errors, Screenshots
+      description: Paste stack traces, logs, request IDs, or screenshots.
+      render: shell
     validations:
       required: false
-  - type: textarea
-    id: context
+  - type: input
+    id: related_issues
     attributes:
-      label: Additional Context (AI-Readable)
-      description: Error logs, URLs, or specific files related to this bug.
-      placeholder: |
-        Files: 
-        Error:
+      label: Related Issues
+      placeholder: "Blocks #123, related to #456"
     validations:
       required: false

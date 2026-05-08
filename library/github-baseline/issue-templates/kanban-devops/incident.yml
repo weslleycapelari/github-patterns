@@ -1,37 +1,56 @@
-name: 🔥 Production Incident / Post-Mortem
-description: Report system degradation, outages, or post-mortem action items.
+name: Production Incident
+description: Capture incident impact, timeline, and prevention actions.
 title: "[INCIDENT] "
-labels: ["incident", "production"]
+labels: ["incident", "production", "high-priority"]
+assignees: []
 body:
   - type: input
-    id: date_time
+    id: detected_at
     attributes:
-      label: Date and Time of Incident
-      placeholder: "YYYY-MM-DD HH:MM UTC"
+      label: Detection Time (UTC)
+      placeholder: "YYYY-MM-DD HH:MM"
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Incident Severity
+      options:
+        - SEV-1
+        - SEV-2
+        - SEV-3
+        - SEV-4
     validations:
       required: true
   - type: textarea
     id: impact
     attributes:
-      label: Business/User Impact
-      description: Who was affected and how severely?
+      label: User and Business Impact
+    validations:
+      required: true
+  - type: textarea
+    id: timeline
+    attributes:
+      label: Timeline
+      placeholder: |
+        HH:MM - Detection
+        HH:MM - Mitigation started
+        HH:MM - Service restored
     validations:
       required: true
   - type: textarea
     id: root_cause
     attributes:
-      label: Root Cause & Mitigation
-      description: Why did it happen and how was it stabilized?
+      label: Root Cause and Immediate Mitigation
     validations:
       required: true
   - type: textarea
-    id: action_items
+    id: prevention_actions
     attributes:
-      label: Preventive Action Items
-      description: What tasks (code, infra, alerts) need to be done to prevent recurrence?
+      label: Prevention Actions
       value: |
-        - [ ] Add monitoring alert for...
-        - [ ] Add automated test for...
-        - [ ] Fix configuration in...
+        - [ ] Monitoring gap closed
+        - [ ] Test coverage added
+        - [ ] Runbook updated
     validations:
       required: true

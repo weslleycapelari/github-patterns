@@ -1,37 +1,48 @@
-name: 🔒 Security Finding Remediation
-description: Track remediation for SAST/DAST, Pen-tests, or CVEs.
+name: Security Finding Remediation
+description: Track remediation work for vulnerabilities and security findings.
 title: "[SEC] "
-labels: ["security", "high-priority"]
+labels: ["security", "needs-urgent-triage"]
+assignees: []
 body:
   - type: dropdown
     id: severity
     attributes:
-      label: CVSS Severity
+      label: Severity (CVSS-aligned)
       options:
-        - Critical (SLA: 24h)
-        - High (SLA: 7 days)
-        - Medium (SLA: 30 days)
-        - Low (SLA: 90 days)
+        - Critical
+        - High
+        - Medium
+        - Low
     validations:
       required: true
   - type: input
-    id: cve_or_scan_link
+    id: source_reference
     attributes:
-      label: CVE ID or Scan Report Link
-      placeholder: "e.g., CVE-2026-12345 or link to SonarQube/CodeQL finding"
+      label: Source (CVE or Scanner Reference)
+      placeholder: "CVE-YYYY-NNNNN or report URL"
     validations:
       required: true
   - type: textarea
-    id: finding_details
+    id: details
     attributes:
-      label: Vulnerability Details
-      description: Describe the vulnerability and the exploit vector.
+      label: Finding Details
+      description: Explain exploit path and affected components.
     validations:
       required: true
   - type: textarea
-    id: remediation_guidance
+    id: remediation_plan
     attributes:
-      label: Remediation Guidance
-      description: How should the developer fix this?
+      label: Remediation Plan
+      value: |
+        - [ ] Short-term mitigation applied
+        - [ ] Permanent fix implemented
+        - [ ] Verification test added
+    validations:
+      required: true
+  - type: input
+    id: sla_due_date
+    attributes:
+      label: SLA Due Date
+      placeholder: "YYYY-MM-DD"
     validations:
       required: true

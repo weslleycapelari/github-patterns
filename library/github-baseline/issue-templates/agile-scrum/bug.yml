@@ -1,29 +1,60 @@
-name: 🐛 Bug / Defect
-description: Report an issue affecting existing functionality.
+name: Scrum Bug
+description: Report a defect with severity and sprint-ready details.
 title: "[BUG] "
-labels: ["bug"]
+labels: ["bug", "needs-triage"]
+assignees: []
 body:
   - type: dropdown
     id: severity
     attributes:
       label: Severity
       options:
-        - Blocker (System down / Data loss)
-        - High (Core feature broken, no workaround)
-        - Medium (Feature broken, workaround exists)
-        - Low (UI glitch, minor issue)
+        - Blocker
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Where did this defect happen in the user flow?
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
-      label: Steps to Reproduce & Expected Behavior
-      value: |
-        **Steps:**
-        1. 
-        2. 
-
-        **Expected:** 
-        **Actual:**
+      label: Steps to Reproduce
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
     validations:
       required: true
+  - type: textarea
+    id: expected_vs_actual
+    attributes:
+      label: Expected vs Actual
+      value: |
+        Expected:
+        Actual:
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Fix Acceptance Criteria
+      value: |
+        - [ ] Root cause identified
+        - [ ] Regression test added
+        - [ ] Fix validated by QA/Product
+    validations:
+      required: true
+  - type: input
+    id: related_story
+    attributes:
+      label: Related Story or Epic
+      placeholder: "Story #123 / Epic #456"
+    validations:
+      required: false

@@ -1,27 +1,33 @@
-name: 🏗️ Request for Comments (RFC)
-description: Propose an architectural change, new tool, or infrastructure design.
+name: Architecture RFC
+description: Propose architectural or infrastructure changes with clear trade-offs.
 title: "[RFC] "
-labels: ["rfc", "architecture"]
+labels: ["rfc", "architecture", "needs-review"]
+assignees: []
 body:
   - type: textarea
     id: context
     attributes:
-      label: Context and Motivation
-      description: Why do we need to make this architectural change?
+      label: Context and Problem
+      description: Why is this RFC needed now?
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed Architecture / Tool
-      description: Detail your proposed solution. Include links to docs if necessary.
+      label: Proposed Approach
+      description: Include architecture outline and implementation boundaries.
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives Considered
-      description: What other options were evaluated and why were they rejected?
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and Mitigations
     validations:
       required: true
   - type: checkboxes
@@ -29,6 +35,9 @@ body:
     attributes:
       label: Required Reviews
       options:
-        - label: Security Team Review
-        - label: Infrastructure/DevOps Review
-        - label: Staff/Principal Engineer Review
+        - label: Security review completed
+          required: false
+        - label: Platform/DevOps review completed
+          required: false
+        - label: Principal engineer review completed
+          required: false

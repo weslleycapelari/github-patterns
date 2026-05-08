@@ -1,27 +1,46 @@
-name: 💡 Feature Idea
-description: Suggest a new feature, enhancement, or refactor.
+name: Feature Request
+description: Propose a feature or improvement with clear acceptance criteria.
 title: "[FEAT] "
-labels: ["enhancement"]
+labels: ["enhancement", "needs-triage"]
+assignees: []
 body:
   - type: textarea
-    id: problem
+    id: context
     attributes:
-      label: The Problem
-      description: Is your feature request related to a problem? Please describe.
-      placeholder: "I'm always frustrated when..."
+      label: Context and Problem
+      description: Which user or business problem are we solving?
+      placeholder: Today we cannot ... which causes ...
     validations:
       required: true
   - type: textarea
-    id: solution
+    id: proposal
     attributes:
       label: Proposed Solution
-      description: Describe the solution or capability you want to add.
+      description: Describe the desired behavior and user flow.
     validations:
       required: true
   - type: textarea
-    id: technical_notes
+    id: acceptance_criteria
     attributes:
-      label: Technical Notes / Pointers
-      description: Any architectural ideas or specific files to modify?
+      label: Acceptance Criteria
+      description: Use checkboxes so humans and AI can validate completion.
+      value: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+    validations:
+      required: true
+  - type: textarea
+    id: implementation_notes
+    attributes:
+      label: Implementation Notes (Optional)
+      description: Relevant files, APIs, or architectural constraints.
+    validations:
+      required: false
+  - type: input
+    id: related_issues
+    attributes:
+      label: Related Issues
+      placeholder: "Parent #123, depends on #456"
     validations:
       required: false

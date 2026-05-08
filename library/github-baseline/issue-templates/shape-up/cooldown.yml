@@ -1,22 +1,33 @@
-name: ❄️ Cool-down Task / Bug
-description: Fixes, tech debt, and tooling improvements for the cool-down period.
+name: Shape Up Cooldown Task
+description: Capture bug fixes, tooling, and maintenance for cooldown cycles.
 title: "[COOLDOWN] "
-labels: ["cooldown"]
+labels: ["cooldown", "maintenance"]
+assignees: []
 body:
   - type: dropdown
-    id: task_type
+    id: category
     attributes:
-      label: Type
+      label: Category
       options:
         - Bug Fix
-        - Refactoring / Tech Debt
-        - Tooling / DX Improvement
+        - Technical Debt
+        - Tooling or DX Improvement
     validations:
       required: true
   - type: textarea
-    id: description
+    id: context
     attributes:
-      label: Description
-      description: What needs to be fixed or improved?
+      label: Context
+      description: What should be improved and why now?
+    validations:
+      required: true
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of Done
+      value: |
+        - [ ] Change implemented
+        - [ ] Verification completed
+        - [ ] Documentation updated if required
     validations:
       required: true

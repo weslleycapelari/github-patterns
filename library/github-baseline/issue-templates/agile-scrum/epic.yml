@@ -1,34 +1,49 @@
-name: 🎯 Epic
-description: A large initiative or feature that spans multiple sprints.
+name: Scrum Epic
+description: Define a multi-sprint initiative with business outcomes and scope.
 title: "[EPIC] "
-labels: ["epic"]
+labels: ["epic", "needs-refinement"]
+assignees: []
 body:
   - type: textarea
     id: objective
     attributes:
       label: Business Objective
-      description: What is the high-level goal of this Epic?
-      placeholder: "We need to build a new payment gateway to support international users..."
+      description: What measurable outcome should this epic deliver?
     validations:
       required: true
   - type: textarea
     id: scope
     attributes:
-      label: Scope (In / Out)
-      description: What is explicitly included and excluded from this Epic?
+      label: Scope (In and Out)
       value: |
-        **In Scope:**
-        - 
+        In Scope:
+        -
 
-        **Out of Scope:**
+        Out of Scope:
         -
     validations:
       required: true
   - type: textarea
-    id: metrics
+    id: success_metrics
     attributes:
       label: Success Metrics
-      description: How will we know this Epic was successful?
-      placeholder: "Increase conversion rate by 15% in LATAM..."
+      placeholder: "Metric, baseline, target"
     validations:
       required: true
+  - type: textarea
+    id: child_stories
+    attributes:
+      label: Planned Stories
+      description: List expected child stories/tasks with rough order.
+      value: |
+        - [ ] Story A
+        - [ ] Story B
+    validations:
+      required: false
+  - type: input
+    id: target_sprints
+    attributes:
+      label: Target Sprint Window
+      placeholder: "Sprint 21-24"
+    validations:
+      required: false

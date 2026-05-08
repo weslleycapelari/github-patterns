@@ -1,45 +1,49 @@
-name: 💡 Feature Request
-description: Suggest an idea or enhancement for this project.
+name: Open Source Feature Request
+description: Propose a feature with problem statement and community value.
 title: "[FEAT] "
 labels: ["enhancement", "triage-needed"]
+assignees: []
 body:
-  - type: markdown
-    attributes:
-      value: |
-        We love community ideas! Please articulate the *problem* you are facing clearly.
   - type: checkboxes
-    id: search_check
+    id: duplicate_check
     attributes:
       label: Duplicate Check
       options:
-        - label: I have searched for similar feature requests and found none.
+        - label: I searched for similar feature requests before submitting.
           required: true
   - type: textarea
     id: problem
     attributes:
-      label: Is your feature request related to a problem?
-      description: A clear and concise description of what the problem is.
-      placeholder: "I'm always frustrated when [...] because [...]"
+      label: Problem Statement
+      description: What user pain point should be solved?
     validations:
       required: true
   - type: textarea
-    id: solution
+    id: proposal
     attributes:
       label: Proposed Solution
-      description: Describe the solution or new capability you'd like.
+      description: Describe expected behavior and scope.
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives Considered
-      description: Describe any alternative solutions or workarounds you've considered.
     validations:
       required: false
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
   - type: checkboxes
     id: willingness_to_contribute
     attributes:
-      label: Willingness to Contribute
+      label: Contribution Intent
       options:
-        - label: I am willing to submit a Pull Request to implement this feature.
+        - label: I can submit a pull request for this feature.
           required: false

@@ -1,33 +1,41 @@
-name: 🛠️ Technical Task
-description: Developer-focused work (refactoring, infra, tech debt).
+name: Scrum Technical Task
+description: Define technical work needed to deliver stories or hardening goals.
 title: "[TASK] "
-labels: ["task"]
+labels: ["task", "needs-estimation"]
+assignees: []
 body:
   - type: textarea
     id: description
     attributes:
       label: Task Description
-      description: What needs to be done and why?
+      description: What needs to be implemented and why?
+    validations:
+      required: true
+  - type: dropdown
+    id: risk_level
+    attributes:
+      label: Risk Level
+      options:
+        - Low
+        - Medium
+        - High
     validations:
       required: true
   - type: textarea
     id: definition_of_done
     attributes:
-      label: Definition of Done (DoD)
-      description: What are the technical requirements to close this task?
+      label: Definition of Done
       value: |
-        - [ ] Code compiles and tests pass.
-        - [ ] Coverage remains > 80%.
-        -[ ] Documentation updated (if applicable).
+        - [ ] Implementation completed
+        - [ ] Tests added or updated
+        - [ ] Documentation updated if needed
+        - [ ] Peer review completed
     validations:
       required: true
-  - type: dropdown
-    id: risk
+  - type: input
+    id: parent_story
     attributes:
-      label: Impact / Risk Level
-      options:
-        - Low (Isolated change)
-        - Medium (Affects some modules)
-        - High (Core system change)
+      label: Parent Story
+      placeholder: "Story #123"
     validations:
-      required: true
+      required: false

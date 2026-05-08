@@ -1,7 +1,7 @@
 {
   "$schema": "./docs/schemas/registry.schema.json",
-  "version": "1.1.0",
-  "lastUpdated": "2026-05-06T00:00:00Z",
+  "version": "1.2.0",
+  "lastUpdated": "2026-05-07T00:00:00Z",
   "maintainer": "weslleycapelari",
   "endpoint_base": "https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/",
   "core": {
@@ -10,7 +10,8 @@
         "A": {
           "name": "Collaboration Base",
           "assets": [
-            "contributing-baseline"
+            "contributing-baseline",
+            "issue-ops-architect"
           ]
         },
         "B": {
@@ -22,7 +23,7 @@
         "C": {
           "name": "CI/CD & Quality",
           "assets": [
-            "repo-architect"
+            "ci-pipeline-base"
           ]
         },
         "D": {
@@ -35,7 +36,8 @@
           "name": "Intelligence & MCP",
           "assets": [
             "copilot-instructions-base",
-            "repo-architect"
+            "repo-architect",
+            "agent-factory"
           ]
         }
       }
@@ -47,8 +49,10 @@
       "recommended_assets": [
         "repo-architect",
         "agent-factory",
+        "issue-ops-architect",
         "copilot-instructions-base",
-        "contributing-baseline"
+        "contributing-baseline",
+        "ci-pipeline-base"
       ]
     },
     "python": {
@@ -56,8 +60,10 @@
       "recommended_assets": [
         "repo-architect",
         "agent-factory",
+        "issue-ops-architect",
         "copilot-instructions-base",
-        "contributing-baseline"
+        "contributing-baseline",
+        "ci-pipeline-base"
       ]
     }
   },
@@ -87,7 +93,7 @@
       "issue-ops-architect": {
         "id": "issue-ops-architect",
         "path": "agents/issue-ops.agent.md",
-        "description": "Scrum Master virtual. Configura templates de Issue baseados na maturidade do time.",
+        "description": "Workflow strategy specialist that installs the best-fit issue templates for each team maturity model.",
         "version": "1.0.0",
         "tags": [
           "agile",
@@ -114,28 +120,90 @@
       "ci-pipeline-base": {
         "id": "ci-pipeline-base",
         "path": "library/github-baseline/workflows/ci-pipeline.yml",
-        "description": "Pipeline de CI Agnóstico com Super Linter da Fase C",
+        "description": "Language-aware CI baseline with Super Linter and conditional Node/Python test execution.",
         "target": ".github/workflows/ci.yml"
       }
     },
     "issue_strategies": {
       "minimalist": {
-        "path": "library/github-baseline/issue-templates/minimalist/"
+        "id": "minimalist",
+        "path": "library/github-baseline/issue-templates/minimalist/",
+        "display_name": "Minimalist",
+        "description": "Low-friction templates for solo developers, prototypes, and fast MVP loops.",
+        "config": "library/github-baseline/issue-templates/minimalist/config.yml",
+        "templates": [
+          "bug.yml",
+          "feature.yml"
+        ],
+        "version": "1.0.0"
       },
       "open-source": {
-        "path": "library/github-baseline/issue-templates/open-source/"
+        "id": "open-source",
+        "path": "library/github-baseline/issue-templates/open-source/",
+        "display_name": "Open Source",
+        "description": "Community-first templates with duplicate prevention and triage clarity.",
+        "config": "library/github-baseline/issue-templates/open-source/config.yml",
+        "templates": [
+          "bug.yml",
+          "feature.yml"
+        ],
+        "version": "1.0.0"
       },
       "agile-scrum": {
-        "path": "library/github-baseline/issue-templates/agile-scrum/"
+        "id": "agile-scrum",
+        "path": "library/github-baseline/issue-templates/agile-scrum/",
+        "display_name": "Agile Scrum",
+        "description": "Sprint-driven templates with stories, tasks, epics, and definition-of-done discipline.",
+        "config": "library/github-baseline/issue-templates/agile-scrum/config.yml",
+        "templates": [
+          "bug.yml",
+          "epic.yml",
+          "task.yml",
+          "user-story.yml"
+        ],
+        "version": "1.0.0"
       },
       "kanban-devops": {
-        "path": "library/github-baseline/issue-templates/kanban-devops/"
+        "id": "kanban-devops",
+        "path": "library/github-baseline/issue-templates/kanban-devops/",
+        "display_name": "Kanban DevOps",
+        "description": "Continuous-delivery templates with incident response, RFCs, and technical debt tracking.",
+        "config": "library/github-baseline/issue-templates/kanban-devops/config.yml",
+        "templates": [
+          "feature.yml",
+          "incident.yml",
+          "rfc.yml",
+          "tech-debt.yml"
+        ],
+        "version": "1.0.0"
       },
       "enterprise-safe": {
-        "path": "library/github-baseline/issue-templates/enterprise-safe/"
+        "id": "enterprise-safe",
+        "path": "library/github-baseline/issue-templates/enterprise-safe/",
+        "display_name": "Enterprise Safe",
+        "description": "Enterprise governance templates for compliance, auditability, traceability, and security remediation.",
+        "config": "library/github-baseline/issue-templates/enterprise-safe/config.yml",
+        "templates": [
+          "compliance-audit.yml",
+          "initiative.yml",
+          "security-finding.yml",
+          "story.yml"
+        ],
+        "version": "1.0.0"
       },
       "shape-up": {
-        "path": "library/github-baseline/issue-templates/shape-up/"
+        "id": "shape-up",
+        "path": "library/github-baseline/issue-templates/shape-up/",
+        "display_name": "Shape Up",
+        "description": "Templates for betting cycles, appetite-based scoping, and rabbit-hole management.",
+        "config": "library/github-baseline/issue-templates/shape-up/config.yml",
+        "templates": [
+          "cooldown.yml",
+          "pitch.yml",
+          "rabbit-hole.yml",
+          "scope.yml"
+        ],
+        "version": "1.0.0"
       }
     },
     "mcp_servers": {}

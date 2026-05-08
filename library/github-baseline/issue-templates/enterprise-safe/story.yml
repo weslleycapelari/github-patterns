@@ -1,14 +1,14 @@
-name: 📘 Enterprise User Story
-description: Developer-level story with strict traceability and compliance checks.
+name: Enterprise User Story
+description: Story with traceability, acceptance criteria, and compliance context.
 title: "[STORY] "
-labels: ["story"]
+labels: ["story", "enterprise", "needs-estimation"]
+assignees: []
 body:
   - type: input
     id: parent_initiative
     attributes:
-      label: Parent Initiative / Epic Link
-      description: MUST link to a parent business requirement (Issue # or Jira Ticket).
-      placeholder: "e.g., #1042 or PROJ-993"
+      label: Parent Initiative
+      placeholder: "#123 or portfolio reference"
     validations:
       required: true
   - type: textarea
@@ -16,23 +16,35 @@ body:
     attributes:
       label: User Story
       value: |
-        **As a** [role]
-        **I want to** [action]
-        **So that** [value]
+        As a <role>
+        I want <capability>
+        So that <business value>
     validations:
       required: true
   - type: textarea
     id: acceptance_criteria
     attributes:
       label: Acceptance Criteria
+      value: |
+        - [ ] Given ... when ... then ...
+        - [ ] Given ... when ... then ...
     validations:
       required: true
   - type: checkboxes
-    id: compliance_checklist
+    id: compliance_flags
     attributes:
-      label: Security & Data Privacy (LGPD/GDPR)
-      description: Identify potential compliance impacts.
+      label: Compliance and Data Impact
       options:
-        - label: This feature processes PII (Personally Identifiable Information).
-        - label: This feature touches financial/payment data (PCI-DSS).
-        - label: This feature exposes a new public API endpoint.
+        - label: This work touches personal data (PII).
+          required: false
+        - label: This work affects payment or financial data.
+          required: false
+        - label: This work introduces or changes a public API.
+          required: false
+  - type: input
+    id: related_controls
+    attributes:
+      label: Related Control IDs
+      placeholder: "SOC2-CC6.1, ISO-A.12.1"
+    validations:
+      required: false

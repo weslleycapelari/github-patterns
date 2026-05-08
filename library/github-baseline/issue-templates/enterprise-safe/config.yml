@@ -1,9 +1,9 @@
 blank_issues_enabled: false
 
 contact_links:
-  - name: 🚨 Report a Zero-Day or Data Breach
-    url: "https://security.enterprise.com/report" # Portal interno seguro
-    about: "DO NOT report active breaches or Zero-Days on GitHub. Use the secure internal Security Portal immediately."
-  - name: 🎫 IT Service Desk / Jira
-    url: "https://jira.enterprise.com/servicedesk"
-    about: "For access requests, environment provisioning, or hardware issues."
+  - name: Security Incident Intake
+    url: /security/advisories/new
+    about: For zero-days or active breaches, use private security channels only.
+  - name: Service Desk and Access Requests
+    url: /discussions/categories/support
+    about: Use support channels for access provisioning and operational requests.

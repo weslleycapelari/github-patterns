@@ -1,31 +1,45 @@
-name: 📋 Compliance / Audit Request
-description: Request for evidence, architecture review, or data deletion (GDPR Right to be Forgotten).
+name: Compliance Audit Request
+description: Request compliance evidence, risk review, or regulatory action tracking.
 title: "[AUDIT] "
-labels: ["compliance", "audit"]
+labels: ["compliance", "audit", "needs-governance"]
+assignees: []
 body:
   - type: dropdown
     id: audit_type
     attributes:
-      label: Audit / Request Type
+      label: Audit Type
       options:
-        - SOC 2 Evidence Request
-        - GDPR / LGPD Data Subject Request (DSR)
-        - Internal Architecture Review Board (ARB)
-        - License Compliance (Open Source Audit)
+        - SOC 2 Evidence
+        - ISO 27001 Evidence
+        - LGPD/GDPR Data Subject Request
+        - Internal Architecture Review
+        - License Compliance
     validations:
       required: true
   - type: textarea
-    id: requested_evidence
+    id: request_details
     attributes:
-      label: Requested Evidence / Action
-      description: What specific logs, PR approvals, or data extracts are required?
+      label: Requested Evidence or Action
     validations:
       required: true
   - type: input
-    id: deadline
+    id: due_date
     attributes:
-      label: Regulatory Deadline
-      description: When must this be completed to avoid fines/breaches?
+      label: Regulatory Due Date
       placeholder: "YYYY-MM-DD"
     validations:
       required: true
+  - type: textarea
+    id: systems_scope
+    attributes:
+      label: Systems and Data Scope
+      description: Services, data classes, and owners impacted.
+    validations:
+      required: true
+  - type: input
+    id: related_policy
+    attributes:
+      label: Related Policy or Control ID
+      placeholder: "e.g., SOC2-CC6.1"
+    validations:
+      required: false

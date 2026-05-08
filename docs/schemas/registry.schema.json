@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.com/schemas/registry.schema.json",
+  "$id": "https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/docs/schemas/registry.schema.json",
   "title": "Marketplace Registry Schema",
   "description": "Schema for validating the marketplace registry.json structure.",
   "type": "object",
@@ -231,6 +231,87 @@
         }
       }
     },
+    "workflowAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "description",
+        "target"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "description": "Repository-relative path to a workflow file.",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "description": "Destination workflow path in the consumer repository.",
+          "minLength": 1
+        }
+      }
+    },
+    "issueStrategyAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "display_name",
+        "description",
+        "config",
+        "templates",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "description": "Folder path that contains issue template files.",
+          "minLength": 1
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "config": {
+          "type": "string",
+          "description": "Path to config.yml for this strategy.",
+          "minLength": 1
+        },
+        "templates": {
+          "type": "array",
+          "description": "List of template filenames for this strategy.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+        }
+      }
+    },
     "assetsCatalog": {
       "type": "object",
       "additionalProperties": false,
@@ -238,7 +319,8 @@
         "agents",
         "instructions",
         "mcp_servers",
-        "workflows"
+        "workflows",
+        "issue_strategies"
       ],
       "properties": {
         "agents": {
@@ -262,23 +344,13 @@
         "workflows": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/$defs/instructionAsset"
+            "$ref": "#/$defs/workflowAsset"
           }
         },
         "issue_strategies": {
           "type": "object",
           "additionalProperties": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "path"
-            ],
-            "properties": {
-              "path": {
-                "type": "string",
-                "minLength": 1
-              }
-            }
+            "$ref": "#/$defs/issueStrategyAsset"
           }
         }
       }

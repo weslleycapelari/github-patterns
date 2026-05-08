@@ -1,29 +1,39 @@
-name: 🗺️ Map Scope
-description: Break down a winning Pitch into a verifiable slice of work.
+name: Shape Up Scope Slice
+description: Define a concrete scope slice derived from a winning pitch.
 title: "[SCOPE] "
 labels: ["scope", "cycle-work"]
+assignees: []
 body:
   - type: input
     id: parent_pitch
     attributes:
-      label: Parent Pitch (Issue #)
-      placeholder: "e.g., #104"
+      label: Parent Pitch
+      placeholder: "#123"
     validations:
       required: true
   - type: textarea
-    id: description
+    id: scope_description
     attributes:
       label: Scope Description
-      description: What specific slice of the pitch does this scope cover?
+      description: Which slice is being implemented in this cycle?
+    validations:
+      required: true
+  - type: textarea
+    id: done_criteria
+    attributes:
+      label: Done Criteria
+      value: |
+        - [ ] User-facing behavior delivered
+        - [ ] Edge cases handled
+        - [ ] Documentation notes captured
     validations:
       required: true
   - type: textarea
     id: tasks
     attributes:
-      label: Discovered Tasks (To-Dos)
-      description: What technical work needs to happen to complete this scope?
+      label: Implementation Tasks
       value: |
-        - [ ] 
-        - [ ]
+        - [ ] Task 1
+        - [ ] Task 2
     validations:
       required: false

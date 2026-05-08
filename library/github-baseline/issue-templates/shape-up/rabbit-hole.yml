@@ -1,19 +1,34 @@
-name: 🕳️ Rabbit Hole / Scope Hammering
-description: Document an unexpected technical complexity and propose a trade-off.
-title: "[RABBIT HOLE] "
+name: Shape Up Rabbit Hole
+description: Record unexpected complexity and propose scope hammering decisions.
+title: "[RABBIT-HOLE] "
 labels: ["rabbit-hole", "scope-change"]
+assignees: []
 body:
-  - type: textarea
-    id: discovery
+  - type: input
+    id: related_scope
     attributes:
-      label: What did we discover?
-      description: Why is this taking longer than the Appetite allows?
+      label: Related Scope Issue
+      placeholder: "#123"
     validations:
       required: true
   - type: textarea
-    id: trade_off
+    id: discovery
     attributes:
-      label: Proposed Scope Cut (Hammering)
-      description: What are we cutting or simplifying to ship this within the cycle?
+      label: Discovery
+      description: What complexity was uncovered?
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact on Appetite
+      description: Why current scope cannot be completed inside appetite.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_cut
+    attributes:
+      label: Proposed Scope Cut
+      description: What should be cut or simplified to ship on time?
     validations:
       required: true

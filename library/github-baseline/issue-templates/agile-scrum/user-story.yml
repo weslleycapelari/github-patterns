@@ -1,33 +1,49 @@
-name: 📘 User Story
-description: A feature or requirement from the user's perspective.
+name: Scrum User Story
+description: Describe user value with acceptance criteria and implementation context.
 title: "[STORY] "
 labels: ["story", "needs-estimation"]
+assignees: []
 body:
   - type: textarea
     id: story
     attributes:
       label: User Story
-      description: Follow the standard format (As a... I want to... So that...)
       value: |
-        **As a** [role/user]
-        **I want to** [action/feature]
-        **So that** [value/benefit]
+        As a <role>
+        I want <capability>
+        So that <business value>
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and Constraints
+      description: Include dependencies, assumptions, and technical constraints.
     validations:
       required: true
   - type: textarea
     id: acceptance_criteria
     attributes:
       label: Acceptance Criteria
-      description: Define the exact conditions for this story to be considered "Done". (Crucial for AI-assisted TDD).
       value: |
-        - [ ] Scenario 1: Given [context], When [action], Then [result].
-        - [ ] Scenario 2: ...
+        - [ ] Given ... when ... then ...
+        - [ ] Given ... when ... then ...
     validations:
       required: true
   - type: textarea
-    id: assets
+    id: definition_of_done
     attributes:
-      label: Design / Technical Assets
-      description: Links to Figma, API documentation, or architecture diagrams.
+      label: Definition of Done
+      value: |
+        - [ ] Tests cover the new behavior
+        - [ ] Documentation updated
+        - [ ] Non-functional requirements validated
+    validations:
+      required: true
+  - type: input
+    id: parent_epic
+    attributes:
+      label: Parent Epic
+      placeholder: "Epic #456"
     validations:
       required: false

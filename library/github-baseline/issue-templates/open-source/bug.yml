@@ -1,60 +1,68 @@
-name: 🐛 Bug Report
-description: Create a report to help us improve the project.
+name: Open Source Bug Report
+description: Report a reproducible bug for community triage.
 title: "[BUG] "
 labels: ["bug", "triage-needed"]
+assignees: []
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! 
-        Please make sure you have searched the [existing issues](../issues) before proceeding.
+        Thank you for contributing.
+        Please search existing issues before submitting a new one.
   - type: checkboxes
-    id: checklist
+    id: preflight
     attributes:
       label: Pre-flight Checks
       options:
-        - label: I have searched existing issues and found no duplicates.
+        - label: I searched for duplicates and did not find the same issue.
           required: true
-        - label: I am using the latest version of the project.
+        - label: I tested with the latest released version.
           required: true
   - type: textarea
-    id: description
+    id: summary
     attributes:
-      label: Bug Description
-      description: A clear and concise description of what the bug is.
+      label: Bug Summary
+      description: A concise description of the bug and impact.
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
-      label: Steps to Reproduce
-      description: Provide a minimal, reproducible example (CodeSandbox, Git repo, or exact steps).
+      label: Reproduction Steps
+      description: Provide a minimal reproducible example.
       placeholder: |
-        1. Run command '...'
-        2. Click on '...'
-        3. See error '...'
+        1. Run ...
+        2. Configure ...
+        3. Observe ...
     validations:
       required: true
   - type: textarea
-    id: expected_behavior
+    id: expected_vs_actual
     attributes:
-      label: Expected Behavior
-      description: What did you expect to happen?
+      label: Expected vs Actual Behavior
+      placeholder: |
+        Expected:
+        Actual:
     validations:
       required: true
   - type: input
     id: environment
     attributes:
-      label: Environment Details
-      description: OS, Node.js/Python version, Browser version, etc.
-      placeholder: "e.g., macOS 14.1, Node.js v20.11.0, Chrome 120"
+      label: Environment
+      placeholder: "OS, runtime version, package version"
     validations:
       required: true
   - type: textarea
-    id: logs
+    id: evidence
     attributes:
-      label: Logs / Screenshots
-      description: Paste any relevant terminal logs or screenshots here.
+      label: Logs and Screenshots
       render: shell
+    validations:
+      required: false
+  - type: input
+    id: related_issues
+    attributes:
+      label: Related Issues
+      placeholder: "Related to #123"
     validations:
       required: false
