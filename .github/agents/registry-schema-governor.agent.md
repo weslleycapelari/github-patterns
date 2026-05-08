@@ -53,6 +53,7 @@ Validation command reference:
 ## Output Contract
 
 Provide:
+
 1. Contract changes summary
 2. Validation results
 3. Compatibility note

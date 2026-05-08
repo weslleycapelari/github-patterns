@@ -49,6 +49,7 @@ ASSET FACTORY - INTAKE
 ## Output Contract
 
 Provide:
+
 1. Changed files
 2. Key rationale
 3. Validation evidence

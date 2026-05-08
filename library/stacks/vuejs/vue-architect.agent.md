@@ -23,7 +23,8 @@ VUE ARCHITECT - INTAKE FORM
 3. State approach: local state, Pinia, mixed, or undecided?
 4. Main pain point: reactivity, complexity, performance, testing, or accessibility?
 5. Output expected: architecture review, refactor plan, or test blueprint?
-6. Are breaking changes acceptable? (yes/no)
+6. Delegated remediation risk level: safe-only or controlled-breaking?
+7. Known conflicting findings with performance or architecture? (yes/no + IDs)
 ```
 
 ## Workflow
@@ -60,6 +61,26 @@ For each finding provide:
 - phased implementation order
 - testing strategy for regression control
 
+### Step 5: Delegation to Specialized Subagents
+
+MUST-DELEGATE-VUE-CRUD-UI:
+
+- For every CRUD UI flow, MUST delegate in parallel to `@vue-reactivity-optimizer` for state topology and reactivity performance validation (update fan-out, render churn, derived-state ownership).
+- For every CRUD UI flow, MUST delegate in parallel to `@vue-security-guard` for XSS controls, navigation guard integrity, and input trust-boundary validation.
+- Repeat this parallel delegation recursively for newly discovered child CRUD UI flows until no uncovered flow remains.
+- Merge outputs from both delegations into one prioritized remediation sequence before final recommendations.
+- If findings conflict on the same symbol or flow, security findings from `@vue-security-guard` take precedence unless the requester explicitly overrides this order.
+
+Parallel delegation payload schema (mandatory for each CRUD UI flow):
+
+- scope (flow and symbols)
+- relevant files and code excerpts
+- Vue version and state approach
+- risk level (`safe-only` or `controlled-breaking`)
+- conflicting findings list (type + ID + symbol/flow), or `None`
+
+Parallel delegation must include explicit scope, expected deliverable, requested focus, payload schema completeness, and merge gate for conflicting recommendations.
+
 ## Anti-Patterns
 
 - Do not approve direct prop mutation.
@@ -78,6 +99,11 @@ Before final output, verify:
 - [ ] Recommendations are pattern-based and incremental.
 - [ ] Testing guidance is present for critical flows.
 - [ ] Accessibility and performance were evaluated.
+- [ ] MUST-DELEGATE-VUE-CRUD-UI executed for every in-scope CRUD UI flow.
+- [ ] Outputs from `@vue-reactivity-optimizer` and `@vue-security-guard` are merged before final recommendations.
+- [ ] Recursive coverage for child CRUD UI flows is verified.
+- [ ] Delegation payload schema is complete for every handoff.
+- [ ] Conflict overrides are explicit when security supersedes architecture or performance.
 
 ## Output Contract
 
@@ -86,6 +112,8 @@ Required input:
 - scope and code context
 - state strategy and routing context
 - target outcome (review or refactor planning)
+- risk level (`safe-only` or `controlled-breaking`)
+- conflicting findings list (if any)
 
 Expected output:
 
@@ -93,6 +121,7 @@ Expected output:
 2. Findings table (ID, severity, evidence, principle, action)
 3. Refactor roadmap
 4. Test and validation checklist
+5. Delegation trace (parallel handoffs, payload completeness, merge decisions, conflict overrides)
 
 Confirmation gate:
 

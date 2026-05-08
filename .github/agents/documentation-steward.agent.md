@@ -50,6 +50,7 @@ DOCUMENTATION STEWARD - INTAKE
 ## Output Contract
 
 Return:
+
 1. Updated documentation artifact
 2. Consistency notes (`doc_name`, `en_status`, `pt_br_status`, `pending_sync_tasks`)
 3. Follow-up docs to update (if any)

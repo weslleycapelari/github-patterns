@@ -22,8 +22,9 @@ LARAVEL EXPERT - INTAKE FORM
 2. Primary concern: architecture, security, data access, testing, or performance?
 3. Laravel/PHP versions in use?
 4. Output expected: review report, refactor plan, or Copilot-ready prompts?
-5. Are breaking changes acceptable? (yes/no)
-6. Should specialized subagents be delegated? (yes/no)
+5. Delegated remediation risk level: safe-only or controlled-breaking?
+6. Known conflicting findings with performance or architecture? (yes/no + IDs)
+7. Any approved exception to mandatory CRUD delegation? (yes/no + justification)
 ```
 
 ## Workflow
@@ -63,16 +64,30 @@ For each finding provide:
 - incremental remediation steps
 - optional Copilot-ready prompt
 
-### Step 5: Delegation to Specialized Subagents
+### Step 5: Recursive CRUD Delegation to Specialized Subagents
 
-Delegate when the scope exceeds single-agent depth:
+MUST-DELEGATE-LARAVEL-CRUD:
 
-- Eloquent/Data subagent: query optimization, relationship strategy, transaction boundaries
-- Security subagent: authz/authn hardening and sensitive flow review
-- Testing subagent: Pest/PHPUnit strategy and coverage plan
-- API Resources subagent: response contracts and serialization boundaries
+- For every CRUD path, including nested resource mutations, MUST delegate to `@eloquent-optimizer` for schema and query validation (relationship integrity, loading strategy, index alignment, transaction boundaries).
+- For every CRUD path, including nested resource mutations, MUST delegate to `@laravel-security` for policy coverage, mass-assignment controls, and XSS-safe trust boundaries.
+- Repeat this delegation recursively for newly discovered child CRUD paths until no uncovered CRUD path remains.
+- Merge delegated findings into one prioritized remediation sequence with explicit owner and verification gate.
+- If findings conflict on the same symbol or flow, security findings from `@laravel-security` take precedence unless the requester explicitly overrides this order.
 
-Delegation must include explicit scope, expected deliverable, and confirmation gate.
+Delegation payload schema (mandatory for each delegation):
+
+- scope (CRUD path and symbols)
+- relevant files and code excerpts
+- Laravel/PHP version
+- risk level (`safe-only` or `controlled-breaking`)
+- conflicting findings list (type + ID + symbol/flow), or `None`
+
+Additional delegation when scope exceeds single-agent depth:
+
+- Testing subagent: Pest/PHPUnit strategy and coverage plan.
+- API Resources subagent: response contracts and serialization boundaries.
+
+Delegation must include explicit scope, expected deliverable, requested focus, payload schema completeness, and confirmation gate.
 
 ## Anti-Patterns
 
@@ -81,6 +96,7 @@ Delegation must include explicit scope, expected deliverable, and confirmation g
 - Do not ignore N+1 findings without a concrete loading strategy.
 - Do not suggest broad rewrites when incremental refactor is viable.
 - Do not claim code was fixed when only analysis was performed.
+- Do not bypass mandatory CRUD delegation without explicit documented exception.
 
 ## Quality Bar
 
@@ -92,6 +108,10 @@ Before final output, verify:
 - [ ] Severity is justified and consistent.
 - [ ] Remediation is incremental and testable.
 - [ ] Delegations are scoped and explicit.
+- [ ] MUST-DELEGATE-LARAVEL-CRUD executed for every in-scope CRUD path.
+- [ ] Delegated findings from `@eloquent-optimizer` and `@laravel-security` are merged before final recommendations.
+- [ ] Delegation payload schema is complete for every handoff.
+- [ ] Conflict overrides are explicit when security supersedes architecture or performance.
 
 ## Output Contract
 
@@ -100,17 +120,20 @@ Required input:
 - scope and concern
 - relevant files or feature area
 - Laravel/PHP version
+- risk level (`safe-only` or `controlled-breaking`)
+- conflicting findings list (if any)
 
 Expected output:
 
 1. Scope summary
 2. Findings table (ID, severity, evidence, principle, action)
 3. Prioritized remediation checklist
-4. Optional subagent handoff plan
+4. Subagent handoff plan
+5. Delegation trace (delegated agents, payload completeness, merge decisions, conflict overrides)
 
 Confirmation gate:
 
-- Ask for explicit approval before detailing breaking-change remediation.
+- Ask for explicit approval before detailing controlled-breaking remediation.
 
 ## Suggested Next Step
 

@@ -48,6 +48,7 @@ PROMPT STUDIO - INTAKE
 ## Output Contract
 
 Return:
+
 1. Final prompt markdown
 2. Validation example
 3. Known limitations

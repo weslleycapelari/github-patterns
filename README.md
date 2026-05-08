@@ -17,8 +17,9 @@ This repository is designed to bootstrap and evolve projects according to the Gi
 9. Validation and Quality Checks
 10. AI Operating Model
 11. Extending the Marketplace
-12. Contributing
-13. Roadmap
+12. Real-World Scenarios
+13. Contributing
+14. Roadmap
 
 ## Overview
 
@@ -196,6 +197,136 @@ When adding a new issue strategy:
 2. Add templates with consistent field semantics.
 3. Register strategy metadata in assets.issue_strategies.
 4. Document expected use case in docs.
+
+## Real-World Scenarios
+
+Copy each prompt block in sequence into Copilot Chat to see the marketplace in action. Each scenario is self-contained; execute prompts in order within the same project context.
+
+---
+
+### Scenario 1: High-Performance E-Commerce (Laravel + Vue.js 3)
+
+**Description:** Marketplace with shopping cart, inventory management, and secure checkout.
+
+**Technical context:** Modular monolith with Laravel 11, Service Layer, Vue 3 Composition API, PostgreSQL with query-level optimization via specialist subagents.
+
+**Requirements:** Sanctum auth, Pinia state management, FormRequest validation, Pest + Vitest test coverage, N+1 and XSS protection.
+
+**Step 1 — Ecosystem onboarding:**
+
+```text
+Act as Repo Architect.
+Use:
+- https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/registry.json
+- https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/agents/setup-orchestrator.agent.md
+Start onboarding for a project called 'Elite-Shop', stack 'laravel',
+visibility 'private', phases 'all', OS 'Windows'.
+```
+
+**Step 2 — Issue strategy setup:**
+
+```text
+Invoke agent @issue-ops-architect.
+Select model '3. Agile / Scrum'.
+Generate the script to install the Issue templates.
+After installing, create an Issue of type 'Epic' for the 'Checkout System'.
+```
+
+**Step 3 — Nested delegation for CRUD architecture:**
+
+```text
+Act as @laravel-expert.
+Analyze the requirement for a product CRUD with stock variations.
+MUST invoke subagent @eloquent-optimizer to design the table schema
+and subagent @laravel-security to ensure the checkout flow has no
+authorization gaps, following docs/standards/architecture.md.
+```
+
+**Step 4 — Doctrine-driven implementation:**
+
+```text
+Copilot, using this project's llms.txt, implement the ProductService class.
+Follow the Immutability and Early Return rules from docs/standards/code-design.md.
+Before writing logic, generate the Pest test file following docs/standards/testing.md.
+```
+
+---
+
+### Scenario 2: Hotel Reservation System (Python + FastAPI)
+
+**Description:** Room booking platform with real-time availability and payment integration.
+
+**Technical context:** Python 3.11, FastAPI, SQLAlchemy, Alembic migrations, OpenAPI documentation.
+
+**Requirements:** Layered architecture (Schemas, Models, CRUD, Endpoints), 100% type hints, transaction-safe concurrency, CI quality gates.
+
+**Step 1 — Bootstrap and governance:**
+
+```text
+Act as Repo Architect.
+Install the ecosystem for a Python/FastAPI project called 'Swift-Booking'.
+Ensure phases A, B, and C are configured first, including ci-pipeline-base
+to validate code on every commit.
+```
+
+**Step 2 — Branch protection hardening:**
+
+```text
+Use the governance prompt at:
+https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/prompts/start-phase-b.prompt.md
+Help me configure the Ruleset for the 'main' branch.
+Require 2 approvals and mandate that the 'ci/test' check passes.
+```
+
+**Step 3 — Existing code audit:**
+
+```text
+Call @project-auditor.
+Scan the app/database/ folder and verify that reservation transactions follow
+the Security and Performance standards from the marketplace.
+If a Race Condition risk is found, classify it as CRITICAL and provide a
+corrective prompt.
+```
+
+---
+
+### Scenario 3: Enterprise Admin Panel (React + TypeScript)
+
+**Description:** Corporate data dashboard with multi-level access control and data compliance.
+
+**Technical context:** React 18, TypeScript, Tailwind CSS Design System, React Query, performance monitoring.
+
+**Requirements:** Phase D (Advanced Security) for PII protection, WCAG 2.2 accessibility, ADR documentation, conventional commit enforcement.
+
+**Step 1 — Longevity-first initialization:**
+
+```text
+Act as Repo Architect.
+Configure this Dashboard project.
+Beyond the baseline, inject agent-factory into .github/agents/.
+Create an ADR using the pattern from docs/standards/documentation.md
+explaining why React Query was chosen over Redux for this project.
+```
+
+**Step 2 — Specialist agent factory:**
+
+```text
+Use @agent-factory to create a new agent called 'A11y-Guardian'.
+It must specialize in accessibility review for React components,
+following docs/standards/ai-collaboration.md.
+Register it in the local registry.json.
+```
+
+**Step 3 — Standards-driven component development:**
+
+```text
+Copilot, create the DataChart component.
+Consult docs/standards/performance.md to ensure the component causes
+no unnecessary re-renders.
+Apply the KISS principle and separate data-fetching logic from presentation.
+```
+
+---
 
 ## Contributing
 

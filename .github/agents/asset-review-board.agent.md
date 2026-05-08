@@ -55,6 +55,7 @@ Lens delegation contract:
 ## Output Contract
 
 Return:
+
 1. Findings by severity
 2. Open questions/assumptions
 3. Merge decision (approve or changes required)

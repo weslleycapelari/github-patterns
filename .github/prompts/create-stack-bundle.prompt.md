@@ -8,10 +8,10 @@ Create or improve stack-specific assets (agents/instructions/prompts) and regist
 
 1. Define stack scope and technology versions.
 2. Delegate asset creation with explicit routing:
-	- agent files -> Asset Factory
-	- prompt files -> Prompt Studio
-	- documentation/instructions -> Documentation Steward
-	- registry/schema integration -> Registry Schema Governor
+   - agent files -> Asset Factory
+   - prompt files -> Prompt Studio
+   - documentation/instructions -> Documentation Steward
+   - registry/schema integration -> Registry Schema Governor
 3. Delegate independent review for consistency and overclaim risks.
 4. Register assets in `registry.json` and validate against schema.
 5. Provide adoption checklist.
