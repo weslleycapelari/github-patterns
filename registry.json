@@ -118,6 +118,26 @@
         "target": ".github/workflows/ci.yml"
       }
     },
+    "issue_strategies": {
+      "minimalist": {
+        "path": "library/github-baseline/issue-templates/minimalist/"
+      },
+      "open-source": {
+        "path": "library/github-baseline/issue-templates/open-source/"
+      },
+      "agile-scrum": {
+        "path": "library/github-baseline/issue-templates/agile-scrum/"
+      },
+      "kanban-devops": {
+        "path": "library/github-baseline/issue-templates/kanban-devops/"
+      },
+      "enterprise-safe": {
+        "path": "library/github-baseline/issue-templates/enterprise-safe/"
+      },
+      "shape-up": {
+        "path": "library/github-baseline/issue-templates/shape-up/"
+      }
+    },
     "mcp_servers": {}
   }
 }

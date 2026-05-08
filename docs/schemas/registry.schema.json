@@ -264,6 +264,22 @@
           "additionalProperties": {
             "$ref": "#/$defs/instructionAsset"
           }
+        },
+        "issue_strategies": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
         }
       }
     }
