@@ -214,19 +214,19 @@ Copy each prompt block in sequence into Copilot Chat to see the marketplace in a
 
 This scenario now has complete step-by-step documentation in separate files:
 
-- Execution index: `docs/en/examples/elite-shop/README.md`
-- Step 1 (Repo Architect onboarding): `docs/en/examples/elite-shop/01-onboarding-repo-architect.md`
-- Step 2 (Issue strategy / Agile-Scrum): `docs/en/examples/elite-shop/02-issue-ops-architect.md`
-- Step 3 (Nested delegation with Laravel specialist): `docs/en/examples/elite-shop/03-laravel-expert-delegacao.md`
-- Step 4 (ProductService with TDD and standards): `docs/en/examples/elite-shop/04-product-service-tdd.md`
+- Execution index: [README.md](docs/en/examples/elite-shop/README.md)
+- Step 1 (Repo Architect onboarding): [01-onboarding-repo-architect.md](docs/en/examples/elite-shop/01-onboarding-repo-architect.md)
+- Step 2 (Issue strategy / Agile-Scrum): [02-issue-ops-architect.md](docs/en/examples/elite-shop/02-issue-ops-architect.md)
+- Step 3 (Nested delegation with Laravel specialist): [03-laravel-expert-delegacao.md](docs/en/examples/elite-shop/03-laravel-expert-delegacao.md)
+- Step 4 (ProductService with TDD and standards): [04-product-service-tdd.md](docs/en/examples/elite-shop/04-product-service-tdd.md)
 
 Extended MVP prompt pack (used in a full greenfield execution variant with Laravel 13.8 + Blade/Alpine):
 
-- Prompt 01 — Factories + Seeders: `docs/en/examples/elite-shop/05-mvp-factories-seeders.md`
-- Prompt 02 — Order module: `docs/en/examples/elite-shop/06-mvp-order-module.md`
-- Prompt 03 — HTTP API layer: `docs/en/examples/elite-shop/07-mvp-http-api.md`
-- Prompt 04 — Frontend Blade + Tailwind + Alpine: `docs/en/examples/elite-shop/08-mvp-frontend-blade.md`
-- Prompt 05 — Quality, CI/CD, docs and deploy readiness: `docs/en/examples/elite-shop/09-mvp-quality-deploy.md`
+- Prompt 01 — Factories + Seeders: [05-mvp-factories-seeders.md](docs/en/examples/elite-shop/05-mvp-factories-seeders.md)
+- Prompt 02 — Order module: [06-mvp-order-module.md](docs/en/examples/elite-shop/06-mvp-order-module.md)
+- Prompt 03 — HTTP API layer: [07-mvp-http-api.md](docs/en/examples/elite-shop/07-mvp-http-api.md)
+- Prompt 04 — Frontend Blade + Tailwind + Alpine: [08-mvp-frontend-blade.md](docs/en/examples/elite-shop/08-mvp-frontend-blade.md)
+- Prompt 05 — Quality, CI/CD, docs and deploy readiness: [09-mvp-quality-deploy.md](docs/en/examples/elite-shop/09-mvp-quality-deploy.md)
 
 > Note: Scenario 1 base context remains Laravel + Vue.js 3. The extended pack above documents a real alternate execution track for a Blade-first storefront.
 
@@ -242,18 +242,18 @@ Extended MVP prompt pack (used in a full greenfield execution variant with Larav
 
 This scenario now has complete step-by-step documentation in separate files:
 
-- Execution index: `docs/en/examples/swift-booking/README.md`
-- Step 1 (Onboarding and initial governance): `docs/en/examples/swift-booking/01-onboarding-governance.md`
-- Step 2 (Phase B branch protection): `docs/en/examples/swift-booking/02-phase-b-branch-protection.md`
-- Step 3 (Project audit for transactions and race conditions): `docs/en/examples/swift-booking/03-project-audit.md`
+- Execution index: [README.md](docs/en/examples/swift-booking/README.md)
+- Step 1 (Onboarding and initial governance): [01-onboarding-governance.md](docs/en/examples/swift-booking/01-onboarding-governance.md)
+- Step 2 (Phase B branch protection): [02-phase-b-branch-protection.md](docs/en/examples/swift-booking/02-phase-b-branch-protection.md)
+- Step 3 (Project audit for transactions and race conditions): [03-project-audit.md](docs/en/examples/swift-booking/03-project-audit.md)
 
 Extended prompt pack (used to turn the governance-first scenario into a more complete implementation-and-quality track):
 
-- Prompt 01 — Domain model + Alembic baseline: `docs/en/examples/swift-booking/04-domain-model-alembic.md`
-- Prompt 02 — Availability search API: `docs/en/examples/swift-booking/05-availability-search-api.md`
-- Prompt 03 — Reservation workflow API: `docs/en/examples/swift-booking/06-reservation-workflow-api.md`
-- Prompt 04 — Concurrency hardening: `docs/en/examples/swift-booking/07-concurrency-hardening.md`
-- Prompt 05 — Quality, OpenAPI, and CI gates: `docs/en/examples/swift-booking/08-quality-openapi-ci.md`
+- Prompt 01 — Domain model + Alembic baseline: [04-domain-model-alembic.md](docs/en/examples/swift-booking/04-domain-model-alembic.md)
+- Prompt 02 — Availability search API: [05-availability-search-api.md](docs/en/examples/swift-booking/05-availability-search-api.md)
+- Prompt 03 — Reservation workflow API: [06-reservation-workflow-api.md](docs/en/examples/swift-booking/06-reservation-workflow-api.md)
+- Prompt 04 — Concurrency hardening: [07-concurrency-hardening.md](docs/en/examples/swift-booking/07-concurrency-hardening.md)
+- Prompt 05 — Quality, OpenAPI, and CI gates: [08-quality-openapi-ci.md](docs/en/examples/swift-booking/08-quality-openapi-ci.md)
 
 > Note: the original Scenario 2 still centers on onboarding, branch protection, and audit. The extended pack above adds a practical implementation-and-quality track for a fuller Swift-Booking example.
 
@@ -269,18 +269,18 @@ Extended prompt pack (used to turn the governance-first scenario into a more com
 
 This scenario now has complete step-by-step documentation in separate files:
 
-- Execution index: `docs/en/examples/enterprise-admin-panel/README.md`
-- Step 1 (Governance onboarding + initial ADR): `docs/en/examples/enterprise-admin-panel/01-onboarding-governance-adr.md`
-- Step 2 (Specialist agent creation with Agent Factory): `docs/en/examples/enterprise-admin-panel/02-agent-factory-a11y-guardian.md`
-- Step 3 (Performance-oriented DataChart component): `docs/en/examples/enterprise-admin-panel/03-datachart-performance-component.md`
+- Execution index: [README.md](docs/en/examples/enterprise-admin-panel/README.md)
+- Step 1 (Governance onboarding + initial ADR): [01-onboarding-governance-adr.md](docs/en/examples/enterprise-admin-panel/01-onboarding-governance-adr.md)
+- Step 2 (Specialist agent creation with Agent Factory): [02-agent-factory-a11y-guardian.md](docs/en/examples/enterprise-admin-panel/02-agent-factory-a11y-guardian.md)
+- Step 3 (Performance-oriented DataChart component): [03-datachart-performance-component.md](docs/en/examples/enterprise-admin-panel/03-datachart-performance-component.md)
 
 Extended prompt pack (used to turn the base scenario into a fuller implementation-and-quality track):
 
-- Prompt 01 — Tailwind design system foundation: `docs/en/examples/enterprise-admin-panel/04-design-system-tailwind-foundation.md`
-- Prompt 02 — React Query data-layer hardening: `docs/en/examples/enterprise-admin-panel/05-react-query-data-layer-hardening.md`
-- Prompt 03 — Phase D PII security hardening: `docs/en/examples/enterprise-admin-panel/06-phase-d-pii-security-hardening.md`
-- Prompt 04 — WCAG 2.2 accessibility audit: `docs/en/examples/enterprise-admin-panel/07-wcag-22-accessibility-audit.md`
-- Prompt 05 — Quality, monitoring, ADRs, and CI: `docs/en/examples/enterprise-admin-panel/08-quality-monitoring-adr-commits-ci.md`
+- Prompt 01 — Tailwind design system foundation: [04-design-system-tailwind-foundation.md](docs/en/examples/enterprise-admin-panel/04-design-system-tailwind-foundation.md)
+- Prompt 02 — React Query data-layer hardening: [05-react-query-data-layer-hardening.md](docs/en/examples/enterprise-admin-panel/05-react-query-data-layer-hardening.md)
+- Prompt 03 — Phase D PII security hardening: [06-phase-d-pii-security-hardening.md](docs/en/examples/enterprise-admin-panel/06-phase-d-pii-security-hardening.md)
+- Prompt 04 — WCAG 2.2 accessibility audit: [07-wcag-22-accessibility-audit.md](docs/en/examples/enterprise-admin-panel/07-wcag-22-accessibility-audit.md)
+- Prompt 05 — Quality, monitoring, ADRs, and CI: [08-quality-monitoring-adr-commits-ci.md](docs/en/examples/enterprise-admin-panel/08-quality-monitoring-adr-commits-ci.md)
 
 > Note: the original Scenario 3 still centers on onboarding, specialist-agent creation, and performance-aware component development. The extended pack above adds a practical design-system, security, accessibility, and operational-quality track for a fuller enterprise dashboard example.
 
