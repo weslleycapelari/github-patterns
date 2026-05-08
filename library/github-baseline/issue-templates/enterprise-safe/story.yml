@@ -1,0 +1,38 @@
+name: 📘 Enterprise User Story
+description: Developer-level story with strict traceability and compliance checks.
+title: "[STORY] "
+labels: ["story"]
+body:
+  - type: input
+    id: parent_initiative
+    attributes:
+      label: Parent Initiative / Epic Link
+      description: MUST link to a parent business requirement (Issue # or Jira Ticket).
+      placeholder: "e.g., #1042 or PROJ-993"
+    validations:
+      required: true
+  - type: textarea
+    id: story
+    attributes:
+      label: User Story
+      value: |
+        **As a** [role]
+        **I want to** [action]
+        **So that** [value]
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+    validations:
+      required: true
+  - type: checkboxes
+    id: compliance_checklist
+    attributes:
+      label: Security & Data Privacy (LGPD/GDPR)
+      description: Identify potential compliance impacts.
+      options:
+        - label: This feature processes PII (Personally Identifiable Information).
+        - label: This feature touches financial/payment data (PCI-DSS).
+        - label: This feature exposes a new public API endpoint.

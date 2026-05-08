@@ -1,0 +1,29 @@
+name: 🐛 Bug / Defect
+description: Report an issue affecting existing functionality.
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Blocker (System down / Data loss)
+        - High (Core feature broken, no workaround)
+        - Medium (Feature broken, workaround exists)
+        - Low (UI glitch, minor issue)
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce & Expected Behavior
+      value: |
+        **Steps:**
+        1. 
+        2. 
+
+        **Expected:** 
+        **Actual:**
+    validations:
+      required: true

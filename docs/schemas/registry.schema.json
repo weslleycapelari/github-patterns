@@ -237,7 +237,8 @@
       "required": [
         "agents",
         "instructions",
-        "mcp_servers"
+        "mcp_servers",
+        "workflows"
       ],
       "properties": {
         "agents": {
@@ -256,6 +257,12 @@
           "type": "object",
           "additionalProperties": {
             "$ref": "#/$defs/mcpServerAsset"
+          }
+        },
+        "workflows": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/instructionAsset"
           }
         }
       }

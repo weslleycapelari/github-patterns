@@ -1,0 +1,36 @@
+name: 🛡️ Quality Gate (CI)
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+jobs:
+  validate-and-test:
+    name: Code Quality & Tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      # Este linter inteligente analisa dezenas de linguagens automaticamente
+      # Ele falha o PR se encontrar código sujo ou fora de padrão
+      - name: 🕵️ Super Linter
+        uses: github/super-linter@v5
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Exemplo: Desativar validação de markdown se não for o foco do dev
+          VALIDATE_MARKDOWN: false
+
+      # (Placeholder) Os desenvolvedores devem adicionar seus testes aqui
+      - name: 🧪 Run Tests (Placeholder)
+        run: |
+          echo "Substitua este passo pelo comando de teste da sua linguagem (ex: npm test, pytest, go test)"
+          echo "Para o guia completo, consulte a Fase C do GitHub 100%"

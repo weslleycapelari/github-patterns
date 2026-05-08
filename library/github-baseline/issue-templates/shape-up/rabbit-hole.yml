@@ -1,0 +1,19 @@
+name: 🕳️ Rabbit Hole / Scope Hammering
+description: Document an unexpected technical complexity and propose a trade-off.
+title: "[RABBIT HOLE] "
+labels: ["rabbit-hole", "scope-change"]
+body:
+  - type: textarea
+    id: discovery
+    attributes:
+      label: What did we discover?
+      description: Why is this taking longer than the Appetite allows?
+    validations:
+      required: true
+  - type: textarea
+    id: trade_off
+    attributes:
+      label: Proposed Scope Cut (Hammering)
+      description: What are we cutting or simplifying to ship this within the cycle?
+    validations:
+      required: true

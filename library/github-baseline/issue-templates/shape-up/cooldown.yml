@@ -1,0 +1,22 @@
+name: ❄️ Cool-down Task / Bug
+description: Fixes, tech debt, and tooling improvements for the cool-down period.
+title: "[COOLDOWN] "
+labels: ["cooldown"]
+body:
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: Type
+      options:
+        - Bug Fix
+        - Refactoring / Tech Debt
+        - Tooling / DX Improvement
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be fixed or improved?
+    validations:
+      required: true

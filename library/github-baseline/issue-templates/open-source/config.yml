@@ -1,0 +1,13 @@
+# Bloqueia issues em branco. O usuário DEVE usar o bug.yml ou feature.yml.
+blank_issues_enabled: false
+
+contact_links:
+  - name: 💬 Q&A and Support
+    url: /discussions/categories/q-a
+    about: Please ask and answer questions here rather than in the issue tracker.
+  - name: 👾 Join our Discord
+    url: https://discord.gg/your-invite-link
+    about: Need live help? Connect with the community on Discord.
+  - name: 🔒 Report a Security Vulnerability
+    url: /security/advisories/new
+    about: Please do not report security issues publicly. Use the private advisory form.

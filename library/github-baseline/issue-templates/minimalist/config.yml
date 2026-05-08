@@ -1,0 +1,7 @@
+# Permite criar issues sem usar os templates acima (baixa fricção)
+blank_issues_enabled: true
+
+contact_links:
+  - name: 🚀 Need to plan a complex feature?
+    url: "about:blank"
+    about: "Run Copilot '/plan' in your IDE before opening an issue."

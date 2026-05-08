@@ -1,0 +1,35 @@
+name: 🐛 Bug Report
+description: Something is broken or not working as expected.
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is the bug? Give a clear and concise description.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce & Expected Behavior
+      description: How can I reproduce this? What should have happened instead?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+
+        Expected: It should...
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context (AI-Readable)
+      description: Error logs, URLs, or specific files related to this bug.
+      placeholder: |
+        Files: 
+        Error:
+    validations:
+      required: false

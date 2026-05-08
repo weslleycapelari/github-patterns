@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: 🚨 ACTIVE SYSTEM OUTAGE?
+    url: "https://pagerduty.com/..." # Substitua pelo link do seu PagerDuty/Opsgenie
+    about: "DO NOT open an issue for active outages. Page the on-call engineer immediately!"
+  - name: 📚 View Runbooks
+    url: "https://wiki.yourcompany.com/runbooks"
+    about: "Check the runbooks for known operational procedures."

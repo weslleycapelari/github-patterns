@@ -1,0 +1,7 @@
+# Força o time a usar os templates (Stories, Tasks, Epics) para manter o Backlog limpo.
+blank_issues_enabled: false
+
+contact_links:
+  - name: 🚨 Blocker Incident?
+    url: "https://your-oncall-system.com"
+    about: "If production is down, page the on-call engineer instead of opening an issue."

@@ -1,0 +1,29 @@
+name: 🗺️ Map Scope
+description: Break down a winning Pitch into a verifiable slice of work.
+title: "[SCOPE] "
+labels: ["scope", "cycle-work"]
+body:
+  - type: input
+    id: parent_pitch
+    attributes:
+      label: Parent Pitch (Issue #)
+      placeholder: "e.g., #104"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Scope Description
+      description: What specific slice of the pitch does this scope cover?
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Discovered Tasks (To-Dos)
+      description: What technical work needs to happen to complete this scope?
+      value: |
+        - [ ] 
+        - [ ]
+    validations:
+      required: false

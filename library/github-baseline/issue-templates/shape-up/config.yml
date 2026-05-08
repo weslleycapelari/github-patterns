@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: 💡 Have a raw idea?
+    url: /discussions/categories/ideas
+    about: "Shape Up does not use a backlog. Discuss raw ideas here. If they gain traction, shape them into a Pitch."

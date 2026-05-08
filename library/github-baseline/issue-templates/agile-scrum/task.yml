@@ -1,0 +1,33 @@
+name: 🛠️ Technical Task
+description: Developer-focused work (refactoring, infra, tech debt).
+title: "[TASK] "
+labels: ["task"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Task Description
+      description: What needs to be done and why?
+    validations:
+      required: true
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of Done (DoD)
+      description: What are the technical requirements to close this task?
+      value: |
+        - [ ] Code compiles and tests pass.
+        - [ ] Coverage remains > 80%.
+        -[ ] Documentation updated (if applicable).
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Impact / Risk Level
+      options:
+        - Low (Isolated change)
+        - Medium (Affects some modules)
+        - High (Core system change)
+    validations:
+      required: true

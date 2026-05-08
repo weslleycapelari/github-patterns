@@ -1,0 +1,27 @@
+name: 💡 Feature Idea
+description: Suggest a new feature, enhancement, or refactor.
+title: "[FEAT] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The Problem
+      description: Is your feature request related to a problem? Please describe.
+      placeholder: "I'm always frustrated when..."
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution or capability you want to add.
+    validations:
+      required: true
+  - type: textarea
+    id: technical_notes
+    attributes:
+      label: Technical Notes / Pointers
+      description: Any architectural ideas or specific files to modify?
+    validations:
+      required: false

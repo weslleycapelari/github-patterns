@@ -1,0 +1,30 @@
+name: 🧹 Technical Debt
+description: Refactoring, performance improvements, or removing deprecated code.
+title: "[TECH DEBT] "
+labels: ["tech-debt"]
+body:
+  - type: textarea
+    id: current_state
+    attributes:
+      label: Current State & Pain Point
+      description: Why is the current code/infrastructure problematic? (e.g., slow, hard to maintain, outdated)
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_refactor
+    attributes:
+      label: Proposed Solution
+      description: How should we fix this? (Copilot will use this to generate refactoring plans).
+    validations:
+      required: true
+  - type: dropdown
+    id: risk_of_inaction
+    attributes:
+      label: Risk of Inaction
+      description: What happens if we DON'T fix this now?
+      options:
+        - High (Security risk, imminent failure, blocks other work)
+        - Medium (Increases maintenance cost, degrades performance)
+        - Low (Code smells, minor inefficiencies)
+    validations:
+      required: true

@@ -1,0 +1,31 @@
+name: 📋 Compliance / Audit Request
+description: Request for evidence, architecture review, or data deletion (GDPR Right to be Forgotten).
+title: "[AUDIT] "
+labels: ["compliance", "audit"]
+body:
+  - type: dropdown
+    id: audit_type
+    attributes:
+      label: Audit / Request Type
+      options:
+        - SOC 2 Evidence Request
+        - GDPR / LGPD Data Subject Request (DSR)
+        - Internal Architecture Review Board (ARB)
+        - License Compliance (Open Source Audit)
+    validations:
+      required: true
+  - type: textarea
+    id: requested_evidence
+    attributes:
+      label: Requested Evidence / Action
+      description: What specific logs, PR approvals, or data extracts are required?
+    validations:
+      required: true
+  - type: input
+    id: deadline
+    attributes:
+      label: Regulatory Deadline
+      description: When must this be completed to avoid fines/breaches?
+      placeholder: "YYYY-MM-DD"
+    validations:
+      required: true

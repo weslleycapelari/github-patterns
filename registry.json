@@ -83,6 +83,17 @@
           "governance",
           "onboarding"
         ]
+      },
+      "issue-ops-architect": {
+        "id": "issue-ops-architect",
+        "path": "agents/issue-ops.agent.md",
+        "description": "Scrum Master virtual. Configura templates de Issue baseados na maturidade do time.",
+        "version": "1.0.0",
+        "tags": [
+          "agile",
+          "issues",
+          "setup"
+        ]
       }
     },
     "instructions": {
@@ -97,6 +108,14 @@
         "path": "library/github-baseline/CONTRIBUTING.md",
         "target": "CONTRIBUTING.md",
         "description": "Baseline CONTRIBUTING.md for Copilot-managed repositories with AI agent workflow guidelines."
+      }
+    },
+    "workflows": {
+      "ci-pipeline-base": {
+        "id": "ci-pipeline-base",
+        "path": "library/github-baseline/workflows/ci-pipeline.yml",
+        "description": "Pipeline de CI Agnóstico com Super Linter da Fase C",
+        "target": ".github/workflows/ci.yml"
       }
     },
     "mcp_servers": {}

@@ -1,0 +1,33 @@
+name: 📘 User Story
+description: A feature or requirement from the user's perspective.
+title: "[STORY] "
+labels: ["story", "needs-estimation"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User Story
+      description: Follow the standard format (As a... I want to... So that...)
+      value: |
+        **As a** [role/user]
+        **I want to** [action/feature]
+        **So that** [value/benefit]
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Define the exact conditions for this story to be considered "Done". (Crucial for AI-assisted TDD).
+      value: |
+        - [ ] Scenario 1: Given [context], When [action], Then [result].
+        - [ ] Scenario 2: ...
+    validations:
+      required: true
+  - type: textarea
+    id: assets
+    attributes:
+      label: Design / Technical Assets
+      description: Links to Figma, API documentation, or architecture diagrams.
+    validations:
+      required: false

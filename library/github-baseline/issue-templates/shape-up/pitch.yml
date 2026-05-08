@@ -1,0 +1,43 @@
+name: ⚾ Shape Up Pitch
+description: Pitch a shaped concept for the next betting cycle.
+title: "[PITCH] "
+labels: ["pitch", "needs-betting"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The Problem
+      description: The raw idea, a use case, or something we’ve seen that isn’t working.
+    validations:
+      required: true
+  - type: dropdown
+    id: appetite
+    attributes:
+      label: Appetite
+      description: How much time do we want to spend on this? (Time is fixed, scope is variable).
+      options:
+        - Small Batch (1-2 weeks)
+        - Big Batch (6 weeks)
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: The Solution (Fat Marker Sketch)
+      description: The core elements we came up with, presented in a form that’s easy for people to immediately understand.
+    validations:
+      required: true
+  - type: textarea
+    id: rabbit_holes
+    attributes:
+      label: Rabbit Holes
+      description: Details about the solution worth calling out to prevent the team from getting stuck or wasting time.
+    validations:
+      required: true
+  - type: textarea
+    id: no_gos
+    attributes:
+      label: No-Gos (Out of Bounds)
+      description: Anything specifically excluded from the concept. We are NOT doing this.
+    validations:
+      required: true

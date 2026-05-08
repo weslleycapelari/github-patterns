@@ -1,0 +1,34 @@
+name: 🎯 Epic
+description: A large initiative or feature that spans multiple sprints.
+title: "[EPIC] "
+labels: ["epic"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Business Objective
+      description: What is the high-level goal of this Epic?
+      placeholder: "We need to build a new payment gateway to support international users..."
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope (In / Out)
+      description: What is explicitly included and excluded from this Epic?
+      value: |
+        **In Scope:**
+        - 
+
+        **Out of Scope:**
+        -
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Success Metrics
+      description: How will we know this Epic was successful?
+      placeholder: "Increase conversion rate by 15% in LATAM..."
+    validations:
+      required: true
