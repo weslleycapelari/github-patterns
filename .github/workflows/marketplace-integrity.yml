@@ -69,3 +69,33 @@ jobs:
 
       - name: Validate registry paths exist
         run: bash .github/scripts/validate-registry-paths.sh
+
+      - name: Detect unregistered assets (PR warning mode)
+        if: github.event_name == 'pull_request'
+        run: |
+          bash .github/scripts/validate-registry-paths.sh --sync | tee sync-output.txt
+
+      - name: Report Unregistered Assets as warnings
+        if: github.event_name == 'pull_request'
+        run: |
+          if ! [ -f sync-output.txt ]; then
+            echo "No sync output file found; skipping warnings."
+            exit 0
+          fi
+
+          unregistered_count=$(grep '^SYNC_UNREGISTERED_COUNT|' sync-output.txt | tail -n1 | cut -d'|' -f2 || true)
+          unregistered_count=${unregistered_count:-0}
+
+          while IFS='|' read -r prefix path section suggested_id kind; do
+            if [ "$prefix" = "UNREGISTERED" ]; then
+              echo "::warning file=$path,title=Unregistered Assets::Path is not registered in registry.json (section=$section, suggested_id=$suggested_id, kind=$kind)"
+            fi
+          done < sync-output.txt
+
+          {
+            echo "### Unregistered Assets"
+            echo ""
+            echo "Count: **$unregistered_count**"
+            echo ""
+            echo "Use the Registry Schema Governor to transform sync output into ready-to-paste JSON snippets."
+          } >> "$GITHUB_STEP_SUMMARY"

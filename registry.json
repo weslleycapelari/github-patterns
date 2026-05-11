@@ -1,7 +1,7 @@
 {
   "$schema": "./docs/schemas/registry.schema.json",
-  "version": "1.7.2",
-  "lastUpdated": "2026-05-11T12:00:00Z",
+  "version": "1.9.0",
+  "lastUpdated": "2026-05-11T16:30:00Z",
   "maintainer": "weslleycapelari",
   "endpoint_base": "https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/",
   "metadata": {
@@ -55,6 +55,8 @@
             "agent-factory",
             "project-auditor",
             "rule-distiller",
+            "context-steward",
+            "agent-mission-protocol",
             "llms-index"
           ],
           "prerequisites": ["D"]
@@ -227,6 +229,13 @@
         "description": "Specialist agent that distills long technical docs into procedural instruction rules, grouped as Breaking Changes and Novas Boas Práticas.",
         "version": "1.0.0",
         "tags": ["documentation", "distillation", "governance", "instructions"]
+      },
+      "context-steward": {
+        "id": "context-steward",
+        "path": "agents/context-steward.agent.md",
+        "description": "Project memory specialist that curates evidence-based MEMORY.md updates and performs confirmation-gated cleanup of redundant local Copilot instructions.",
+        "version": "1.0.0",
+        "tags": ["memory", "context", "governance", "documentation", "hygiene"]
       }
     },
     "instructions": {
@@ -401,6 +410,14 @@
         "target": "docs/standards/collaboration.md",
         "title": "AI Collaboration Governance",
         "description": "Rules for multi-agent collaboration, handoff quality, and human oversight.",
+        "version": "1.0.0"
+      },
+      "agent-mission-protocol": {
+        "id": "agent-mission-protocol",
+        "path": "library/standards/agent-mission-protocol.md",
+        "target": "docs/standards/agent-mission-protocol.md",
+        "title": "Agent Mission Protocol",
+        "description": "Requires mission files for every nested delegation and defines mandatory mission contract fields.",
         "version": "1.0.0"
       },
       "agent-error-contract": {

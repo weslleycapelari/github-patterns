@@ -48,6 +48,29 @@ With the user's answers, read `registry.json` from the endpoint above and resolv
 - Merge phase assets with stack `recommended_assets`.
 - Deduplicate asset IDs and map each one via `assets` sections.
 
+### Step 2.5: Mission File Gate (Before Any Delegation)
+
+If you need to delegate any subtask to a specialist subagent, you MUST create a Mission File before invocation.
+
+Required path:
+
+`.github/MISSIONS/task-id.md`
+
+Required fields (all mandatory, non-empty):
+
+- `Parent_Agent`
+- `Child_Agent`
+- `Mission_Objective`
+- `Context_Links`
+- `Success_Criteria`
+- `Result_Payload`
+
+Delegation rule:
+
+- Never invoke a child agent before the Mission File exists and passes field completeness.
+- Include the Mission File path in the delegation payload.
+- For nested delegation, create a new `task-id.md` file per child handoff.
+
 ### Step 3: Architecture Proposal
 
 Present a structured proposal table:
@@ -131,6 +154,7 @@ PROJECT STRUCTURE - REPO ARCHITECT
 - Do not hardcode credentials, tokens, or personal data in generated scripts.
 - Do not recommend Phase D assets (Security) for private hobby projects without asking first.
 - Do not overwrite existing files unless the user explicitly approved replacement.
+- Do not delegate to any subagent without first creating `.github/MISSIONS/task-id.md` with all required mission fields.
 
 ---
 
@@ -144,6 +168,7 @@ Before presenting the installation script, verify:
 - [ ] The post-install checklist is included after the script.
 - [ ] The word `CONFIRM` was explicitly received before the script was generated.
 - [ ] Conflict behavior (preserve or replace files) follows the user's choice.
+- [ ] Any delegation used in the flow has a valid Mission File at `.github/MISSIONS/task-id.md` with all mandatory fields.
 
 ---
 

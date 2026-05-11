@@ -64,7 +64,21 @@ For each finding provide:
 - incremental remediation steps
 - optional Copilot-ready prompt
 
-### Step 5: Recursive CRUD Delegation to Specialized Subagents
+### Step 5: Mission File Gate + Recursive CRUD Delegation to Specialized Subagents
+
+MISSION-FILE-GATE (mandatory before each delegation):
+
+- Before invoking any child agent, create `.github/MISSIONS/task-id.md`.
+- Populate all required fields (non-empty):
+  - `Parent_Agent`
+  - `Child_Agent`
+  - `Mission_Objective`
+  - `Context_Links`
+  - `Success_Criteria`
+  - `Result_Payload`
+- Include the Mission File path in the delegation payload.
+- For recursive CRUD discovery, create a new Mission File for each newly delegated child CRUD path.
+- If Mission File validation fails, block delegation and report a structured blocker.
 
 MUST-DELEGATE-LARAVEL-CRUD:
 
@@ -76,6 +90,7 @@ MUST-DELEGATE-LARAVEL-CRUD:
 
 Delegation payload schema (mandatory for each delegation):
 
+- mission_file_path (`.github/MISSIONS/task-id.md`)
 - scope (CRUD path and symbols)
 - relevant files and code excerpts
 - Laravel/PHP version
@@ -112,6 +127,7 @@ Before final output, verify:
 - [ ] Delegated findings from `@eloquent-optimizer` and `@laravel-security` are merged before final recommendations.
 - [ ] Delegation payload schema is complete for every handoff.
 - [ ] Conflict overrides are explicit when security supersedes architecture or performance.
+- [ ] Every delegation (including recursive CRUD handoffs) has a valid Mission File with all mandatory fields.
 
 ## Output Contract
 
@@ -129,7 +145,7 @@ Expected output:
 2. Findings table (ID, severity, evidence, principle, action)
 3. Prioritized remediation checklist
 4. Subagent handoff plan
-5. Delegation trace (delegated agents, payload completeness, merge decisions, conflict overrides)
+5. Delegation trace (delegated agents, mission file paths, payload completeness, merge decisions, conflict overrides)
 
 Confirmation gate:
 

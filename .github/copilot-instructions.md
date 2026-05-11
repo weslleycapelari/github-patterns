@@ -17,24 +17,13 @@ For any change to agents, prompts, documentation, registry, schema, stacks, inst
 
 Do not skip the Review step.
 
-## Iteration Policy
+## Iteration and Subagent Execution Model
 
-- Use at least one review iteration for every non-trivial change.
-- If review finds major issues, iterate again.
-- Stop only when artifacts pass objective checks and review findings are resolved or explicitly accepted.
-
-## Subagent Usage Policy
-
-- Prefer specialized subagents for generation and review.
-- Use nested subagents when scope spans multiple disciplines (for example: architecture + security + docs).
-- Keep subagent prompts explicit about input, expected output, constraints, and acceptance criteria.
+- For every non-trivial change, execute: Draft (specialized subagent) → Review (independent subagent) → Improve → Validate.
+- If review finds major issues, iterate again until findings are resolved or explicitly accepted.
+- Use nested subagents when scope spans multiple disciplines.
+- Keep subagent prompts explicit about inputs, constraints, acceptance criteria, and expected outputs.
 - Never claim a subagent executed actions it did not execute.
-
-## Subagent Invocation Model
-
-- Invoke specialized subagents explicitly for Draft and Review stages.
-- Treat the review subagent as independent from the draft subagent.
-- When review findings are critical, run an Improve iteration and re-run review before finalization.
 
 ## Terminology
 
@@ -97,6 +86,19 @@ When touching agents/prompts/docs:
 2. Check consistency with existing repository tone and conventions.
 3. Confirm no overclaim in operational promises.
 
+### Documentation Locale Sync Gate (PR-Required)
+
+For every Pull Request that changes any documentation file (`README*`, `docs/**`, `.github/**/*.md`, `library/**/*.md`), the PR description must include a mandatory locale sync declaration:
+
+- `en_status`: `done` or `pending`
+- `pt_br_status`: `done` or `pending`
+- `pending_sync_tasks`: explicit list of remaining sync actions (use `[]` when none)
+
+Acceptance rule (measurable):
+
+- PR is non-compliant if this declaration is missing.
+- PR is non-compliant if any status is `pending` without explicit `pending_sync_tasks`.
+
 ## Security and Safety Rules
 
 - Never expose secrets or credentials.
@@ -113,14 +115,21 @@ When operating with subagents, follow:
 
 At minimum, include a compact decision log for non-trivial changes.
 
-## Change Documentation Rule
+## Change Documentation and Definition of Done
 
-For substantial edits, include in final report:
+For substantial edits, the final report must include:
 
 - What changed
 - Why it changed
 - What was validated
 - Remaining risks or next steps
+
+A task is done only when:
+
+- Required subagent cycles were executed.
+- Artifacts pass validations.
+- Documentation and registry coherence are preserved.
+- Final output is actionable and auditable.
 
 ## Preferred Agent Roles for This Repository
 
@@ -130,12 +139,3 @@ For substantial edits, include in final report:
 - **Registrar**: verifies registry/schema coherence.
 
 These roles may be implemented by dedicated `.github/agents` files.
-
-## Definition of Done
-
-A task is done only when:
-
-- Required subagent cycles were executed.
-- Artifacts pass validations.
-- Documentation and registry coherence are preserved.
-- Final output is actionable and auditable.
