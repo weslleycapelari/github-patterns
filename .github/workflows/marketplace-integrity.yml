@@ -54,5 +54,14 @@ jobs:
               sys.exit(1)
           PYEOF
 
+      - name: Check registry path validator syntax
+        run: bash -n .github/scripts/validate-registry-paths.sh
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Lint registry path validator script
+        run: shellcheck .github/scripts/validate-registry-paths.sh
+
       - name: Validate registry paths exist
         run: bash .github/scripts/validate-registry-paths.sh
