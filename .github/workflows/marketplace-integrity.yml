@@ -10,6 +10,10 @@ concurrency:
   group: integrity-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  # GitHub recommendation for early migration from Node 20 to Node 24 runtime
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   validate-registry:
     name: Registry Schema & Path Integrity

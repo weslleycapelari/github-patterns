@@ -28,10 +28,7 @@ fi
 TMPFILE=$(mktemp)
 trap 'rm -f "$TMPFILE"' EXIT
 
-if ! python3 - "$REGISTRY" >"$TMPFILE" <<'PYEOF'; then
-    echo "ERROR: Path extractor (python3) failed. Check that Python 3 is available and registry.json is valid JSON." >&2
-    exit 1
-fi
+if ! python3 - "$REGISTRY" >"$TMPFILE" <<'PYEOF'
 import json
 import sys
 
@@ -57,6 +54,10 @@ with open(sys.argv[1]) as fh:
 for p in extract_paths(data):
     print(p)
 PYEOF
+then
+    echo "ERROR: Path extractor (python3) failed. Check that Python 3 is available and registry.json is valid JSON." >&2
+    exit 1
+fi
 
 mapfile -t PATHS <"$TMPFILE"
 
