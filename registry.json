@@ -1,7 +1,7 @@
 {
   "$schema": "./docs/schemas/registry.schema.json",
-  "version": "1.7.0",
-  "lastUpdated": "2026-05-08T20:00:00Z",
+  "version": "1.7.1",
+  "lastUpdated": "2026-05-08T20:33:23Z",
   "maintainer": "weslleycapelari",
   "endpoint_base": "https://raw.githubusercontent.com/weslleycapelari/github-patterns/main/",
   "metadata": {
@@ -64,7 +64,8 @@
           "name": "Advanced Security",
           "objective": "Strengthen security controls and policy-driven hardening.",
           "assets": [
-            "repo-architect"
+            "repo-architect",
+            "security-infra-expert"
           ],
           "prerequisites": [
             "C"
@@ -208,6 +209,18 @@
         "tags": [
           "audit",
           "compliance"
+        ]
+      },
+      "security-infra-expert": {
+        "id": "security-infra-expert",
+        "path": "agents/security-infra-expert.agent.md",
+        "description": "Phase D specialist for auditing and preparing GitHub native security configuration with CodeQL, Dependabot, and secret-leak safeguards.",
+        "version": "1.0.0",
+        "tags": [
+          "security",
+          "codeql",
+          "dependabot",
+          "phase-d"
         ]
       },
       "laravel-expert": {
