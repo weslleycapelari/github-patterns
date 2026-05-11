@@ -236,6 +236,13 @@
         "description": "Project memory specialist that curates evidence-based MEMORY.md updates and performs confirmation-gated cleanup of redundant local Copilot instructions.",
         "version": "1.0.0",
         "tags": ["memory", "context", "governance", "documentation", "hygiene"]
+      },
+      "roadmap-steward": {
+        "id": "roadmap-steward",
+        "path": ".github/agents/roadmap-steward.agent.md",
+        "description": "Product strategist and orchestrator that analyzes repository progress, identifies capability gaps, and plans next sprint with precision.",
+        "version": "1.0.0",
+        "tags": ["roadmap", "planning", "governance", "orchestration", "internal"]
       }
     },
     "instructions": {
