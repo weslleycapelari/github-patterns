@@ -40,18 +40,20 @@ library/evals/
 
 ## Coverage Matrix
 
-| agent | case_count | status |
-| ----- | ---------- | ------ |
-| project-auditor | 1 | active |
-| laravel-expert | 2 | draft |
-| vue-architect | 2 | draft |
-| registry-schema-governor | 2 | draft |
-| asset-factory | 2 | draft |
+| agent                    | case_count | enforced_case_count | draft_case_count | status |
+| ------------------------ | ---------- | ------------------- | ---------------- | ------ |
+| project-auditor          | 3          | 1                   | 2                | draft  |
+| security-infra-expert    | 2          | 0                   | 2                | draft  |
+| laravel-expert           | 2          | 0                   | 2                | draft  |
+| vue-architect            | 2          | 0                   | 2                | draft  |
+| registry-schema-governor | 2          | 0                   | 2                | draft  |
+| asset-factory            | 2          | 0                   | 2                | draft  |
 
 Status policy:
 
 - `draft`: case exists and is ready for trial runs, but not yet enforced as release gate.
 - `active`: case is enforced as mandatory gate for related agent updates.
+- `mixed`: not used as a table value; captured via `enforced_case_count` vs `draft_case_count`.
 
 ---
 

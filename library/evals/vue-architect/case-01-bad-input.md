@@ -55,7 +55,7 @@ function save() {
 5. If CRUD UI flow is implied, includes delegation trace to:
    - `@vue-reactivity-optimizer`
    - `@vue-security-guard`
-   (or explicit blocker if unavailable).
+     (or explicit blocker if unavailable).
 
 ## FAIL Conditions
 
