@@ -45,6 +45,11 @@ Do not skip the Review step.
 - Include at least one concrete usage example.
 - Include guardrails for sensitive or destructive actions.
 
+**Operational Prompts** (runnable commands):
+- `.github/prompts/sync-locales.prompt.md` — Detect and sync semantic drift between docs/en/ and docs/pt-br/
+- `.github/prompts/eval-coverage-sprint.prompt.md` — Execute sprint cycle to expand evaluation coverage (runnable as `/eval-coverage-sprint`)
+- Additional operational prompts are listed in `ROADMAP.md` and referenced in `docs/en/zero-inertia-command.md`
+
 ### Documentation (README, docs/en, docs/pt-br)
 
 - Keep source-of-truth references accurate.

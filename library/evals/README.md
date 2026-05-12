@@ -34,7 +34,24 @@ library/evals/
 
 - `README.md`: gate protocol and scoring.
 - `project-auditor/case-01-bad-code.php`: controlled test case with 5 known critical violations.
-- Other agent folders: reserved slots for agent-specific eval fixtures.
+- Other agent folders: gradually moving from reserved slots to active fixtures.
+
+---
+
+## Coverage Matrix
+
+| agent | case_count | status |
+| ----- | ---------- | ------ |
+| project-auditor | 1 | active |
+| laravel-expert | 2 | draft |
+| vue-architect | 2 | draft |
+| registry-schema-governor | 2 | draft |
+| asset-factory | 2 | draft |
+
+Status policy:
+
+- `draft`: case exists and is ready for trial runs, but not yet enforced as release gate.
+- `active`: case is enforced as mandatory gate for related agent updates.
 
 ---
 
@@ -112,6 +129,17 @@ For any agent update in the marketplace:
 3. Capture output evidence in the PR (findings summary and score).
 4. Mark gate result explicitly as `PASS` or `FAIL`.
 5. Block merge when gate result is `FAIL`.
+
+### Minimum evidence per run
+
+Every eval execution should include at least:
+
+- `case_id`
+- `agent`
+- `runner`
+- `timestamp_utc` (ISO 8601)
+- `gate_result` (`PASS` or `FAIL`)
+- raw output or equivalent evidence snippet
 
 ---
 
