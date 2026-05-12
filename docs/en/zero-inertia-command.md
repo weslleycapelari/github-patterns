@@ -84,36 +84,41 @@ Repository (Updated & Evolved)
 
 ### Purpose of Each Agent
 
-| Agent | Role | Invocation | Output |
-|-------|------|-----------|--------|
-| **You** | Decision maker, approver, executor | Paste commands, review reports, approve sprints | Decisions, approval signals |
-| **Roadmap Steward** | Strategic auditor and planner | "Run maturity scan" (Zero Inertia Command) | Audit Report, Gap Analysis, Master Prompt |
-| **Asset Factory** | Implementation specialist | Delegated by Roadmap Steward or Master Prompt | New/updated agents, prompts, standards, docs |
-| **Registry Governor** | Catalog integrity guardian | Delegated by Asset Factory or Roadmap Steward | Updated registry.json, schema validation, reconciliation |
+| Agent                 | Role                               | Invocation                                      | Output                                                   |
+| --------------------- | ---------------------------------- | ----------------------------------------------- | -------------------------------------------------------- |
+| **You**               | Decision maker, approver, executor | Paste commands, review reports, approve sprints | Decisions, approval signals                              |
+| **Roadmap Steward**   | Strategic auditor and planner      | "Run maturity scan" (Zero Inertia Command)      | Audit Report, Gap Analysis, Master Prompt                |
+| **Asset Factory**     | Implementation specialist          | Delegated by Roadmap Steward or Master Prompt   | New/updated agents, prompts, standards, docs             |
+| **Registry Governor** | Catalog integrity guardian         | Delegated by Asset Factory or Roadmap Steward   | Updated registry.json, schema validation, reconciliation |
 
 ### How They Interact: Input/Output Flow
 
 **Step 1: Audit**
+
 - **Input**: Current `registry.json`, `library/` structure, `ROADMAP.md`, `governance-maturity-model.md`
 - **Process**: Roadmap Steward scans for presence, currency, and coherence of assets
 - **Output**: Maturity Audit (per-level assessment)
 
 **Step 2: Gap Analysis**
+
 - **Input**: Audit findings + user context (team size, strategic direction)
 - **Process**: Roadmap Steward cross-references Maturity Model to identify what's missing or stale
 - **Output**: Gap Analysis (ranked list: blockers, high-impact items, nice-to-haves)
 
 **Step 3: Master Prompt Generation**
+
 - **Input**: Gap Analysis + user approval of scope
 - **Process**: Roadmap Steward generates a sequence of orchestrated commands, one per sprint item
 - **Output**: Master Prompt (copy-paste ready, invokes Asset Factory → Registry Governor → Validation)
 
 **Step 4: Asset Implementation**
+
 - **Input**: Master Prompt + user invocation + approved scope
 - **Process**: Asset Factory creates/updates artifacts using Develop → Review → Improve → Validate cycle
 - **Output**: New/updated asset files (agent, standard, eval, prompt, documentation)
 
 **Step 5: Registry Reconciliation**
+
 - **Input**: New/updated asset files + current registry.json
 - **Process**: Registry Governor scans for unregistered files, validates schema, generates update snippets
 - **Output**: Updated registry.json + validation report
@@ -126,15 +131,15 @@ Repository (Updated & Evolved)
 
 The **Governance Maturity Model** defines five progressive levels of AI-first governance:
 
-| Level | Name | State | Focus |
-|-------|------|-------|-------|
-| 1 | **Foundation** ✅ | Complete | Structure, docs, license, folder hierarchy |
-| 2 | **Controlled** ✅ | Complete | Branch protection, CI pipelines, automation |
-| 3 | **AI-Driven** 🚧 | In Progress | Agents, standards, decision-making |
-| 4 | **Self-Auditable** 🎯 | Next Goal | Continuous audit, traceability, evolution |
-| 5 | **Autonomous Evolution** 🚀 | Vision | Adaptive roadmap, multi-locale sync |
+| Level | Name                        | State       | Focus                                       |
+| ----- | --------------------------- | ----------- | ------------------------------------------- |
+| 1     | **Foundation** ✅           | Complete    | Structure, docs, license, folder hierarchy  |
+| 2     | **Controlled** ✅           | Complete    | Branch protection, CI pipelines, automation |
+| 3     | **AI-Driven** 🚧            | In Progress | Agents, standards, decision-making          |
+| 4     | **Self-Auditable** 🎯       | Next Goal   | Continuous audit, traceability, evolution   |
+| 5     | **Autonomous Evolution** 🚀 | Vision      | Adaptive roadmap, multi-locale sync         |
 
-Each level builds on the previous one. You can mature *within* a level without advancing to the next—and that's often the right call.
+Each level builds on the previous one. You can mature _within_ a level without advancing to the next—and that's often the right call.
 
 ### Key Concept: Maturity vs. Progression
 
@@ -333,9 +338,9 @@ After Phase 2 completes, you will:
 1. Review new registry entries
 2. Merge the registry update
 3. Mark sprint item as COMPLETE in ROADMAP.md
-4. Run local validation: 
-   python -c "import json; from jsonschema import Draft202012Validator; 
-   data=json.load(open('registry.json')); schema=json.load(open('docs/schemas/registry.schema.json')); 
+4. Run local validation:
+   python -c "import json; from jsonschema import Draft202012Validator;
+   data=json.load(open('registry.json')); schema=json.load(open('docs/schemas/registry.schema.json'));
    Draft202012Validator(schema).validate(data); print('✓ VALID')"
 
 ---
@@ -349,11 +354,11 @@ Run maturity scan again to identify the next priority.
 
 ### How to Interpret Results
 
-**Audit Report**: Use this to understand your *current state*. Focus on the "Status" line for each level.
+**Audit Report**: Use this to understand your _current state_. Focus on the "Status" line for each level.
 
-**Gap Analysis**: Use this to understand *what's missing and why*. Ignore items marked "NICE-TO-HAVE" if you're in a hurry. Focus on "BLOCKER" and "HIGH IMPACT" items first.
+**Gap Analysis**: Use this to understand _what's missing and why_. Ignore items marked "NICE-TO-HAVE" if you're in a hurry. Focus on "BLOCKER" and "HIGH IMPACT" items first.
 
-**Master Prompt**: Use this as a *template for execution*. You don't have to follow it exactly—but it's designed to be copy-paste ready. If you disagree with a recommendation, edit the scope or skip the phase.
+**Master Prompt**: Use this as a _template for execution_. You don't have to follow it exactly—but it's designed to be copy-paste ready. If you disagree with a recommendation, edit the scope or skip the phase.
 
 ### Confirmation Gate Before Starting Work
 
@@ -505,25 +510,27 @@ Level [N]: [Name] [Status Emoji]
 
 **Decode the symbols:**
 
-| Symbol | Meaning |
-|--------|---------|
-| ✓ | Artifact exists and is current (last update ≤ 2 sprints) |
-| ✗ | Artifact missing or severely outdated (>2 sprints) |
-| ⚠ | Artifact exists but incomplete or inconsistent |
-| ✅ | Level is mature and ready to maintain |
-| 🚧 | Level is in progress; advancing but not yet stable |
-| 🎯 | Next logical milestone after current level |
-| 🚀 | Aspirational goal; depends on prior levels maturing |
+| Symbol | Meaning                                                  |
+| ------ | -------------------------------------------------------- |
+| ✓      | Artifact exists and is current (last update ≤ 2 sprints) |
+| ✗      | Artifact missing or severely outdated (>2 sprints)       |
+| ⚠      | Artifact exists but incomplete or inconsistent           |
+| ✅     | Level is mature and ready to maintain                    |
+| 🚧     | Level is in progress; advancing but not yet stable       |
+| 🎯     | Next logical milestone after current level               |
+| 🚀     | Aspirational goal; depends on prior levels maturing      |
 
 **What "mature" actually means:**
 
 A level is mature when:
+
 - All its critical artifacts exist and are current
 - Team practices are consistent
 - Risks are explicitly managed
 - Edge cases are documented
 
 A level is "in progress" when:
+
 - Most artifacts exist, but some are incomplete
 - Adoption is uneven across the team
 - Decisions are still being validated
@@ -533,12 +540,12 @@ A level is "in progress" when:
 
 The Gap Analysis is structured by impact tier:
 
-| Tier | Meaning | Action |
-|------|---------|--------|
-| BLOCKER | Prevents progression or creates production risk | Must fix before advancing to next level |
-| HIGH IMPACT | Improves maturity significantly; high ROI | Prioritize next sprint |
-| MEDIUM | Valuable but can wait; lower urgency | Plan for future sprints |
-| NICE-TO-HAVE | Improves process, not critical | Do if capacity allows |
+| Tier         | Meaning                                         | Action                                  |
+| ------------ | ----------------------------------------------- | --------------------------------------- |
+| BLOCKER      | Prevents progression or creates production risk | Must fix before advancing to next level |
+| HIGH IMPACT  | Improves maturity significantly; high ROI       | Prioritize next sprint                  |
+| MEDIUM       | Valuable but can wait; lower urgency            | Plan for future sprints                 |
+| NICE-TO-HAVE | Improves process, not critical                  | Do if capacity allows                   |
 
 **When you see "BLOCKER", stop.** Do not advance to the next maturity level until blockers are resolved.
 
@@ -561,13 +568,13 @@ The Master Prompt is your execution blueprint. It contains:
 
 ### Success Metrics Per Level
 
-| Level | Success Looks Like | How to Measure |
-|-------|-------------------|-----------------|
-| **Level 1** | All docs are current; onboarding works | New contributor can set up repo in <30 min |
-| **Level 2** | All PRs pass automation; zero manual gate errors | CI catches issues before review; zero failing merges |
-| **Level 3** | Agents make consistent recommendations; standards are applied | Agents return same recommendation across multiple uses; zero standard violations |
-| **Level 4** | Audit findings are consistent; traceability is automatic | Scan results match previous scan for same query; all changes have mission files |
-| **Level 5** | Registry improves autonomously; codebase evolves without human direction | Roadmap advances automatically; locale sync is automatic |
+| Level       | Success Looks Like                                                       | How to Measure                                                                   |
+| ----------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| **Level 1** | All docs are current; onboarding works                                   | New contributor can set up repo in <30 min                                       |
+| **Level 2** | All PRs pass automation; zero manual gate errors                         | CI catches issues before review; zero failing merges                             |
+| **Level 3** | Agents make consistent recommendations; standards are applied            | Agents return same recommendation across multiple uses; zero standard violations |
+| **Level 4** | Audit findings are consistent; traceability is automatic                 | Scan results match previous scan for same query; all changes have mission files  |
+| **Level 5** | Registry improves autonomously; codebase evolves without human direction | Roadmap advances automatically; locale sync is automatic                         |
 
 ---
 
@@ -576,19 +583,22 @@ The Master Prompt is your execution blueprint. It contains:
 ### Day-by-Day Breakdown
 
 **Monday**: Maturity Scan
+
 - Time: 15 minutes (copy command, paste, wait for response)
 - You do: Review Audit Report and Gap Analysis. Socialize findings with team if needed.
 - Outcome: Understand current state; identify priorities.
 
 **Tuesday**: Approval Gate
+
 - Time: 30 minutes (read findings, ask questions, approve scope)
-- You do: 
+- You do:
   - Answer: "Do I agree with this priority?"
   - Answer: "Do I have capacity?"
   - Answer: "Are there blockers?"
 - Outcome: Approved sprint scope; Master Prompt ready to execute.
 
 **Wednesday–Friday**: Asset Implementation
+
 - Time: Varies (typically 8–16 hours spread across 3 days)
 - You do:
   - Paste Phase 1 of Master Prompt
@@ -600,39 +610,41 @@ The Master Prompt is your execution blueprint. It contains:
 - Outcome: New/updated assets; registry synchronized.
 
 **Next Monday**: Merge & Celebrate
+
 - Time: 30 minutes (review PR, merge, run sanity check)
 - You do: Final review of merged changes; ensure no conflicts with ongoing work.
 - Outcome: Changes are live; team benefits from improvements.
 
 **Following Monday**: Repeat
+
 - Time: 15 minutes (next maturity scan)
 - You do: Run Zero Inertia Command again; identify next priority.
 - Outcome: Continuous improvement cycle begins again.
 
 ### Your Role at Each Stage
 
-| Stage | Your Role | Decision Gate |
-|-------|-----------|---------------|
-| **Discover** | Passive observer | None; Roadmap Steward scans automatically |
-| **Analyze** | Active reviewer | Approve audit findings; agree with gap ranking |
-| **Plan** | Active approver | Confirm scope is achievable; check capacity |
-| **Implement** | Active reviewer | Review drafts; approve/request changes per phase |
-| **Validate** | Active gate-keeper | Confirm validation passed; merge to main |
-| **Repeat** | Strategic input | Run next scan; signal new market changes if any |
+| Stage         | Your Role          | Decision Gate                                    |
+| ------------- | ------------------ | ------------------------------------------------ |
+| **Discover**  | Passive observer   | None; Roadmap Steward scans automatically        |
+| **Analyze**   | Active reviewer    | Approve audit findings; agree with gap ranking   |
+| **Plan**      | Active approver    | Confirm scope is achievable; check capacity      |
+| **Implement** | Active reviewer    | Review drafts; approve/request changes per phase |
+| **Validate**  | Active gate-keeper | Confirm validation passed; merge to main         |
+| **Repeat**    | Strategic input    | Run next scan; signal new market changes if any  |
 
 ### Expected Turnaround Times
 
-| Activity | Typical Duration | Owner |
-|----------|------------------|-------|
-| Maturity Scan (Audit + Gap Analysis) | 15 min | Roadmap Steward (automated) |
-| Your review of findings | 30 min | You |
-| Approval/scope discussion | 30 min | You + team |
-| Asset Factory Phase (draft + review + improve) | 8–16 hours | Asset Factory |
-| Your review of Asset Factory output | 30 min | You |
-| Registry Governor Phase (sync + validation) | 2–4 hours | Registry Governor |
-| Your review of registry merge | 30 min | You |
-| Final validation + merge | 30 min | You |
-| **Total cycle (Scan → Live)** | **1–2 weeks** | Team + Agents |
+| Activity                                       | Typical Duration | Owner                       |
+| ---------------------------------------------- | ---------------- | --------------------------- |
+| Maturity Scan (Audit + Gap Analysis)           | 15 min           | Roadmap Steward (automated) |
+| Your review of findings                        | 30 min           | You                         |
+| Approval/scope discussion                      | 30 min           | You + team                  |
+| Asset Factory Phase (draft + review + improve) | 8–16 hours       | Asset Factory               |
+| Your review of Asset Factory output            | 30 min           | You                         |
+| Registry Governor Phase (sync + validation)    | 2–4 hours        | Registry Governor           |
+| Your review of registry merge                  | 30 min           | You                         |
+| Final validation + merge                       | 30 min           | You                         |
+| **Total cycle (Scan → Live)**                  | **1–2 weeks**    | Team + Agents               |
 
 ### When to Intervene
 
@@ -715,26 +727,31 @@ ELSE: Evaluate advancement readiness
 ### Common Anti-Patterns to Avoid
 
 **Anti-Pattern 1: "Advancing Too Fast"**
+
 - **Looks like**: "We've been at Level 3 for 2 weeks; let's jump to Level 4."
 - **Risk**: Mission files are new; if not adopted, Level 4 audit automation fails.
 - **Prevention**: Follow the 5-gate advancement rule. Stay at Level 3 for ≥8 weeks.
 
 **Anti-Pattern 2: "Ignoring Audit Findings"**
+
 - **Looks like**: "Roadmap Steward said we have a blocker, but we'll ignore it and ship features."
 - **Risk**: Blocker usually prevents progression or creates operational debt. Ignoring causes larger failure later.
 - **Prevention**: If you don't agree with a finding, discuss it explicitly with Roadmap Steward. Don't silently skip.
 
 **Anti-Pattern 3: "Over-Customizing Agent Outputs"**
+
 - **Looks like**: "Asset Factory returned a standard, but we heavily modified it because 'our team is special'."
 - **Risk**: Drift from repository standards; future team members confused; harder to maintain.
 - **Prevention**: Use Agent outputs as-is unless there's a documented exception. Request Roadmap Steward review before customizing.
 
 **Anti-Pattern 4: "Assuming the System Is Hands-Off"**
+
 - **Looks like**: "We set up Zero Inertia Command and assumed it would run itself."
 - **Risk**: Agents need human gates (approval, scope confirmation, strategic alignment). Missing gates cause runaway scope.
 - **Prevention**: Treat Roadmap Steward as a strategic advisor, not a robot. Review findings; make conscious approvals.
 
 **Anti-Pattern 5: "Registry Drift"**
+
 - **Looks like**: "We created a new agent locally but didn't register it."
 - **Risk**: Other agents don't know about it; asset discovery fails; documentation is stale.
 - **Prevention**: Always run Registry Governor after Asset Factory. Make registry sync a non-negotiable part of the workflow.
@@ -742,15 +759,19 @@ ELSE: Evaluate advancement readiness
 ### Risk Management Guidelines
 
 **Operational Risk**: Governance practices break down; team stops using agents/standards.
+
 - **Mitigation**: Run Maturity Scans monthly (not ad-hoc). Make adoption visible (metrics: agent usage, standard adherence). Train new team members explicitly.
 
 **Technical Risk**: New agent or standard is low-quality; team finds it unreliable.
+
 - **Mitigation**: Asset Factory always includes independent review. Evals validate agent outputs. Never ship untested agents.
 
 **Organizational Risk**: Governance feels like bureaucracy; team resists it.
-- **Mitigation**: Focus on *benefit*, not *compliance*. Agents save time; standards reduce arguments. Measure outcomes (faster reviews, fewer bugs, smoother onboarding).
+
+- **Mitigation**: Focus on _benefit_, not _compliance_. Agents save time; standards reduce arguments. Measure outcomes (faster reviews, fewer bugs, smoother onboarding).
 
 **Timeline Risk**: Advancement takes longer than expected; team gets demoralized.
+
 - **Mitigation**: Break advancement into smaller milestones. Celebrate wins. Be realistic about timelines (8 weeks per level is not a sprint; it's a quarter).
 
 ---
@@ -759,40 +780,45 @@ ELSE: Evaluate advancement readiness
 
 ### Key Performance Indicators (KPIs) by Level
 
-| KPI | Level 1 | Level 2 | Level 3 | Level 4 | Level 5 |
-|-----|---------|---------|---------|---------|---------|
-| **Maturity Scan Time** | N/A | N/A | 15 min | 15 min | 15 min |
-| **Artifact Freshness** | ≥1 mo | ≥2 wk | ≥1 wk | ≥3 d | Daily |
-| **Audit Accuracy** | Manual spot-check | Manual | Semi-auto | Full auto | Continuous |
-| **Gap Identification Cycle** | Manual (weeks) | Manual (weeks) | Semi-auto (days) | Full-auto (hours) | Real-time |
-| **Asset Creation Cycle** | 2–4 wk | 1–2 wk | 3–5 d | 1–2 d | Hours |
-| **Team Adoption Rate** | 100% (mandatory) | 100% | 80%+ | 80%+ | 90%+ |
-| **Registry Coherence** | Manual check | Manual check | Semi-auto | Automated | Real-time |
-| **Onboarding Friction** | High (30 min) | Medium (20 min) | Low (10 min) | Minimal (5 min) | Zero (auto) |
+| KPI                          | Level 1           | Level 2         | Level 3          | Level 4           | Level 5     |
+| ---------------------------- | ----------------- | --------------- | ---------------- | ----------------- | ----------- |
+| **Maturity Scan Time**       | N/A               | N/A             | 15 min           | 15 min            | 15 min      |
+| **Artifact Freshness**       | ≥1 mo             | ≥2 wk           | ≥1 wk            | ≥3 d              | Daily       |
+| **Audit Accuracy**           | Manual spot-check | Manual          | Semi-auto        | Full auto         | Continuous  |
+| **Gap Identification Cycle** | Manual (weeks)    | Manual (weeks)  | Semi-auto (days) | Full-auto (hours) | Real-time   |
+| **Asset Creation Cycle**     | 2–4 wk            | 1–2 wk          | 3–5 d            | 1–2 d             | Hours       |
+| **Team Adoption Rate**       | 100% (mandatory)  | 100%            | 80%+             | 80%+              | 90%+        |
+| **Registry Coherence**       | Manual check      | Manual check    | Semi-auto        | Automated         | Real-time   |
+| **Onboarding Friction**      | High (30 min)     | Medium (20 min) | Low (10 min)     | Minimal (5 min)   | Zero (auto) |
 
 ### What "Success" Looks Like at Each Level
 
 **Level 1 Success**:
+
 - New team member can clone repo and have local setup in <30 minutes
 - Contribution rules are crystal clear; zero pull requests rejected for "unclear intent"
 - License and legal compliance are in order; no ambiguity
 
 **Level 2 Success**:
+
 - Every PR is tested automatically before human review
 - Zero merged PRs with failing tests or style violations
 - Triage (labeling, routing) is 80% automated; humans focus on decisions, not classification
 
 **Level 3 Success**:
+
 - Agents are trusted to make recommendations; team acts on them without debate
 - New standards are adopted within 1 sprint; no "we'll do it our way" pushback
 - Asset creation is repeatable; same agent invoked for similar problems yields similar quality
 
 **Level 4 Success**:
+
 - Every change is traceable to a decision; governance is auditable
 - Maturity Scans reveal no surprises; findings are consistent week-to-week
 - Continuous improvement requires zero manual orchestration; agents invoke other agents automatically
 
 **Level 5 Success**:
+
 - Repository improves without explicit human direction; roadmap advances autonomously
 - Multi-locale documentation stays synchronized automatically
 - New standards and agents emerge in response to team signals (hiring, market feedback) with zero manual effort
@@ -851,7 +877,7 @@ Please audit the current state and provide:
 2. Capability gaps, ranked by impact
 3. A master prompt for implementing the top priority gap
 
-Context: 
+Context:
 [Team Size]: 1–2 engineers (solo/small team, shared responsibilities)
 [Tech Stack]: Polyglot (agents are technology-agnostic; evals vary by domain)
 [Timeline]: 6–12 months to mature. No hard deadline.
@@ -866,16 +892,19 @@ Please format the response as:
 ### Expected Time Investment
 
 **Before the scan (setup)**: 5 minutes
+
 - Open Copilot Chat
 - Paste the command
 - Wait for response (usually <2 minutes)
 
 **Reviewing findings (reading)**: 15 minutes
+
 - Read Audit Report (5 min)
 - Understand Gap Analysis (5 min)
 - Preview Master Prompt (5 min)
 
 **Deciding next steps (thinking)**: 10 minutes
+
 - Do I agree with priorities? (Yes/No/Discuss)
 - Do I have capacity? (Yes/No/Defer)
 - Any blockers? (Yes/No/Escalate)
@@ -896,22 +925,27 @@ You'll receive a structured document (usually 2–4 pages) with:
 ### Next Steps After First Scan
 
 **Step 1: Share with team** (if relevant)
+
 - Forward findings to anyone affected by the recommendations
 - Discuss: "Do we agree with this priority? Do we have capacity?"
 
 **Step 2: Approve scope**
+
 - Decide: "Are we advancing or deepening?"
 - Decide: "Which phase of Master Prompt should we execute first?"
 
 **Step 3: Execute Master Prompt** (or plan for next sprint)
+
 - If capacity exists: Paste Phase 1 immediately
 - If capacity doesn't exist: Schedule Phase 1 for next sprint, document decision
 
 **Step 4: After Phase 1 completes, continue to Phase 2 and Phase 3**
+
 - Phase 2: Registry Governor handles registry sync
 - Phase 3: Validation step (ensure everything is coherent)
 
 **Step 5: Merge & celebrate**
+
 - Review the PR
 - Merge to main
 - Run next maturity scan in 1 week (to validate the cycle works)
@@ -933,7 +967,7 @@ You'll receive a structured document (usually 2–4 pages) with:
 3. **Override silently**: (Not recommended, but it happens.)
    - You can choose to work on something else. But then you lose traceability: next Maturity Scan might surface the same gap again.
 
-**Best practice**: If you disagree, discuss *why*. Often, Roadmap Steward has data-driven reasons (e.g., "X blocks 3 agents; Y blocks 0"). Document your override in the MEMORY.md file so future you and future team know why.
+**Best practice**: If you disagree, discuss _why_. Often, Roadmap Steward has data-driven reasons (e.g., "X blocks 3 agents; Y blocks 0"). Document your override in the MEMORY.md file so future you and future team know why.
 
 ### "How Do I Prioritize Between Competing Gaps?"
 
@@ -971,14 +1005,17 @@ You reorder as:
 ### "What If Team Capacity Is Low?"
 
 **Option 1: Defer the sprint**
+
 - Don't run a sprint if you don't have capacity to execute it. Wait 2–3 weeks.
 - Run Maturity Scan again at that time.
 
 **Option 2: Reduce scope**
+
 - Ask Roadmap Steward to suggest a "mini-sprint" (just 1 item, < 1 week effort).
 - Execute that, then reassess.
 
 **Option 3: Hire or delegate**
+
 - If governance is bottlenecking you, consider hiring a specialist (even part-time) to focus on agents/standards.
 - Or nominate a team member to own governance for one sprint.
 
@@ -1005,7 +1042,7 @@ You reorder as:
 
 **Symptom**: "We've been using agents for 3 weeks; let's advance to Level 4!"
 
-**Problem**: Advancing without 8+ weeks at current level means you skip the process of *refining* agents, proving their value, and training the team.
+**Problem**: Advancing without 8+ weeks at current level means you skip the process of _refining_ agents, proving their value, and training the team.
 
 **Result**: Level 4's automation (continuous audit, mission files) feels like busywork. Adoption fails; you're stuck with overhead.
 
@@ -1029,17 +1066,18 @@ You reorder as:
 
 **Result**: Standards lose authority. New people follow custom pattern, not official one. Governance erodes.
 
-**Prevention**: Use Agent outputs as-is. If you need to customize, discuss with the team and Roadmap Steward *first*. Document exceptions clearly.
+**Prevention**: Use Agent outputs as-is. If you need to customize, discuss with the team and Roadmap Steward _first_. Document exceptions clearly.
 
 ### Gotcha 4: Assuming the System Is Fully Automated
 
 **Symptom**: "We set up Zero Inertia Command and now the system should run itself, right?"
 
-**Problem**: Zero Inertia removes *repetitive* work (scanning, analysis), but it doesn't remove *strategic* decisions (what to prioritize, whether to advance, how to handle risks).
+**Problem**: Zero Inertia removes _repetitive_ work (scanning, analysis), but it doesn't remove _strategic_ decisions (what to prioritize, whether to advance, how to handle risks).
 
 **Result**: Scope creep. Agents propose too much; nothing ships. Or, decisions are made without human input; org resistance grows.
 
 **Prevention**: Treat Roadmap Steward as a strategic advisor. You are always in the decision loop:
+
 - You approve scope before Asset Factory starts
 - You review findings before acting
 - You decide "advance or deepen" based on your context
@@ -1063,6 +1101,7 @@ You reorder as:
 **Result**: Gap Analysis feels irrelevant. You don't implement recommendations. System seems broken.
 
 **Prevention**: Always include context in the scan command:
+
 - Team size and composition
 - Tech stacks and domains
 - Strategic priorities (hiring? expansion? stabilization?)
@@ -1089,7 +1128,7 @@ Every asset created through Zero Inertia Command follows this gate. You don't ha
 
 ### Connection to `agent-mission-protocol.md`
 
-[agent-mission-protocol.md](.github/standards/agent-mission-protocol.md) defines how agents delegate to other agents.
+[agent-mission-protocol.md](../../library/standards/agent-mission-protocol.md) defines how agents delegate to other agents.
 
 Zero Inertia Command is orchestrated through mission files:
 
@@ -1098,19 +1137,47 @@ Zero Inertia Command is orchestrated through mission files:
 - **Phase 3**: Registry Governor validates and reports back
 
 Each mission file includes:
+
 - Parent and child agents
 - Objective (what to build and why)
 - Context links (files to read)
 - Success criteria (testable)
 - Result payload (expected output structure)
 
-This traceability means you always know *why* an agent made a decision.
+This traceability means you always know _why_ an agent made a decision.
+
+### Mission Protocol Compliance (PR Gate)
+
+The repository enforces Mission Protocol on pull requests through CI.
+
+If your PR has non-trivial changes (`agents/**`, `prompts/**`, `docs/**`, `library/**`, `standards/**`, `instructions/**`, `stacks/**`, `.github/**`, `README*`, `registry.json`, `ROADMAP.md`, `structure.md`), you must:
+
+1. Create or update a mission file in `.github/MISSIONS/` (excluding `README.md` and `_template.md`).
+2. Fill all mandatory fields with exact keys and non-empty values:
+   - `Parent_Agent`
+   - `Child_Agent`
+   - `Mission_Objective`
+   - `Context_Links`
+   - `Success_Criteria`
+   - `Result_Payload`
+3. Include the mission file change in the same PR.
+4. Use one mission file per delegation hop (one `Child_Agent` value). Create a new mission file for nested delegation.
+5. Run local validation before opening the PR:
+   - `bash .github/scripts/validate-mission-protocol.sh`
+
+CI behavior:
+
+- **PASS**: non-trivial PR with valid mission file changed.
+- **FAIL**: non-trivial PR without a valid mission file.
+
+Note: PRs that change only `.github/MISSIONS/**` are treated as trivial by this gate.
 
 ### Connection to `governance-maturity-model.md`
 
 [governance-maturity-model.md](library/standards/governance-maturity-model.md) is the **reference framework** for all Maturity Scans.
 
 Roadmap Steward uses the model to:
+
 - Assess your current level
 - Identify what's needed to mature the current level
 - Recommend whether to deepen or advance
@@ -1123,6 +1190,7 @@ You understand the model, so you understand the scan results.
 [MEMORY.md](library/github-baseline/MEMORY.md) tracks operational decisions and lessons learned.
 
 After each Maturity Scan, you (or Roadmap Steward) should record:
+
 - Findings (what was discovered)
 - Decision (what you chose to do and why)
 - Impact (what changed as a result)
@@ -1143,7 +1211,7 @@ This creates a persistent memory of your governance evolution. Future you can lo
 @roadmap-steward
 
 We've been at Level 3 for 3 months. Agents are stable; standards are followed.
-We want to advance to Level 4 (Self-Auditable) to improve governance visibility 
+We want to advance to Level 4 (Self-Auditable) to improve governance visibility
 and enable continuous improvement.
 
 Please audit:
@@ -1174,7 +1242,7 @@ Dependencies for Level 4:
 3. Continuous Audit (weekly scans, not manual) — NOT YET IMPLEMENTED
 
 Recommendation: ADVANCE TO LEVEL 4
-Timeline: 6–8 weeks (transition sprint to implement mission files, 
+Timeline: 6–8 weeks (transition sprint to implement mission files,
           then steady-state with weekly audits)
 
 Master Prompt:
@@ -1335,7 +1403,7 @@ WEEK 1: Maturity Scan
   Mon:   Run Zero Inertia Command (15 min)
   Tue:   Review findings; approve scope (30 min)
   Wed–Fri: Implement Phase 1 (Asset Factory)
-  
+
 WEEK 2: Asset Factory + Registry Governor
   Mon:   Review Phase 1 output; approve or iterate
   Tue–Thu: Execute Phase 2 & 3 (Registry, validation)
@@ -1344,7 +1412,7 @@ WEEK 2: Asset Factory + Registry Governor
 WEEK 3: Monitor & Stabilize
   Mon:   Run quick validation (is the new asset being used?)
   Rest:  Team uses new agent/standard in real work
-  
+
 WEEK 4: Preparation for Next Cycle
   Mon:   Run next Maturity Scan
   Repeat
@@ -1357,25 +1425,29 @@ WEEK 4: Preparation for Next Cycle
 The Zero Inertia Command is **progressive**:
 
 **Today (Level 3)**:
+
 - You run scans manually
 - You review and approve findings
 - You invoke agents
 - You merge PRs
 
 **Next (Level 4)**:
+
 - You run scans manually (same)
 - Agents suggest next items more intelligently
 - Agents create missions automatically
 - You review and approve (less overhead than before)
 
 **Eventually (Level 5)**:
+
 - Scans are continuous (run weekly automatically)
 - Roadmap advances based on team signals (hiring, feedback)
 - New agents and standards emerge in response to signals
 - You review outcomes, not inputs
-- The repository *evolves itself*
+- The repository _evolves itself_
 
 **You don't have to do anything differently.** As you progress levels, the system naturally becomes more autonomous because:
+
 - More automation is in place (Level 4's audit)
 - More history exists (decisions are traceable)
 - More patterns are stable (standards are proven)
@@ -1413,7 +1485,7 @@ Revisit this document when:
 - [Roadmap Steward Agent](.github/agents/roadmap-steward.agent.md) — Agent specification and workflows
 - [Asset Factory Agent](.github/agents/asset-factory.agent.md) — How new assets are created
 - [Registry Governor Agent](.github/agents/registry-schema-governor.agent.md) — How registry is managed
-- [Agent Mission Protocol](../library/standards/agent-mission-protocol.md) — Delegation traceability standard
+- [Agent Mission Protocol](../../library/standards/agent-mission-protocol.md) — Delegation traceability standard
 - [Copilot Instructions](.github/copilot-instructions.md) — Mandatory workflow for all changes
 - [MEMORY.md](../library/github-baseline/MEMORY.md) — Operational decision tracking
 

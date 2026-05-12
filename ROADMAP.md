@@ -4,11 +4,11 @@
 
 ## 🗓️ Current Sprint (MVP 1.9.x → 2.0.0)
 
-| Task                                           | Priority | Status      | Acceptance Criteria                                               |
-| ---------------------------------------------- | -------- | ----------- | ----------------------------------------------------------------- |
-| Implement Mission Protocol (Automatic Handoff) | High     | Not Started | Mission file gate enforced in all agents; delegation audit passes |
-| Create Evals for Laravel Stack                 | Medium   | Not Started | ≥3 eval cases per standard (security, performance, design)        |
-| Automate Locale Sync via GitHub Action         | Low      | Not Started | Sync runs on doc change; pt-br/en consistency verified in CI      |
+| Task                                          | Priority | Status      | Acceptance Criteria                                                                                                                                     |
+| --------------------------------------------- | -------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Enforce Mission Protocol + Traceability Gate  | High     | Not Started | 100% dos PRs não triviais exigem Mission File válido em `.github/MISSIONS/` com campos exatos do protocolo; merge bloqueado quando ausente ou inválido. |
+| Continuous Governance Audit (Project Auditor) | High     | Not Started | Auditor roda em todo merge para `main`, publica relatório com severidade e sinais de observabilidade; 0 artefatos órfãos na execução do gate.           |
+| Evals Coverage for Major Agents (≥80%)        | Medium   | Not Started | Cobertura de evals ≥80% por agente majoritário (ao menos 1 suíte por agente); PR falha quando cobertura cair abaixo do baseline aprovado.               |
 
 **Context**: These sprints build on [foundations](#completed-work) and advance toward version 2.0 governance model.
 
@@ -16,20 +16,20 @@
 
 ## 📝 Backlog (Future Sprints)
 
-### Swift Stack Support (iOS)
+### Stack Expansion (Swift) — Deferred until Level 4 Stability
 
-- **Rationale**: Expand beyond web/backend to native mobile; complements Laravel stack for full-stack teams.
-- **Impact**: Unlock use cases requiring iOS expertise; improve platform diversity.
+- **Rationale**: Evitar dispersão antes da maturidade Self-Auditable.
+- **Entry Gate**: Somente iniciar após 2 ciclos de sprint com gates de missão/auditoria estáveis e sem regressão crítica.
 
-### Front-end Performance Audit Agent
+### Locale Sync Automation (en ↔ pt-br)
 
-- **Rationale**: Laravel expert and Vue architect exist; performance auditing closes visibility gap on metrics (Core Web Vitals, bundle size, rendering).
-- **Impact**: Enable teams to catch performance regressions early; complements existing security and reactivity agents.
+- **Rationale**: Reforçar qualidade documental após estabilização dos gates de governança.
+- **Entry Gate**: PR deve manter declaração de sync (`en_status`, `pt_br_status`, `pending_sync_tasks`) validada em CI.
 
-### Automated Technical Documentation Generator
+### Technical Documentation Automation
 
-- **Rationale**: Registry and standards exist; auto-generating job descriptions, API docs, and onboarding guides reduces manual overhead.
-- **Impact**: Improve DX for teams adopting the repository; reduce context switching during hiring.
+- **Rationale**: Reduzir esforço manual recorrente em onboarding e manutenção documental.
+- **Entry Gate**: Executar somente após cobertura de evals ≥80% sustentada por 2 ciclos.
 
 ---
 

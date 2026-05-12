@@ -131,7 +131,7 @@ function Export-FilesToMarkdown {
     }
 
     try {
-      $relativePath = Resolve-Path -LiteralPath $file.FullName -Relative
+      $relativePath = $file.FullName.Substring($BasePath.Length).TrimStart('\')
 
       $language = Get-MarkdownLanguage $file.Extension
 

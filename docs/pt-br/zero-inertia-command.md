@@ -84,36 +84,41 @@ Repositório (Atualizado & Evoluído)
 
 ### Propósito de Cada Agente
 
-| Agente | Papel | Invocação | Saída |
-|--------|-------|-----------|-------|
-| **Você** | Tomador de decisão, aprovador, executor | Cola comandos, revisa relatórios, aprova sprints | Decisões, sinais de aprovação |
-| **Roadmap Steward** | Auditor estratégico e planejador | "Execute varredura de maturidade" (Zero Inertia Command) | Relatório de Auditoria, Análise de Lacunas, Comando Master |
-| **Asset Factory** | Especialista em implementação | Delegado por Roadmap Steward ou Comando Master | Agentes/prompts/padrões/docs novos ou atualizados |
-| **Registry Governor** | Guardião da integridade do catálogo | Delegado por Asset Factory ou Roadmap Steward | registry.json atualizado, validação de schema, reconciliação |
+| Agente                | Papel                                   | Invocação                                                | Saída                                                        |
+| --------------------- | --------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------ |
+| **Você**              | Tomador de decisão, aprovador, executor | Cola comandos, revisa relatórios, aprova sprints         | Decisões, sinais de aprovação                                |
+| **Roadmap Steward**   | Auditor estratégico e planejador        | "Execute varredura de maturidade" (Zero Inertia Command) | Relatório de Auditoria, Análise de Lacunas, Comando Master   |
+| **Asset Factory**     | Especialista em implementação           | Delegado por Roadmap Steward ou Comando Master           | Agentes/prompts/padrões/docs novos ou atualizados            |
+| **Registry Governor** | Guardião da integridade do catálogo     | Delegado por Asset Factory ou Roadmap Steward            | registry.json atualizado, validação de schema, reconciliação |
 
 ### Como Interagem: Fluxo de Entrada/Saída
 
 **Passo 1: Auditoria**
+
 - **Entrada**: `registry.json` atual, estrutura `library/`, `ROADMAP.md`, `governance-maturity-model.md`
 - **Processo**: Roadmap Steward escaneia presença, atualidade e coerência dos ativos
 - **Saída**: Auditoria de Maturidade (avaliação por nível)
 
 **Passo 2: Análise de Lacunas**
+
 - **Entrada**: Descobertas da auditoria + contexto do usuário (tamanho do time, direção estratégica)
 - **Processo**: Roadmap Steward faz referência cruzada ao Modelo de Maturidade para identificar o que falta ou está obsoleto
 - **Saída**: Análise de Lacunas (lista classificada: bloqueadores, itens de alto impacto, nice-to-haves)
 
 **Passo 3: Geração de Comando Master**
+
 - **Entrada**: Análise de Lacunas + aprovação do usuário do escopo
 - **Processo**: Roadmap Steward gera uma sequência de comandos orquestrados, um por item do sprint
 - **Saída**: Comando Master (pronto para colar, invoca Asset Factory → Registry Governor → Validação)
 
 **Passo 4: Implementação de Ativos**
+
 - **Entrada**: Comando Master + invocação do usuário + escopo aprovado
 - **Processo**: Asset Factory cria/atualiza artefatos usando ciclo Desenvolver → Revisar → Melhorar → Validar
 - **Saída**: Arquivos de ativos novos/atualizados (agente, padrão, eval, prompt, documentação)
 
 **Passo 5: Reconciliação de Registry**
+
 - **Entrada**: Arquivos de ativos novos/atualizados + registry.json atual
 - **Processo**: Registry Governor escaneia por arquivos não registrados, valida schema, gera snippets de atualização
 - **Saída**: registry.json atualizado + relatório de validação
@@ -126,15 +131,15 @@ Repositório (Atualizado & Evoluído)
 
 O **Modelo de Governança de Maturidade** define cinco níveis progressivos de governança AI-first:
 
-| Nível | Nome | Estado | Foco |
-|-------|------|--------|------|
-| 1 | **Fundação** ✅ | Completo | Estrutura, docs, licença, hierarquia de pastas |
-| 2 | **Controlado** ✅ | Completo | Proteção de branch, pipelines CI, automação |
-| 3 | **Orientado por IA** 🚧 | Em Progresso | Agentes, padrões, tomada de decisão |
-| 4 | **Auto-Auditável** 🎯 | Próximo Objetivo | Auditoria contínua, rastreabilidade, evolução |
-| 5 | **Evolução Autônoma** 🚀 | Visão | Roadmap adaptativo, sincronização multi-idioma |
+| Nível | Nome                     | Estado           | Foco                                           |
+| ----- | ------------------------ | ---------------- | ---------------------------------------------- |
+| 1     | **Fundação** ✅          | Completo         | Estrutura, docs, licença, hierarquia de pastas |
+| 2     | **Controlado** ✅        | Completo         | Proteção de branch, pipelines CI, automação    |
+| 3     | **Orientado por IA** 🚧  | Em Progresso     | Agentes, padrões, tomada de decisão            |
+| 4     | **Auto-Auditável** 🎯    | Próximo Objetivo | Auditoria contínua, rastreabilidade, evolução  |
+| 5     | **Evolução Autônoma** 🚀 | Visão            | Roadmap adaptativo, sincronização multi-idioma |
 
-Cada nível se baseia no anterior. Você pode amadurecer *dentro* de um nível sem avançar para o próximo—e geralmente essa é a decisão correta.
+Cada nível se baseia no anterior. Você pode amadurecer _dentro_ de um nível sem avançar para o próximo—e geralmente essa é a decisão correta.
 
 ### Conceito-chave: Maturidade vs. Progressão
 
@@ -333,9 +338,9 @@ Após a Fase 2 ser concluída, você:
 1. Revisa novas entradas do registry
 2. Mescla a atualização do registry
 3. Marca item do sprint como COMPLETO em ROADMAP.md
-4. Execute validação local: 
-   python -c "import json; from jsonschema import Draft202012Validator; 
-   data=json.load(open('registry.json')); schema=json.load(open('docs/schemas/registry.schema.json')); 
+4. Execute validação local:
+   python -c "import json; from jsonschema import Draft202012Validator;
+   data=json.load(open('registry.json')); schema=json.load(open('docs/schemas/registry.schema.json'));
    Draft202012Validator(schema).validate(data); print('✓ VÁLIDO')"
 
 ---
@@ -349,11 +354,11 @@ Execute varredura de maturidade novamente para identificar próxima prioridade.
 
 ### Como Interpretar Resultados
 
-**Relatório de Auditoria**: Use para entender seu *estado atual*. Foque na linha "Status" para cada nível.
+**Relatório de Auditoria**: Use para entender seu _estado atual_. Foque na linha "Status" para cada nível.
 
-**Análise de Lacunas**: Use para entender *o que falta e por quê*. Ignore itens marcados "NICE-TO-HAVE" se estiver com pressa. Foque primeiro em itens "BLOQUEADOR" e "ALTO IMPACTO".
+**Análise de Lacunas**: Use para entender _o que falta e por quê_. Ignore itens marcados "NICE-TO-HAVE" se estiver com pressa. Foque primeiro em itens "BLOQUEADOR" e "ALTO IMPACTO".
 
-**Comando Master**: Use como um *template para execução*. Você não precisa seguir exatamente—mas foi projetado para ser pronto para colar. Se discordar de uma recomendação, edite o escopo ou pule a fase.
+**Comando Master**: Use como um _template para execução_. Você não precisa seguir exatamente—mas foi projetado para ser pronto para colar. Se discordar de uma recomendação, edite o escopo ou pule a fase.
 
 ### Portão de Confirmação Antes de Começar o Trabalho
 
@@ -505,25 +510,27 @@ Nível [N]: [Nome] [Emoji de Status]
 
 **Decodifique os símbolos:**
 
-| Símbolo | Significado |
-|---------|-------------|
-| ✓ | Artefato existe e está atual (última atualização ≤ 2 sprints) |
-| ✗ | Artefato ausente ou severamente desatualizado (>2 sprints) |
-| ⚠ | Artefato existe mas incompleto ou inconsistente |
-| ✅ | Nível está maduro e pronto para manter |
-| 🚧 | Nível está em progresso; avançando mas não yet estável |
-| 🎯 | Próximo marco lógico após nível atual |
-| 🚀 | Meta aspiracional; depende de níveis anteriores amadurecerem |
+| Símbolo | Significado                                                   |
+| ------- | ------------------------------------------------------------- |
+| ✓       | Artefato existe e está atual (última atualização ≤ 2 sprints) |
+| ✗       | Artefato ausente ou severamente desatualizado (>2 sprints)    |
+| ⚠       | Artefato existe mas incompleto ou inconsistente               |
+| ✅      | Nível está maduro e pronto para manter                        |
+| 🚧      | Nível está em progresso; avançando mas não yet estável        |
+| 🎯      | Próximo marco lógico após nível atual                         |
+| 🚀      | Meta aspiracional; depende de níveis anteriores amadurecerem  |
 
 **O que "maduro" realmente significa:**
 
 Um nível está maduro quando:
+
 - Todos seus artefatos críticos existem e estão atuais
 - Practices do time são consistentes
 - Riscos são explicitamente gerenciados
 - Casos extremos estão documentados
 
 Um nível está "em progresso" quando:
+
 - A maioria dos artefatos existe, mas alguns são incompletos
 - Adoção é desigual através do time
 - Decisões ainda estão sendo validadas
@@ -533,12 +540,12 @@ Um nível está "em progresso" quando:
 
 A Análise de Lacunas está estruturada por tier de impacto:
 
-| Tier | Significado | Ação |
-|------|-------------|------|
-| BLOQUEADOR | Impede progressão ou cria risco de produção | Deve ser resolvido antes de avançar para próximo nível |
-| ALTO IMPACTO | Melhora significativamente maturidade; alto ROI | Priorize próximo sprint |
-| MÉDIO | Valioso mas pode esperar; menor urgência | Planejar para sprints futuros |
-| NICE-TO-HAVE | Melhora processo, não crítico | Faça se houver capacidade |
+| Tier         | Significado                                     | Ação                                                   |
+| ------------ | ----------------------------------------------- | ------------------------------------------------------ |
+| BLOQUEADOR   | Impede progressão ou cria risco de produção     | Deve ser resolvido antes de avançar para próximo nível |
+| ALTO IMPACTO | Melhora significativamente maturidade; alto ROI | Priorize próximo sprint                                |
+| MÉDIO        | Valioso mas pode esperar; menor urgência        | Planejar para sprints futuros                          |
+| NICE-TO-HAVE | Melhora processo, não crítico                   | Faça se houver capacidade                              |
 
 **Quando você vê "BLOQUEADOR", pare.** Não avance para próximo nível de maturidade até que bloqueadores sejam resolvidos.
 
@@ -561,13 +568,13 @@ O Comando Master é seu blueprint de execução. Contém:
 
 ### Métricas de Sucesso Por Nível
 
-| Nível | Sucesso Parece | Como Medir |
-|-------|----------------|-----------| 
-| **Nível 1** | Todos docs estão atuais; onboarding funciona | Novo contribuidor consegue configurar repo em <30 min |
-| **Nível 2** | Todos PRs passam automação; zero erros de porta humana | CI pega problemas antes de revisão; zero merges falhando |
-| **Nível 3** | Agentes fazem recomendações consistentes; padrões são aplicados | Agentes retornam mesma recomendação em múltiplos usos; zero violações de padrão |
+| Nível       | Sucesso Parece                                                          | Como Medir                                                                                                      |
+| ----------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Nível 1** | Todos docs estão atuais; onboarding funciona                            | Novo contribuidor consegue configurar repo em <30 min                                                           |
+| **Nível 2** | Todos PRs passam automação; zero erros de porta humana                  | CI pega problemas antes de revisão; zero merges falhando                                                        |
+| **Nível 3** | Agentes fazem recomendações consistentes; padrões são aplicados         | Agentes retornam mesma recomendação em múltiplos usos; zero violações de padrão                                 |
 | **Nível 4** | Descobertas de auditoria são consistentes; rastreabilidade é automática | Resultados de varredura combinam com varredura anterior para mesma query; todas mudanças têm arquivos de missão |
-| **Nível 5** | Registry melhora autonomamente; codebase evolui sem direção humana | Roadmap avança automaticamente; sincronização de idioma é automática |
+| **Nível 5** | Registry melhora autonomamente; codebase evolui sem direção humana      | Roadmap avança automaticamente; sincronização de idioma é automática                                            |
 
 ---
 
@@ -576,19 +583,22 @@ O Comando Master é seu blueprint de execução. Contém:
 ### Breakdown Dia-a-Dia
 
 **Segunda-feira**: Varredura de Maturidade
+
 - Tempo: 15 minutos (copie comando, cole, espere resposta)
 - Você faz: Revisa Relatório de Auditoria e Análise de Lacunas. Socializa descobertas com time se necessário.
 - Resultado: Entender estado atual; identificar prioridades.
 
 **Terça-feira**: Portão de Aprovação
+
 - Tempo: 30 minutos (leia descobertas, faça perguntas, aprove escopo)
-- Você faz: 
+- Você faz:
   - Responda: "Concordo com essa prioridade?"
   - Responda: "Tenho capacidade?"
   - Responda: "Existem bloqueadores?"
 - Resultado: Escopo de sprint aprovado; Comando Master pronto para executar.
 
 **Quarta–Sexta**: Implementação de Ativos
+
 - Tempo: Varia (tipicamente 8–16 horas distribuídas em 3 dias)
 - Você faz:
   - Cole Fase 1 do Comando Master
@@ -600,39 +610,41 @@ O Comando Master é seu blueprint de execução. Contém:
 - Resultado: Novos/ativos atualizados; registry sincronizado.
 
 **Próxima Segunda**: Mescla & Celebração
+
 - Tempo: 30 minutos (revise PR, mescle, execute verificação de sanidade)
 - Você faz: Revisão final de mudanças mescladas; garanta sem conflitos com trabalho em andamento.
 - Resultado: Mudanças estão em produção; time se beneficia de melhorias.
 
 **Segunda-feira Seguinte**: Repetir
+
 - Tempo: 15 minutos (próxima varredura de maturidade)
 - Você faz: Execute Zero Inertia Command novamente; identifique próxima prioridade.
 - Resultado: Ciclo de melhoria contínua começa novamente.
 
 ### Seu Papel em Cada Estágio
 
-| Estágio | Seu Papel | Portão de Decisão |
-|---------|-----------|-------------------|
-| **Descobrir** | Observador passivo | Nenhum; Roadmap Steward escaneia automaticamente |
-| **Analisar** | Revisor ativo | Aprove descobertas de auditoria; concorde com ranking de lacunas |
-| **Planejar** | Aprovador ativo | Confirme que escopo é alcançável; verifique capacidade |
-| **Implementar** | Revisor ativo | Revise rascunhos; aprove/solicite mudanças por fase |
-| **Validar** | Guardião do portão | Confirme que validação passou; mescle para main |
-| **Repetir** | Entrada estratégica | Execute próxima varredura; sinalize novas mudanças de mercado se houver |
+| Estágio         | Seu Papel           | Portão de Decisão                                                       |
+| --------------- | ------------------- | ----------------------------------------------------------------------- |
+| **Descobrir**   | Observador passivo  | Nenhum; Roadmap Steward escaneia automaticamente                        |
+| **Analisar**    | Revisor ativo       | Aprove descobertas de auditoria; concorde com ranking de lacunas        |
+| **Planejar**    | Aprovador ativo     | Confirme que escopo é alcançável; verifique capacidade                  |
+| **Implementar** | Revisor ativo       | Revise rascunhos; aprove/solicite mudanças por fase                     |
+| **Validar**     | Guardião do portão  | Confirme que validação passou; mescle para main                         |
+| **Repetir**     | Entrada estratégica | Execute próxima varredura; sinalize novas mudanças de mercado se houver |
 
 ### Tempos de Entrega Esperados
 
-| Atividade | Duração Típica | Dono |
-|-----------|----------------|------|
-| Varredura de Maturidade (Auditoria + Análise de Lacunas) | 15 min | Roadmap Steward (automatizado) |
-| Sua revisão de descobertas | 30 min | Você |
-| Discussão de aprovação/escopo | 30 min | Você + time |
-| Fase Asset Factory (rascunho + revisão + melhorar) | 8–16 horas | Asset Factory |
-| Sua revisão de saída Asset Factory | 30 min | Você |
-| Fase Registry Governor (sincronização + validação) | 2–4 horas | Registry Governor |
-| Sua revisão de mesclagem de registry | 30 min | Você |
-| Validação final + mescla | 30 min | Você |
-| **Ciclo total (Varredura → Produção)** | **1–2 semanas** | Time + Agentes |
+| Atividade                                                | Duração Típica  | Dono                           |
+| -------------------------------------------------------- | --------------- | ------------------------------ |
+| Varredura de Maturidade (Auditoria + Análise de Lacunas) | 15 min          | Roadmap Steward (automatizado) |
+| Sua revisão de descobertas                               | 30 min          | Você                           |
+| Discussão de aprovação/escopo                            | 30 min          | Você + time                    |
+| Fase Asset Factory (rascunho + revisão + melhorar)       | 8–16 horas      | Asset Factory                  |
+| Sua revisão de saída Asset Factory                       | 30 min          | Você                           |
+| Fase Registry Governor (sincronização + validação)       | 2–4 horas       | Registry Governor              |
+| Sua revisão de mesclagem de registry                     | 30 min          | Você                           |
+| Validação final + mescla                                 | 30 min          | Você                           |
+| **Ciclo total (Varredura → Produção)**                   | **1–2 semanas** | Time + Agentes                 |
 
 ### Quando Intervir
 
@@ -715,26 +727,31 @@ SENÃO: Avalie prontidão de avanço
 ### Anti-Padrões Comuns para Evitar
 
 **Anti-Padrão 1: "Avançando Muito Rápido"**
+
 - **Parece**: "Estamos no Nível 3 há 2 semanas; vamos pular para Nível 4."
 - **Risco**: Arquivos de missão são novos; se não adotados, automação de auditoria do Nível 4 falha.
 - **Prevenção**: Siga a regra de 5 portões de avanço. Fique no Nível 3 por ≥8 semanas.
 
 **Anti-Padrão 2: "Ignorando Descobertas de Auditoria"**
+
 - **Parece**: "Roadmap Steward disse que temos um bloqueador, mas vamos ignorar e enviar features."
 - **Risco**: Bloqueador geralmente impede progressão ou cria débito operacional. Ignorar causa falha maior depois.
 - **Prevenção**: Se discorda de descoberta, discuta explicitamente com Roadmap Steward. Não pule silenciosamente.
 
 **Anti-Padrão 3: "Sobre-Customizando Saídas de Agente"**
+
 - **Parece**: "Asset Factory retornou um padrão, mas nós modificamos pesadamente porque 'nosso time é especial'."
 - **Risco**: Drift de padrões repositório; membros futuros confusos; mais difícil manter.
 - **Prevenção**: Use saídas de Agente como-estão a menos que haja exceção documentada. Solicite revisão de Roadmap Steward antes de customizar.
 
 **Anti-Padrão 4: "Assumindo o Sistema é Hands-Off"**
+
 - **Parece**: "Configuramos Zero Inertia Command e assumimos que rodaria sozinho."
 - **Risco**: Agentes precisam de portões humanos (aprovação, confirmação de escopo, alinhamento estratégico). Portões faltando causam escopo fugindo.
 - **Prevenção**: Trate Roadmap Steward como conselheiro estratégico, não um robô. Revise descobertas; aprove conscientemente.
 
 **Anti-Padrão 5: "Drift de Registry"**
+
 - **Parece**: "Criamos novo agente localmente mas não o registramos."
 - **Risco**: Outros agentes não sabem sobre ele; descoberta de ativos falha; documentação fica velha.
 - **Prevenção**: Sempre execute Registry Governor após Asset Factory. Faça sincronização de registry uma parte não-negociável do fluxo de trabalho.
@@ -742,15 +759,19 @@ SENÃO: Avalie prontidão de avanço
 ### Diretrizes de Gestão de Risco
 
 **Risco Operacional**: Practices de governança quebram; time para de usar agentes/padrões.
+
 - **Mitigação**: Execute Varreduras de Maturidade mensalmente (não ad-hoc). Torne adoção visível (métricas: uso de agente, aderência de padrão). Treine novos membros do time explicitamente.
 
 **Risco Técnico**: Novo agente ou padrão tem baixa qualidade; time acha não confiável.
+
 - **Mitigação**: Asset Factory sempre inclui revisão independente. Evals validam saídas de agente. Nunca envie agentes não-testados.
 
 **Risco Organizacional**: Governança parece burocracia; time resiste.
-- **Mitigação**: Foque em *benefício*, não *conformidade*. Agentes economizam tempo; padrões reduzem argumentos. Meça resultados (revisões mais rápidas, menos bugs, onboarding mais suave).
+
+- **Mitigação**: Foque em _benefício_, não _conformidade_. Agentes economizam tempo; padrões reduzem argumentos. Meça resultados (revisões mais rápidas, menos bugs, onboarding mais suave).
 
 **Risco de Timeline**: Avanço leva mais que esperado; time fica desmoralizado.
+
 - **Mitigação**: Quebre avanço em marcos menores. Celebre vitórias. Seja realista sobre timelines (8 semanas por nível não é um sprint; é um quarter).
 
 ---
@@ -759,40 +780,45 @@ SENÃO: Avalie prontidão de avanço
 
 ### Indicadores-Chave de Performance (KPIs) Por Nível
 
-| KPI | Nível 1 | Nível 2 | Nível 3 | Nível 4 | Nível 5 |
-|-----|---------|---------|---------|---------|---------|
-| **Tempo de Varredura de Maturidade** | N/A | N/A | 15 min | 15 min | 15 min |
-| **Atualidade de Artefato** | ≥1 mês | ≥2 sem | ≥1 sem | ≥3 dias | Diário |
-| **Precisão de Auditoria** | Spot-check manual | Manual | Semi-auto | Auto completa | Contínua |
-| **Ciclo de Identificação de Lacunas** | Manual (semanas) | Manual (semanas) | Semi-auto (dias) | Full-auto (horas) | Tempo real |
-| **Ciclo de Criação de Ativos** | 2–4 sem | 1–2 sem | 3–5 dias | 1–2 dias | Horas |
-| **Taxa de Adoção do Time** | 100% (obrigatório) | 100% | 80%+ | 80%+ | 90%+ |
-| **Coerência de Registry** | Check manual | Check manual | Semi-auto | Automatizado | Tempo real |
-| **Atrito de Onboarding** | Alto (30 min) | Médio (20 min) | Baixo (10 min) | Mínimo (5 min) | Zero (auto) |
+| KPI                                   | Nível 1            | Nível 2          | Nível 3          | Nível 4           | Nível 5     |
+| ------------------------------------- | ------------------ | ---------------- | ---------------- | ----------------- | ----------- |
+| **Tempo de Varredura de Maturidade**  | N/A                | N/A              | 15 min           | 15 min            | 15 min      |
+| **Atualidade de Artefato**            | ≥1 mês             | ≥2 sem           | ≥1 sem           | ≥3 dias           | Diário      |
+| **Precisão de Auditoria**             | Spot-check manual  | Manual           | Semi-auto        | Auto completa     | Contínua    |
+| **Ciclo de Identificação de Lacunas** | Manual (semanas)   | Manual (semanas) | Semi-auto (dias) | Full-auto (horas) | Tempo real  |
+| **Ciclo de Criação de Ativos**        | 2–4 sem            | 1–2 sem          | 3–5 dias         | 1–2 dias          | Horas       |
+| **Taxa de Adoção do Time**            | 100% (obrigatório) | 100%             | 80%+             | 80%+              | 90%+        |
+| **Coerência de Registry**             | Check manual       | Check manual     | Semi-auto        | Automatizado      | Tempo real  |
+| **Atrito de Onboarding**              | Alto (30 min)      | Médio (20 min)   | Baixo (10 min)   | Mínimo (5 min)    | Zero (auto) |
 
 ### O Que "Sucesso" Parece Em Cada Nível
 
 **Sucesso Nível 1**:
+
 - Novo membro do time consegue clonar repo e ter setup local em <30 minutos
 - Regras de contribuição são cristalinas; zero PRs rejeitadas por "intenção pouco clara"
 - Conformidade legal e de licença estão em ordem; sem ambiguidade
 
 **Sucesso Nível 2**:
+
 - Cada PR é testado automaticamente antes de revisão humana
 - Zero PRs mescladas com testes falhando ou violações de estilo
 - Triagem (labeling, roteamento) é 80% automatizada; humanos focam em decisões, não classificação
 
 **Sucesso Nível 3**:
+
 - Agentes são confiáveis em fazer recomendações; time age nelas sem debate
 - Novos padrões são adotados dentro de 1 sprint; sem "faremos à nossa forma"
 - Criação de ativos é repetível; mesmo agente invocado para problemas similares produz qualidade similar
 
 **Sucesso Nível 4**:
+
 - Cada mudança é rastreável a decisão; governança é auditável
 - Varreduras de Maturidade revelam sem surpresas; descobertas são consistentes semana-a-semana
 - Melhoria contínua requer zero orquestração manual; agentes invocam outros agentes automaticamente
 
 **Sucesso Nível 5**:
+
 - Repositório melhora sem direção humana explícita; roadmap avança autonomamente
 - Documentação multi-idioma fica sincronizada automaticamente
 - Novos padrões e agentes emergem em resposta a sinais do time (contratação, feedback de mercado) com zero esforço manual
@@ -851,7 +877,7 @@ Por favor, faça auditoria do estado atual e forneça:
 2. Lacunas de capacidade, classificadas por impacto
 3. Um comando master para implementar o gap de prioridade máxima
 
-Contexto: 
+Contexto:
 [Tamanho do Time]: 1–2 engenheiros (solo/pequeno time, responsabilidades compartilhadas)
 [Stack de Tecnologia]: Poliglota (agentes são agnósticos de tecnologia; evals variam por domínio)
 [Timeline]: 6–12 meses para amadurecer. Sem prazo rígido.
@@ -866,16 +892,19 @@ Por favor, formate a resposta como:
 ### Investimento de Tempo Esperado
 
 **Antes de varredura (setup)**: 5 minutos
+
 - Abrir Copilot Chat
 - Colar comando
 - Aguardar resposta (geralmente <2 minutos)
 
 **Revisando descobertas (leitura)**: 15 minutos
+
 - Ler Relatório de Auditoria (5 min)
 - Entender Análise de Lacunas (5 min)
 - Visualizar Comando Master (5 min)
 
 **Decidindo próximos passos (pensamento)**: 10 minutos
+
 - Concordo com prioridades? (Sim/Não/Discutir)
 - Tenho capacidade? (Sim/Não/Adiar)
 - Algum bloqueador? (Sim/Não/Escalar)
@@ -896,22 +925,27 @@ Você receberá um documento estruturado (geralmente 2–4 páginas) com:
 ### Próximos Passos Após Primeira Varredura
 
 **Passo 1: Compartilhe com time** (se relevante)
+
 - Encaminhe descobertas para qualquer pessoa afetada pelas recomendações
 - Discuta: "Concordamos com essa prioridade? Temos capacidade?"
 
 **Passo 2: Aprove escopo**
+
 - Decida: "Estamos avançando ou aprofundando?"
 - Decida: "Qual fase do Comando Master devemos executar primeiro?"
 
 **Passo 3: Execute Comando Master** (ou planeje para próximo sprint)
+
 - Se há capacidade: Cole Fase 1 imediatamente
 - Se não há capacidade: Agende Fase 1 para próximo sprint, documente decisão
 
 **Passo 4: Após Fase 1 ser concluída, continue para Fase 2 e Fase 3**
+
 - Fase 2: Registry Governor gerencia sincronização de registry
 - Fase 3: Passo de validação (garanta que tudo está coerente)
 
 **Passo 5: Mescla & celebre**
+
 - Revise PR
 - Mescle para main
 - Execute próxima varredura em 1 semana (para validar que ciclo funciona)
@@ -933,7 +967,7 @@ Você receberá um documento estruturado (geralmente 2–4 páginas) com:
 3. **Override silenciosamente**: (Não recomendado, mas acontece.)
    - Você pode escolher trabalhar em algo diferente. Mas você perde rastreabilidade: próxima Varredura de Maturidade pode superficializar a mesma lacuna novamente.
 
-**Melhor prática**: Se discordar, discuta *por quê*. Geralmente, Roadmap Steward tem motivos orientados por dados (ex: "X bloqueia 3 agentes; Y bloqueia 0"). Documente seu override no arquivo MEMORY.md para que você e o time futuro saibam por quê.
+**Melhor prática**: Se discordar, discuta _por quê_. Geralmente, Roadmap Steward tem motivos orientados por dados (ex: "X bloqueia 3 agentes; Y bloqueia 0"). Documente seu override no arquivo MEMORY.md para que você e o time futuro saibam por quê.
 
 ### "Como Priorizo Entre Lacunas Competindo?"
 
@@ -971,14 +1005,17 @@ Você reordena como:
 ### "E se Capacidade Do Time Está Baixa?"
 
 **Opção 1: Adie o sprint**
+
 - Não execute sprint se não tem capacidade para executá-lo. Espere 2–3 semanas.
 - Execute Varredura de Maturidade novamente naquele tempo.
 
 **Opção 2: Reduza escopo**
+
 - Peça ao Roadmap Steward sugerir "mini-sprint" (só 1 item, <1 semana esforço).
 - Execute aquilo, depois reavalie.
 
 **Opção 3: Contrate ou delegue**
+
 - Se governança está bottlenecking você, considere contratar especialista (até tempo parcial) para focar em agentes/padrões.
 - Ou nomeie membro do time para dono de governança por um sprint.
 
@@ -1005,7 +1042,7 @@ Você reordena como:
 
 **Sintoma**: "Estamos usando agentes há 3 semanas; vamos avançar para Nível 4!"
 
-**Problema**: Avançar sem 8+ semanas no nível atual significa pular o processo de *refinar* agentes, provar seu valor, treinar o time.
+**Problema**: Avançar sem 8+ semanas no nível atual significa pular o processo de _refinar_ agentes, provar seu valor, treinar o time.
 
 **Resultado**: Automação do Nível 4 (auditoria contínua, arquivos de missão) se sente como trabalho temporário. Adoção falha; você fica preso com overhead.
 
@@ -1029,17 +1066,18 @@ Você reordena como:
 
 **Resultado**: Padrões perdem autoridade. Novas pessoas seguem padrão custom, não oficial. Governança erode.
 
-**Prevenção**: Use saídas de Agente como-estão. Se precisa customizar, discuta com time *primeiro* e Roadmap Steward. Documente exceções claramente.
+**Prevenção**: Use saídas de Agente como-estão. Se precisa customizar, discuta com time _primeiro_ e Roadmap Steward. Documente exceções claramente.
 
 ### Pegadinha 4: Assumindo o Sistema é Totalmente Automatizado
 
 **Sintoma**: "Configuramos Zero Inertia Command e agora o sistema deve rodar sozinho, certo?"
 
-**Problema**: Zero Inertia remove *trabalho repetitivo* (scaneamento, análise), mas não remove *decisões estratégicas* (o que priorizar, se avançar, como lidar com riscos).
+**Problema**: Zero Inertia remove _trabalho repetitivo_ (scaneamento, análise), mas não remove _decisões estratégicas_ (o que priorizar, se avançar, como lidar com riscos).
 
 **Resultado**: Escopo cresce. Agentes propõem muito; nada enviam. Ou decisões tomadas sem input humano; resistência organizacional cresce.
 
 **Prevenção**: Trate Roadmap Steward como conselheiro estratégico. Você sempre está no loop de decisão:
+
 - Você aprova escopo antes Asset Factory começar
 - Você revisa descobertas antes agir
 - Você decide "avançar ou aprofundar" baseado em seu contexto
@@ -1063,6 +1101,7 @@ Você reordena como:
 **Resultado**: Análise de Lacunas se sente irrelevante. Você não implementa recomendações. Sistema parece quebrado.
 
 **Prevenção**: Sempre inclua contexto no comando de varredura:
+
 - Tamanho e composição do time
 - Stacks e domínios de tecnologia
 - Prioridades estratégicas (contratação? expansão? estabilização?)
@@ -1089,7 +1128,7 @@ Cada ativo criado através Zero Inertia Command segue este portão. Você não t
 
 ### Conexão com `agent-mission-protocol.md`
 
-[agent-mission-protocol.md](.github/standards/agent-mission-protocol.md) define como agentes delegam para outros agentes.
+[agent-mission-protocol.md](../../library/standards/agent-mission-protocol.md) define como agentes delegam para outros agentes.
 
 Zero Inertia Command é orquestrado através arquivos de missão:
 
@@ -1098,19 +1137,47 @@ Zero Inertia Command é orquestrado através arquivos de missão:
 - **Fase 3**: Registry Governor valida e relata de volta
 
 Cada arquivo de missão inclui:
+
 - Agentes pai e filho
 - Objetivo (o que construir e por quê)
 - Links de contexto (arquivos para ler)
 - Critérios de sucesso (testáveis)
 - Payload de resultado (estrutura de saída esperada)
 
-Essa rastreabilidade significa você sempre sabe *por quê* um agente fez uma decisão.
+Essa rastreabilidade significa você sempre sabe _por quê_ um agente fez uma decisão.
+
+### Conformidade do Mission Protocol (Gate de PR)
+
+O repositório aplica o Mission Protocol em pull requests via CI.
+
+Se seu PR tiver alterações não triviais (`agents/**`, `prompts/**`, `docs/**`, `library/**`, `standards/**`, `instructions/**`, `stacks/**`, `.github/**`, `README*`, `registry.json`, `ROADMAP.md`, `structure.md`), você deve:
+
+1. Criar ou atualizar um mission file em `.github/MISSIONS/` (excluindo `README.md` e `_template.md`).
+2. Preencher todos os campos obrigatórios com chaves exatas e valores não vazios:
+   - `Parent_Agent`
+   - `Child_Agent`
+   - `Mission_Objective`
+   - `Context_Links`
+   - `Success_Criteria`
+   - `Result_Payload`
+3. Incluir a alteração do mission file no mesmo PR.
+4. Usar um mission file por hop de delegação (um valor de `Child_Agent`). Para delegação aninhada, criar novo mission file.
+5. Rodar validação local antes de abrir o PR:
+   - `bash .github/scripts/validate-mission-protocol.sh`
+
+Comportamento do CI:
+
+- **PASS**: PR não trivial com mission file válido alterado.
+- **FAIL**: PR não trivial sem mission file válido.
+
+Observação: PRs que alteram apenas `.github/MISSIONS/**` são tratados como triviais por este gate.
 
 ### Conexão com `governance-maturity-model.md`
 
 [governance-maturity-model.md](library/standards/governance-maturity-model.md) é o **framework de referência** para todas Varreduras de Maturidade.
 
 Roadmap Steward usa o modelo para:
+
 - Avaliar seu nível atual
 - Identificar o que é necessário para amadurecer o nível atual
 - Recomendar se aprofunda ou avança
@@ -1123,6 +1190,7 @@ Você entende o modelo, então entende resultados de varredura.
 [MEMORY.md](library/github-baseline/MEMORY.md) rastreia decisões operacionais e lições aprendidas.
 
 Após cada Varredura de Maturidade, você (ou Roadmap Steward) deve registrar:
+
 - Descobertas (o que foi descoberto)
 - Decisão (o que você escolheu fazer e por quê)
 - Impacto (o que mudou como resultado)
@@ -1143,7 +1211,7 @@ Isto cria memória persistente de sua evolução de governança. Você futuro po
 @roadmap-steward
 
 Estamos no Nível 3 há 3 meses. Agentes são estáveis; padrões são seguidos.
-Queremos avançar para Nível 4 (Auto-Auditável) para melhorar visibilidade de governança 
+Queremos avançar para Nível 4 (Auto-Auditável) para melhorar visibilidade de governança
 e habilitar melhoria contínua.
 
 Por favor, faça auditoria:
@@ -1174,7 +1242,7 @@ Dependências para Nível 4:
 3. Auditoria Contínua (varreduras semanais, não manuais) — NÃO AINDA IMPLEMENTADO
 
 Recomendação: AVANCE PARA NÍVEL 4
-Timeline: 6–8 semanas (sprint de transição para implementar arquivos de missão, 
+Timeline: 6–8 semanas (sprint de transição para implementar arquivos de missão,
           depois estado estacionário com auditorias semanais)
 
 Comando Master:
@@ -1335,7 +1403,7 @@ SEMANA 1: Varredura de Maturidade
   Seg:   Execute Zero Inertia Command (15 min)
   Ter:   Revise descobertas; aprove escopo (30 min)
   Qua–Sex: Implemente Fase 1 (Asset Factory)
-  
+
 SEMANA 2: Asset Factory + Registry Governor
   Seg:   Revise saída Fase 1; aprove ou itere
   Ter–Qui: Execute Fase 2 & 3 (Registry, validação)
@@ -1344,7 +1412,7 @@ SEMANA 2: Asset Factory + Registry Governor
 SEMANA 3: Monitorar & Estabilizar
   Seg:   Execute validação rápida (novo ativo está sendo usado?)
   Resto: Time usa novo agente/padrão em trabalho real
-  
+
 SEMANA 4: Preparação Para Próximo Ciclo
   Seg:   Execute próxima Varredura de Maturidade
   Repetir
@@ -1357,25 +1425,29 @@ SEMANA 4: Preparação Para Próximo Ciclo
 Zero Inertia Command é **progressivo**:
 
 **Hoje (Nível 3)**:
+
 - Você executa varreduras manualmente
 - Você revisa e aprova descobertas
 - Você invoca agentes
 - Você mescla PRs
 
 **Depois (Nível 4)**:
+
 - Você executa varreduras manualmente (mesmo)
 - Agentes sugerem próximos itens mais inteligentemente
 - Agentes criam missões automaticamente
 - Você revisa e aprova (menos overhead que antes)
 
 **Eventualmente (Nível 5)**:
+
 - Varreduras correm continuamente (rodam semanalmente automaticamente)
 - Roadmap avança baseado em sinais do time (contratação, feedback)
 - Novos agentes e padrões emergem em resposta a sinais
 - Você revisa resultados, não entradas
-- O repositório *evolui a si mesmo*
+- O repositório _evolui a si mesmo_
 
 **Você não precisa fazer nada diferente.** Conforme você avança níveis, o sistema naturalmente fica mais autônomo porque:
+
 - Mais automação está em lugar (auditoria de Nível 4)
 - Mais histórico existe (decisões são rastreáveis)
 - Mais padrões são estáveis (padrões são comprovados)
@@ -1413,7 +1485,7 @@ Revisitar este documento quando:
 - [Agente Roadmap Steward](.github/agents/roadmap-steward.agent.md) — Especificação de agente e fluxos
 - [Agente Asset Factory](.github/agents/asset-factory.agent.md) — Como novos ativos são criados
 - [Agente Registry Governor](.github/agents/registry-schema-governor.agent.md) — Como registry é gerenciado
-- [Protocolo de Missão de Agente](../library/standards/agent-mission-protocol.md) — Padrão de rastreabilidade de delegação
+- [Protocolo de Missão de Agente](../../library/standards/agent-mission-protocol.md) — Padrão de rastreabilidade de delegação
 - [Instruções de Copilot](.github/copilot-instructions.md) — Fluxo obrigatório para todas mudanças
 - [MEMORY.md](../library/github-baseline/MEMORY.md) — Rastreamento de decisão operacional
 

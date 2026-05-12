@@ -8,6 +8,8 @@ This folder contains intentionally flawed artifacts used to measure whether an a
 
 For `project-auditor`, the goal is simple: detect all critical findings in `case-01-bad-code.php` before any agent update is accepted.
 
+For the current governance batches, the goal is to expand coverage for `asset-factory`, `repo-architect`, `asset-review-board`, `documentation-steward`, `prompt-studio`, and `context-steward`, while tracking remaining pending agents explicitly.
+
 ---
 
 ## Structure
@@ -40,19 +42,26 @@ library/evals/
 
 ## Coverage Matrix
 
-| agent                    | case_count | enforced_case_count | draft_case_count | status |
-| ------------------------ | ---------- | ------------------- | ---------------- | ------ |
-| project-auditor          | 3          | 1                   | 2                | draft  |
-| security-infra-expert    | 2          | 0                   | 2                | draft  |
-| laravel-expert           | 2          | 0                   | 2                | draft  |
-| vue-architect            | 2          | 0                   | 2                | draft  |
-| registry-schema-governor | 2          | 0                   | 2                | draft  |
-| asset-factory            | 2          | 0                   | 2                | draft  |
+| agent                    | case_count | enforced_case_count | draft_case_count | status  |
+| ------------------------ | ---------- | ------------------- | ---------------- | ------- |
+| project-auditor          | 3          | 1                   | 2                | draft   |
+| security-infra-expert    | 2          | 0                   | 2                | draft   |
+| laravel-expert           | 2          | 0                   | 2                | draft   |
+| vue-architect            | 2          | 0                   | 2                | draft   |
+| registry-schema-governor | 2          | 0                   | 2                | draft   |
+| asset-factory            | 2          | 0                   | 2                | draft   |
+| repo-architect           | 2          | 0                   | 2                | draft   |
+| issue-ops-architect      | 0          | 0                   | 0                | pending |
+| asset-review-board       | 2          | 0                   | 2                | draft   |
+| documentation-steward    | 2          | 0                   | 2                | draft   |
+| prompt-studio            | 2          | 0                   | 2                | draft   |
+| context-steward          | 2          | 0                   | 2                | draft   |
 
 Status policy:
 
 - `draft`: case exists and is ready for trial runs, but not yet enforced as release gate.
 - `active`: case is enforced as mandatory gate for related agent updates.
+- `pending`: folder exists but no materialized eval fixture yet.
 - `mixed`: not used as a table value; captured via `enforced_case_count` vs `draft_case_count`.
 
 ---
