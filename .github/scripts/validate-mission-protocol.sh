@@ -108,10 +108,37 @@ fi
 
 INVALID_COUNT=0
 
+resolve_python_cmd() {
+    if command -v python3 >/dev/null 2>&1; then
+        echo "python3"
+        return
+    fi
+    
+    if command -v python >/dev/null 2>&1; then
+        echo "python"
+        return
+    fi
+    
+    if command -v py >/dev/null 2>&1; then
+        echo "py -3"
+        return
+    fi
+    
+    echo ""
+}
+
+PYTHON_CMD="$(resolve_python_cmd)"
+
+if [ -z "$PYTHON_CMD" ]; then
+    echo "MISSION_PROTOCOL|FAIL|python-runtime-not-found|checked=python3,python,py -3"
+    exit 1
+fi
+
 validate_file() {
     local file_path="$1"
     
-    python3 - "$file_path" <<'PYEOF'
+    # shellcheck disable=SC2086
+    $PYTHON_CMD - "$file_path" <<'PYEOF'
 import re
 import sys
 
