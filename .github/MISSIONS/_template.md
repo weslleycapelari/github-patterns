@@ -6,9 +6,13 @@ Mission_Objective: <single objective statement>
 Context_Links:
 
 - <file/path/or/url>
-  Success_Criteria:
+
+Success_Criteria:
+
 - <testable criterion>
-  Result_Payload:
+
+Result_Payload:
+
 - <expected output artifact or evidence>
 
 > Note: Use one mission file per delegation hop. For nested delegations, create a new mission file.
