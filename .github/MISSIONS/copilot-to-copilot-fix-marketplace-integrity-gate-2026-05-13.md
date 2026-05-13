@@ -2,7 +2,7 @@ Parent_Agent: copilot
 Child_Agent: copilot
 Mission_Objective: Resolve Marketplace Integrity workflow failure for this PR by satisfying the mission protocol gate for the non-trivial change in .github/scripts/validate-registry-paths.sh.
 Context_Links:
-  - PR #2 (fix bash heredoc parsing in registry path validation script)
+  - Current pull request branch: copilot/fix-syntax-error-validate-registry-paths
   - Workflow: Marketplace Integrity
   - Trigger file: .github/scripts/validate-registry-paths.sh
 Success_Criteria:
