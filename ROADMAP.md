@@ -2,15 +2,15 @@
 
 > This file is maintained by the `@roadmap-steward` agent. Do not edit manually unless updating strategic direction. See [Manual Edit Policy](#manual-edit-policy) below.
 
-## 🗓️ Current Sprint (MVP 1.9.x → 2.0.0)
+## ✅ Completed Sprint (N4 Hardening — 2026-05-12 to 2026-05-26)
 
-| Task                                          | Priority | Status      | Acceptance Criteria                                                                                                                                     |
-| --------------------------------------------- | -------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Enforce Mission Protocol + Traceability Gate  | High     | Not Started | 100% dos PRs não triviais exigem Mission File válido em `.github/MISSIONS/` com campos exatos do protocolo; merge bloqueado quando ausente ou inválido. |
-| Continuous Governance Audit (Project Auditor) | High     | Not Started | Auditor roda em todo merge para `main`, publica relatório com severidade e sinais de observabilidade; 0 artefatos órfãos na execução do gate.           |
-| Evals Coverage for Major Agents (≥80%)        | Medium   | Not Started | Cobertura de evals ≥80% por agente majoritário (ao menos 1 suíte por agente); PR falha quando cobertura cair abaixo do baseline aprovado.               |
+| Task                                       | Priority | Status | Owner              | Acceptance Criteria                                                                                                                                      |
+| ------------------------------------------ | -------- | ------ | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Close Eval Coverage Gap for Core Agents    | High     | Done   | `@asset-factory`   | Cobertura de diretórios em `library/evals/` suba de 78.6% (11/14) para ≥90% (≥13/14). Agentes: `agent-factory`, `issue-ops-architect`, `rule-distiller`. |
+| Operationalize Continuous Governance Audit | High     | Done   | `@project-auditor` | PR audit workflow gera resumo com gaps por severidade; falha em severidade Alta. Relatório em CI visível e acionável.                                    |
+| Activate Decision Memory Routine           | Medium   | Done   | `@context-steward` | `library/github-baseline/MEMORY.md` recebe ≥2 entradas reais do sprint com template correto (ID, data, owner, impacto, evidência).                       |
 
-**Context**: These sprints build on [foundations](#completed-work) and advance toward version 2.0 governance model.
+**Context**: This sprint closes the maturity gap between Level 3 (AI-Driven) and Level 4 (Self-Auditable). Success unblocks backlog and reduces rework. See [Mission File](.github/MISSIONS/roadmap-2026-05-12-sprint-n4-hardening.md) for details.
 
 ---
 
