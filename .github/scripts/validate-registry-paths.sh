@@ -55,8 +55,8 @@ for p in extract_paths(data):
     print(p)
 PYEOF
 then
-  echo "ERROR: Path extractor (python3) failed. Check that Python 3 is available and registry.json is valid JSON." >&2
-  exit 1
+    echo "ERROR: Path extractor (python3) failed. Check that Python 3 is available and registry.json is valid JSON." >&2
+    exit 1
 fi
 
 mapfile -t PATHS <"$TMPFILE"
