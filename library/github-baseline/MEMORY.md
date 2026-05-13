@@ -55,6 +55,16 @@ Keep a lightweight, auditable memory of operational facts shared across human an
 
 <!-- Add new entries at the top -->
 
+- **ID:** MEM-20260513-01
+- **Date:** 2026-05-13
+- **Owner:** roadmap-steward
+- **Record:** Sprint N5 (Locale Sync & L4 Stabilization) approved. Post-N4 audit identified PT-BR desincronizado (stale L4 references, typos em espanhol). Sync automation never operationalized. N5 scope: 3 tasks — sync PT-BR, update docs, operationalize CI validation. Target: 2026-06-09. Mission file created.
+- **Impact:** Documentação será confiável e em sync; locale drift automation evita acúmulo futuro; L4 status refletido corretamente.
+- **Evidence/Link:** `.github/MISSIONS/roadmap-2026-05-26-sprint-n5-locale-sync.md` ; audit report inline em conversation
+- **Status:** active
+
+---
+
 - **ID:** MEM-20260512-03
 - **Date:** 2026-05-12
 - **Owner:** asset-factory (sprint N4 Hardening)

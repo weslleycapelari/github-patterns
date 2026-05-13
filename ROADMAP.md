@@ -2,34 +2,39 @@
 
 > This file is maintained by the `@roadmap-steward` agent. Do not edit manually unless updating strategic direction. See [Manual Edit Policy](#manual-edit-policy) below.
 
-## ✅ Completed Sprint (N4 Hardening — 2026-05-12 to 2026-05-26)
+## 🗓️ Current Sprint (N5 — Locale Sync & L4 Stabilization — 2026-05-26 to 2026-06-09)
 
-| Task                                       | Priority | Status | Owner              | Acceptance Criteria                                                                                                                                      |
-| ------------------------------------------ | -------- | ------ | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Close Eval Coverage Gap for Core Agents    | High     | Done   | `@asset-factory`   | Cobertura de diretórios em `library/evals/` suba de 78.6% (11/14) para ≥90% (≥13/14). Agentes: `agent-factory`, `issue-ops-architect`, `rule-distiller`. |
-| Operationalize Continuous Governance Audit | High     | Done   | `@project-auditor` | PR audit workflow gera resumo com gaps por severidade; falha em severidade Alta. Relatório em CI visível e acionável.                                    |
-| Activate Decision Memory Routine           | Medium   | Done   | `@context-steward` | `library/github-baseline/MEMORY.md` recebe ≥2 entradas reais do sprint com template correto (ID, data, owner, impacto, evidência).                       |
+| Task                                            | Priority | Status      | Owner                    | Acceptance Criteria                                                                                                                    |
+| ----------------------------------------------- | -------- | ----------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Execute sync-locales & Validate PT-BR Coherence | High     | Not Started | `@documentation-steward` | Nenhuma divergência EN ↔ PT-BR; "Ejecute" → "Execute"; referências de maturity atualizadas; sync declaration adicionada a docs.        |
+| Update Governance Docs to Reflect L4 Status     | High     | Not Started | `@documentation-steward` | governance-maturity-model.md, zero-inertia-command.md, ROADMAP.md mostram L4 como "In Progress"; timestamp e decision log adicionados. |
+| Operationalize Locale Sync Validation in CI     | Medium   | Not Started | `@project-auditor`       | Novo step no marketplace-integrity.yml ou workflow; valida locale sync; bloqueia PR sem declaração válida; teste manual confirmado.    |
 
-**Context**: This sprint closes the maturity gap between Level 3 (AI-Driven) and Level 4 (Self-Auditable). Success unblocks backlog and reduces rework. See [Mission File](.github/MISSIONS/roadmap-2026-05-12-sprint-n4-hardening.md) for details.
+**Context**: Stabilizing Level 4 (Self-Auditable) by eliminating locale drift and automating sync validation. Post-N4 audit identified PT-BR gaps and automation missing. See [Mission File](.github/MISSIONS/roadmap-2026-05-26-sprint-n5-locale-sync.md) for details.
+
+---
+
+## ✅ Completed Work
+
+### Sprint N4 Hardening (2026-05-12 to 2026-05-26)
+
+- **Close Eval Coverage Gap for Core Agents** (High, Done): Cobertura suba de 78.6% para 100%; 6 evals criadas (AGFAC-01/02, IOA-01/02, RD-01/02) + 3 HIGH findings corrigidos.
+- **Operationalize Continuous Governance Audit** (High, Done): Step `Governance Audit — Eval Coverage Report (PR)` adicionada a marketplace-integrity.yml; relatório em CI visível e acionável.
+- **Activate Decision Memory Routine** (Medium, Done): MEMORY.md recebe 3 entradas (MEM-20260512-01/02/03) documentando decisões do sprint.
 
 ---
 
 ## 📝 Backlog (Future Sprints)
 
-### Stack Expansion (Swift) — Deferred until Level 4 Stability
+### Stack Expansion (Swift) — Deferred until Level 4 Stability (N6+)
 
-- **Rationale**: Evitar dispersão antes da maturidade Self-Auditable.
-- **Entry Gate**: Somente iniciar após 2 ciclos de sprint com gates de missão/auditoria estáveis e sem regressão crítica.
+- **Rationale**: Evitar dispersão antes da maturidade Self-Auditable consolidada.
+- **Entry Gate**: Iniciar após 2 ciclos completos pós-L4 (N5 + N6) com zero regressões críticas em gates de missão/auditoria.
 
-### Locale Sync Automation (en ↔ pt-br)
-
-- **Rationale**: Reforçar qualidade documental após estabilização dos gates de governança.
-- **Entry Gate**: PR deve manter declaração de sync (`en_status`, `pt_br_status`, `pending_sync_tasks`) validada em CI.
-
-### Technical Documentation Automation
+### Technical Documentation Automation (N6+)
 
 - **Rationale**: Reduzir esforço manual recorrente em onboarding e manutenção documental.
-- **Entry Gate**: Executar somente após cobertura de evals ≥80% sustentada por 2 ciclos.
+- **Entry Gate**: Executar após N5 completo e locale sync automation validada em 2 ciclos.
 
 ---
 
