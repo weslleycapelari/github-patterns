@@ -18,7 +18,7 @@
 
 ### Sprint N4 Hardening (2026-05-12 to 2026-05-26)
 
-- **Close Eval Coverage Gap for Core Agents** (High, Done): Cobertura suba de 78.6% para 100%; 6 evals criadas (AGFAC-01/02, IOA-01/02, RD-01/02) + 3 HIGH findings corrigidos.
+- **Close Eval Coverage Gap for Core Agents** (High, Done): Cobertura subiu de 78.6% para 100%; 6 evals criadas (AGFAC-01/02, IOA-01/02, RD-01/02) + 3 HIGH findings corrigidos.
 - **Operationalize Continuous Governance Audit** (High, Done): Step `Governance Audit — Eval Coverage Report (PR)` adicionada a marketplace-integrity.yml; relatório em CI visível e acionável.
 - **Activate Decision Memory Routine** (Medium, Done): MEMORY.md recebe 3 entradas (MEM-20260512-01/02/03) documentando decisões do sprint.
 

@@ -45,7 +45,7 @@ Result_Payload:
 | Sobrecarga operacional em time small              | Média      | Critérios binários em CI; não exigir perfeccionismo em evals de primeira versão. |
 | Cobertura de evals pode ser genérica inicialmente | Média      | Review gate obrigatório; iteração rápida em ciclo seguinte com feedback real.    |
 | MEMORY.md requer disciplina contínua              | Baixa      | Atribuir ownership ao context-steward; review semanal enxuta (15 min max).       |
-| Auditoria pode gerar falsos positivos             | Média      | Usar regras simples na primeira versão; refinar baseado em experience.           |
+| Auditoria pode gerar falsos positivos             | Média      | Usar regras simples na primeira versão; refinar baseado em experiência.           |
 
 ---
 

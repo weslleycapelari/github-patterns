@@ -146,7 +146,9 @@ jobs:
 
               cases = [
                   f for f in os.listdir(agent_dir)
-                  if f.endswith(".md") and f != ".gitkeep"
+                  if os.path.isfile(os.path.join(agent_dir, f))
+                  and f.startswith("case-")
+                  and f != ".gitkeep"
                   and not f.startswith("README")
               ]
               count = len(cases)

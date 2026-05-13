@@ -5,6 +5,26 @@
 **Duration:** 2026-05-26 to 2026-06-09 (2 weeks)  
 **Status:** Approved & Active
 
+Parent_Agent: roadmap-steward
+Child_Agent: documentation-steward
+Mission_Objective: Stabilize Level 4 (Self-Auditable) by eliminating locale drift between English and Portuguese documentation, operationalizing sync automation in CI, and updating governance docs to reflect current maturity status.
+Context_Links:
+- ROADMAP.md
+- .github/MISSIONS/roadmap-2026-05-12-sprint-n4-hardening.md
+- .github/workflows/marketplace-integrity.yml
+- library/github-baseline/MEMORY.md
+Success_Criteria:
+- PT-BR documentation in sync with EN (0 content divergences)
+- Locale-specific issues corrected
+- Governance docs reflect L4 as "In Progress"
+- Locale sync validation in CI
+- PR declaration requirement for locale sync enforced
+Result_Payload:
+- List of divergences found and fixed
+- Updated governance documentation blocks
+- CI locale sync validation evidence
+- Decision log with traceable rationale
+
 ---
 
 ## Mission Objective
@@ -13,7 +33,7 @@ Stabilize **Level 4 (Self-Auditable)** by eliminating locale drift between Engli
 
 **Why This Matters:**
 
-- Post-N4 audit identified PT-BR desincronizado (typos in Spanish, stale L4 references)
+- Post-N4 audit identified documentação PT-BR dessincronizada (typos in Spanish, stale L4 references)
 - Sync automation (`sync-locales.prompt.md`) exists but was never operationalized
 - Docs claim "L4 is Next Goal" even though it's now "In Progress"
 - Without automated sync validation, drift will accumulate with every PR

@@ -51,7 +51,8 @@ library/evals/
 | registry-schema-governor | 2          | 0                   | 2                | draft   |
 | asset-factory            | 2          | 0                   | 2                | draft   |
 | repo-architect           | 2          | 0                   | 2                | draft   |
-| issue-ops-architect      | 0          | 0                   | 0                | pending |
+| issue-ops-architect      | 2          | 0                   | 2                | draft   |
+| rule-distiller           | 2          | 0                   | 2                | draft   |
 | asset-review-board       | 2          | 0                   | 2                | draft   |
 | documentation-steward    | 2          | 0                   | 2                | draft   |
 | prompt-studio            | 2          | 0                   | 2                | draft   |

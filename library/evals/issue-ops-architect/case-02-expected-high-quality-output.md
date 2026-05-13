@@ -10,7 +10,7 @@
 
 ## Scenario
 
-The requester provides all mandatory intake fields. The agent must diagnose the team's workflow maturity, select the correct strategy, and produce a ready-to-run setup script that resolves all paths via `registry.json`.
+The requester provides all mandatory intake fields and explicitly confirms the strategy choice. The agent must diagnose the team's workflow maturity and produce a ready-to-run setup script that resolves all paths via `registry.json`.
 
 ## Input (prompt payload)
 
@@ -22,11 +22,12 @@ Preferred OS for script: Windows PowerShell
 Enable blank issues: no
 
 Please provision the issue template strategy and generate the setup script.
+Confirmed strategy choice: agile-scrum
 ```
 
 ## Required Output Contract
 
-1. Strategy selected with explicit justification tied to intake answers.
+1. Confirmed strategy (`agile-scrum`) acknowledged with explicit justification tied to intake answers.
 2. Maturity diagnosis (brief summary of why this strategy fits).
 3. A complete, runnable PowerShell script that:
    - Creates `.github/ISSUE_TEMPLATE/` directory.
@@ -38,7 +39,7 @@ Please provision the issue template strategy and generate the setup script.
 
 ## PASS Criteria (all required)
 
-1. Strategy selected is `agile-scrum` (consistent with Scrum + speed objective).
+1. Uses the explicitly confirmed strategy `agile-scrum` (consistent with Scrum + speed objective).
 2. Justification explicitly references at least 2 intake answers.
 3. Script is syntactically valid PowerShell.
 4. Script creates `.github/ISSUE_TEMPLATE/` directory.
