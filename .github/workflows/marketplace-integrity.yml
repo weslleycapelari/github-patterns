@@ -114,3 +114,91 @@ jobs:
             echo ""
             echo "Use the Registry Schema Governor to transform sync output into ready-to-paste JSON snippets."
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Governance Audit — Eval Coverage Report (PR)
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 - <<'PYEOF'
+          import json
+          import os
+          import sys
+
+          EVALS_DIR = "library/evals"
+          REGISTRY_FILE = "registry.json"
+          SEVERITY_HIGH = "HIGH"
+          SEVERITY_MEDIUM = "MEDIUM"
+          SEVERITY_PASS = "PASS"
+
+          with open(REGISTRY_FILE, encoding="utf-8") as f:
+              registry = json.load(f)
+
+          registered_agents = list(registry.get("assets", {}).get("agents", {}).keys())
+
+          results = []
+          high_count = 0
+
+          for agent_id in sorted(registered_agents):
+              agent_dir = os.path.join(EVALS_DIR, agent_id)
+              if not os.path.isdir(agent_dir):
+                  results.append((agent_id, 0, SEVERITY_HIGH, "No eval directory found"))
+                  high_count += 1
+                  continue
+
+              cases = [
+                  f for f in os.listdir(agent_dir)
+                  if os.path.isfile(os.path.join(agent_dir, f))
+                  and f.startswith("case-")
+                  and f != ".gitkeep"
+                  and not f.startswith("README")
+              ]
+              count = len(cases)
+
+              has_bad_input = any("bad-input" in f for f in cases)
+              has_hq_output = any("expected-high-quality" in f or "high-quality" in f for f in cases)
+
+              if count == 0:
+                  severity = SEVERITY_HIGH
+                  note = "No eval cases"
+                  high_count += 1
+              elif not has_bad_input or not has_hq_output:
+                  severity = SEVERITY_MEDIUM
+                  note = f"{count} case(s) — missing {'bad-input' if not has_bad_input else 'expected-high-quality-output'}"
+              else:
+                  severity = SEVERITY_PASS
+                  note = f"{count} case(s) — covered"
+
+              results.append((agent_id, count, severity, note))
+
+          summary_lines = [
+              "### Governance Audit — Eval Coverage",
+              "",
+              f"| Agent | Cases | Severity | Note |",
+              f"|-------|-------|----------|------|",
+          ]
+          for agent_id, count, severity, note in results:
+              icon = "🔴" if severity == SEVERITY_HIGH else ("🟡" if severity == SEVERITY_MEDIUM else "✅")
+              summary_lines.append(f"| `{agent_id}` | {count} | {icon} {severity} | {note} |")
+
+          summary_lines += [
+              "",
+              f"**Total agents:** {len(registered_agents)} | **High gaps:** {high_count}",
+              "",
+          ]
+
+          if high_count > 0:
+              summary_lines.append(f"> ⛔ **{high_count} agent(s) have no eval coverage. Add eval cases to `library/evals/<agent-id>/` to resolve.**")
+
+          summary_text = "\n".join(summary_lines)
+          print(summary_text)
+
+          github_step_summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if github_step_summary:
+              with open(github_step_summary, "a", encoding="utf-8") as f:
+                  f.write("\n" + summary_text + "\n")
+
+          if high_count > 0:
+              print(f"\nAUDIT|FAIL|eval-coverage|high_gaps={high_count}", file=sys.stderr)
+              sys.exit(1)
+
+          print("AUDIT|PASS|eval-coverage|all-agents-covered")
+          PYEOF

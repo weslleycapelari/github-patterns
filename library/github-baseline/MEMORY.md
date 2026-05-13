@@ -55,6 +55,44 @@ Keep a lightweight, auditable memory of operational facts shared across human an
 
 <!-- Add new entries at the top -->
 
+- **ID:** MEM-20260513-01
+- **Date:** 2026-05-13
+- **Owner:** roadmap-steward
+- **Record:** Sprint N5 (Locale Sync & L4 Stabilization) approved. Post-N4 audit identified documentação PT-BR dessincronizada (stale L4 references, typos em espanhol). Sync automation never operationalized. N5 scope: 3 tasks — sync PT-BR, update docs, operationalize CI validation. Target: 2026-06-09. Mission file created.
+- **Impact:** Documentação será confiável e em sync; locale drift automation evita acúmulo futuro; L4 status refletido corretamente.
+- **Evidence/Link:** `.github/MISSIONS/roadmap-2026-05-26-sprint-n5-locale-sync.md` ; audit report inline em conversation
+- **Status:** active
+
+---
+
+- **ID:** MEM-20260512-03
+- **Date:** 2026-05-12
+- **Owner:** asset-factory (sprint N4 Hardening)
+- **Record:** Continuous governance audit (eval coverage) operationalised in `marketplace-integrity.yml`. New step runs on every PR: audits `library/evals/<agent-id>/` against registered agents, classifies gaps by severity (HIGH/MEDIUM/PASS), publishes table in PR Step Summary, and fails CI when any agent has zero eval cases.
+- **Impact:** Every PR that adds an agent without evals will fail CI immediately — eliminates silent eval debt.
+- **Evidence/Link:** `.github/workflows/marketplace-integrity.yml` — step `Governance Audit — Eval Coverage Report (PR)`
+- **Status:** active
+
+---
+
+- **ID:** MEM-20260512-02
+- **Date:** 2026-05-12
+- **Owner:** asset-factory (sprint N4 Hardening)
+- **Record:** Eval coverage for `agent-factory`, `issue-ops-architect`, and `rule-distiller` completed. Asset Review Board found 3 HIGH findings: (H1) missing "Title and Mission" section in AGFAC-02; (H2) false FAIL risk in IOA-02 for agent-spec-mandated registry fetch URL; (H3) non-deterministic section title (PT vs EN) in RD-02. All 3 corrected before merge.
+- **Impact:** Eval files now correctly reflect agent contracts. Prevents false positives in eval execution.
+- **Evidence/Link:** `library/evals/agent-factory/case-02-expected-high-quality-output.md`, `library/evals/issue-ops-architect/case-02-expected-high-quality-output.md`, `library/evals/rule-distiller/case-02-expected-high-quality-output.md`
+- **Status:** active
+
+---
+
+- **ID:** MEM-20260512-01
+- **Date:** 2026-05-12
+- **Owner:** roadmap-steward
+- **Record:** Sprint N4 Hardening initiated. Three priority objectives: (1) close eval gap for 3 agents, (2) operationalise PR governance audit, (3) activate MEMORY.md decision routine. Mission file created at `.github/MISSIONS/roadmap-2026-05-12-sprint-n4-hardening.md`.
+- **Impact:** Moves repository from N3 (AI-Driven) toward N4 (Self-Auditable) maturity. Eval coverage now ≥90%.
+- **Evidence/Link:** `ROADMAP.md` — sprint N4 Hardening section; `.github/MISSIONS/roadmap-2026-05-12-sprint-n4-hardening.md`
+- **Status:** active
+
 ---
 
 ## Known Failures/Bugs
