@@ -1,6 +1,6 @@
 Parent_Agent: copilot
 Child_Agent: copilot
-Mission_Objective: Resolve Marketplace Integrity workflow failure for this PR by satisfying the mission protocol gate for the non-trivial change in .github/scripts/validate-registry-paths.sh.
+Mission_Objective: Resolve Marketplace Integrity workflow failure for this PR by satisfying the mission protocol gate after it failed due to a non-trivial change in .github/scripts/validate-registry-paths.sh without a mission file.
 Context_Links:
   - Current pull request branch: copilot/fix-syntax-error-validate-registry-paths
   - Workflow: Marketplace Integrity
@@ -11,3 +11,6 @@ Success_Criteria:
 Result_Payload:
   - Mission file committed in this branch.
   - CI mission protocol gate no longer fails due to missing mission file.
+Validation_Steps:
+  - Run bash .github/scripts/validate-mission-protocol.sh with BASE_SHA and HEAD_SHA for this PR range.
+  - Confirm the Marketplace Integrity workflow passes on this branch.
